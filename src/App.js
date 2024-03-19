@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Box from "./component/Box";
 import Button from "./component/Button";
+import ScoreBoard from "./component/ScoreBoard";
 
 // 1. 박스 2개 (타이틀, 이미지, 결과)
 // 2. 가위 바위 보 버튼
@@ -56,9 +57,11 @@ function App() {
   const [computerResult, setComputerResult] = useState("");
   const [currentGameIdx, setCurrentGameIdx] = useState(0);
   const [currentGameName, setCurrentGameName] = useState("Rock Scissor Paper!");
+  const [userScore, setUserScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
   const [isLast, setIsLast] = useState(false);
   const [isFirst, setIsFirst] = useState(true);
-
+  const [isStart, setIsStart] = useState(false);
   //prettier-ignore
   const play = (userChoice) => {
     setUserSelect(choice[userChoice]);
@@ -68,6 +71,8 @@ function App() {
     let computer = user === "Tie"? "Tie": user === "Win"? "Lose": "Win"
     setUserResult(user);
     setComputerResult(computer);
+    increaseScore(user,computer);
+    setIsStart(true);
   };
   const randomChoice = () => {
     let itemArray = Object.keys(choice);
@@ -81,36 +86,52 @@ function App() {
     else if (user.name === "Rock") return computer.name === "Scissor" ? "Win" : "Lose";
     else if (user.name === "Paper") return computer.name === "Rock" ? "Win" : "Lose";
   };
-  const clickNextGame = () => {
-    if (currentGameIdx < gameList.length - 1) {
-      let curGame = games[gameList[currentGameIdx]];
-      let nextGame = games[gameList[currentGameIdx + 1]];
-      curGame.isCurrent = false;
-      nextGame.isCurrent = true;
-      setCurrentGameName(nextGame.name);
-      setCurrentGameIdx(currentGameIdx + 1);
-      if (currentGameIdx === gameList.length - 2) {
-        setIsLast(true);
-        setIsFirst(false);
-      } else setIsFirst(false);
-    }
+  const increaseScore = (user, computer) => {
+    setUserScore(user === "Win" ? userScore + 1 : userScore);
+    setComputerScore(computer === "Win" ? computerScore + 1 : computerScore);
   };
-  const clickPreGame = () => {
-    if (currentGameIdx > 0) {
-      let curGame = games[gameList[currentGameIdx]];
-      let preGame = games[gameList[currentGameIdx - 1]];
-      curGame.isCurrent = false;
-      preGame.isCurrent = true;
-      setCurrentGameName(preGame.name);
-      setCurrentGameIdx(currentGameIdx - 1);
-      if (currentGameIdx === 1) {
-        setIsFirst(true);
-        setIsLast(false);
-      } else setIsLast(false);
-    }
-  };
+  // const clickNextGame = () => {
+  //   if (currentGameIdx < gameList.length - 1) {
+  //     let curGame = games[gameList[currentGameIdx]];
+  //     let nextGame = games[gameList[currentGameIdx + 1]];
+  //     curGame.isCurrent = false;
+  //     nextGame.isCurrent = true;
+  //     setCurrentGameName(nextGame.name);
+  //     setCurrentGameIdx(currentGameIdx + 1);
+  //     if (currentGameIdx === gameList.length - 2) {
+  //       setIsLast(true);
+  //       setIsFirst(false);
+  //     } else setIsFirst(false);
+  //   }
+  // };
+  // const clickPreGame = () => {
+  //   if (currentGameIdx > 0) {
+  //     let curGame = games[gameList[currentGameIdx]];
+  //     let preGame = games[gameList[currentGameIdx - 1]];
+  //     curGame.isCurrent = false;
+  //     preGame.isCurrent = true;
+  //     setCurrentGameName(preGame.name);
+  //     setCurrentGameIdx(currentGameIdx - 1);
+  //     if (currentGameIdx === 1) {
+  //       setIsFirst(true);
+  //       setIsLast(false);
+  //     } else setIsLast(false);
+  //   }
+  // };
   return (
     <div>
+      <div className="score-container">
+        <ScoreBoard
+          score={userScore}
+          player={player.user}
+          result={userResult}
+        />
+        <ScoreBoard
+          score={computerScore}
+          player={player.computer}
+          result={computerResult}
+        />
+      </div>
       <div className="game-container">
         <div className="game-header">
           {/* <button
@@ -119,7 +140,9 @@ function App() {
           >
             <img src="./image/left_arrow.png" className="pre-button"></img>
           </button> */}
-          <div className="game-name">{currentGameName}</div>
+          <div className={`game-name ${isStart ? "disabled" : ""}`}>
+            {currentGameName}
+          </div>
           {/* <button
             onClick={() => clickNextGame()}
             className={`${isLast ? "disabled" : ""}`}
