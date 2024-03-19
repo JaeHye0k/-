@@ -113,19 +113,19 @@ function App() {
     <div>
       <div className="game-container">
         <div className="game-header">
-          <button
+          {/* <button
             onClick={() => clickPreGame()}
             className={`${isFirst ? "disabled" : ""}`}
           >
             <img src="./image/left_arrow.png" className="pre-button"></img>
-          </button>
+          </button> */}
           <div className="game-name">{currentGameName}</div>
-          <button
+          {/* <button
             onClick={() => clickNextGame()}
             className={`${isLast ? "disabled" : ""}`}
           >
             <img src="./image/right_arrow.png" className="next-button"></img>
-          </button>
+          </button> */}
         </div>
         <div className="main">
           <Box player={player.user} item={userSelect} result={userResult} />
