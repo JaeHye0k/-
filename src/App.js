@@ -128,9 +128,9 @@ function App() {
           </button>
         </div>
         <div className="main">
-          <Box title={player.user} item={userSelect} result={userResult} />
+          <Box player={player.user} item={userSelect} result={userResult} />
           <Box
-            title={player.computer}
+            player={player.computer}
             item={computerSelect}
             result={computerResult}
           />
@@ -145,9 +145,9 @@ function App() {
           <div onClick={() => play("paper")}>
             <Button item={choice.paper} />
           </div>
-          <div onClick={() => play(randomChoice())}>
+          {/* <div onClick={() => play(randomChoice())}>
             <Button item={random} />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
