@@ -38,11 +38,27 @@ const player = {
     img: "./image/robot.png",
   },
 };
+const games = {
+  v1: {
+    name: "Rock Scissor Paper!",
+    isCurrent: true,
+  },
+  v2: {
+    name: "Quickness Test",
+    isCurrent: false,
+  },
+};
+const gameList = ["v1", "v2"];
 function App() {
   const [userSelect, setUserSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
   const [userResult, setUserResult] = useState("");
   const [computerResult, setComputerResult] = useState("");
+  const [currentGameIdx, setCurrentGameIdx] = useState(0);
+  const [currentGameName, setCurrentGameName] = useState("Rock Scissor Paper!");
+  const [isLast, setIsLast] = useState(false);
+  const [isFirst, setIsFirst] = useState(true);
+
   //prettier-ignore
   const play = (userChoice) => {
     setUserSelect(choice[userChoice]);
@@ -65,28 +81,73 @@ function App() {
     else if (user.name === "Rock") return computer.name === "Scissor" ? "Win" : "Lose";
     else if (user.name === "Paper") return computer.name === "Rock" ? "Win" : "Lose";
   };
+  const clickNextGame = () => {
+    if (currentGameIdx < gameList.length - 1) {
+      let curGame = games[gameList[currentGameIdx]];
+      let nextGame = games[gameList[currentGameIdx + 1]];
+      curGame.isCurrent = false;
+      nextGame.isCurrent = true;
+      setCurrentGameName(nextGame.name);
+      setCurrentGameIdx(currentGameIdx + 1);
+      if (currentGameIdx === gameList.length - 2) {
+        setIsLast(true);
+        setIsFirst(false);
+      } else setIsFirst(false);
+    }
+  };
+  const clickPreGame = () => {
+    if (currentGameIdx > 0) {
+      let curGame = games[gameList[currentGameIdx]];
+      let preGame = games[gameList[currentGameIdx - 1]];
+      curGame.isCurrent = false;
+      preGame.isCurrent = true;
+      setCurrentGameName(preGame.name);
+      setCurrentGameIdx(currentGameIdx - 1);
+      if (currentGameIdx === 1) {
+        setIsFirst(true);
+        setIsLast(false);
+      } else setIsLast(false);
+    }
+  };
   return (
-    <div className="game-container">
-      <div className="main">
-        <Box title={player.user} item={userSelect} result={userResult} />
-        <Box
-          title={player.computer}
-          item={computerSelect}
-          result={computerResult}
-        />
-      </div>
-      <div className="button-container">
-        <div onClick={() => play("scissor")}>
-          <Button item={choice.scissor} />
+    <div>
+      <div className="game-container">
+        <div className="game-header">
+          <button
+            onClick={() => clickPreGame()}
+            className={`${isFirst ? "disabled" : ""}`}
+          >
+            <img src="./image/left_arrow.png" className="pre-button"></img>
+          </button>
+          <div className="game-name">{currentGameName}</div>
+          <button
+            onClick={() => clickNextGame()}
+            className={`${isLast ? "disabled" : ""}`}
+          >
+            <img src="./image/right_arrow.png" className="next-button"></img>
+          </button>
         </div>
-        <div onClick={() => play("rock")}>
-          <Button item={choice.rock} />
+        <div className="main">
+          <Box title={player.user} item={userSelect} result={userResult} />
+          <Box
+            title={player.computer}
+            item={computerSelect}
+            result={computerResult}
+          />
         </div>
-        <div onClick={() => play("paper")}>
-          <Button item={choice.paper} />
-        </div>
-        <div onClick={() => play(randomChoice())}>
-          <Button item={random} />
+        <div className="button-container">
+          <div onClick={() => play("scissor")}>
+            <Button item={choice.scissor} />
+          </div>
+          <div onClick={() => play("rock")}>
+            <Button item={choice.rock} />
+          </div>
+          <div onClick={() => play("paper")}>
+            <Button item={choice.paper} />
+          </div>
+          <div onClick={() => play(randomChoice())}>
+            <Button item={random} />
+          </div>
         </div>
       </div>
     </div>
