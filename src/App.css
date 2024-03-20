@@ -135,6 +135,7 @@ body {
 
 .item-img {
   width: 100%;
+  opacity: 1;
 }
 .player-img {
   width: 60%;
@@ -242,6 +243,13 @@ body {
 }
 .display-none {
   display: none;
+}
+.fade-out {
+  opacity: 0;
+}
+.fade-out.fade-in {
+  transition: none;
+  opacity: 1;
 }
 /* Media Query */
 @media screen and (max-width: 700px) {

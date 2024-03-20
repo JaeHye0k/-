@@ -9,9 +9,10 @@ const Box = (props) => {
         alt="player Image"
       ></img>
       <div className={`box ${props.result}`}>
-        <div className={`${props.result === "Lose" ? "loser" : ""}`} />
+        <div className={`${props.result === "Lose" && "loser"}`} />
         <img
-          className="item-img"
+          style={{ transition: `opacity ${props.interval}ms` }}
+          className={`item-img fade-out ${props.opacity ? "fade-in" : ""}`}
           src={props.item ? props.item.img : "./image/transparentImage.png"}
           alt="Rock Scissor Paper Image"
         ></img>

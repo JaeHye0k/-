@@ -29,17 +29,13 @@ const player = {
     img: "./image/robot.png",
   },
 };
-const games = {
-  v1: {
-    name: "Rock Scissor Paper",
-    isCurrent: true,
-  },
-  v2: {
-    name: "Quickness Test",
-    isCurrent: false,
-  },
-};
-const gameList = ["v1", "v2"];
+
+const gameList = ["Rock Scissor Paper", "Quickness Test"];
+let pointGap = 20;
+let interval = 2000;
+let goalLevel = 2;
+let intervalId;
+let opacityVar = 1;
 function App() {
   const [userSelect, setUserSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
@@ -52,22 +48,64 @@ function App() {
   const [isLast, setIsLast] = useState(false);
   const [isFirst, setIsFirst] = useState(true);
   const [isStart, setIsStart] = useState(false);
-  const [exp, setExp] = useState(0);
-  // 1. start 버튼을 누른다.
-  // 2. currentGameName에 따라 게임이 변해야 한다.
-  const start = () => {
-    setIsStart(true);
+  const [point, setPoint] = useState(0);
+  const [level, setLevel] = useState(1);
+  const [opacity, setOpacity] = useState(null);
+  // 1. 유저가 start 버튼을 누른다.
+  // 2. 컴퓨터의 가위바위보가 랜덤으로 interval 만큼의 시간을 주기로 나온다.
+  //    2-1.유저가 이겼을 경우 point를 pointGap만큼 증가시킨다.
+  //    2-2.지거나 비기거나 내지 못했을 경우 point를 pointGap만큼 감소 시킨다.
+  //        2-2-1. point가 100이 되었을 경우 levelUp함수를 실행시킨다.
+  //            2-2-1-1. level이 goalLevel 이 되었을 경우 게임을 종료한다.
+  //            2-2-1-2. point를 0으로 초기화 시키고, interval이 감소하며 level이 1 증가한다.
+  //        2-2-2. point가 음수가 되었을 경우 "Game over"를 출력하고 게임을 종료하며 점수를 표시한다.
+
+  // 문제 1. 버튼 클릭시 점수 계산을 하도록 만들면 컴퓨터가 한번 냈을 때 여러번 클릭해서
+  // 한 번에 점수를 여러번 획득할 수 있는 문제가 있음.
+  // 해결책 1. 버튼을 클릭했으면 다음 주기가 되기 전까지 버튼 비활성화
+  // 해결책 2.
+
+  // 문제 2. 컴퓨터가 동일한 걸 냈을 때 새로 낸건지 이전 게 그대로 있는건지 분간이 안됨
+  // 해결책 1. interval에 비례하여 투명도 100 -> 0 까지 transition 해주기
+  //      문제 1. 자바스크립트에서 css로 interval 변수를 전달할 방법이 없으므로
+  //              html 태그에 직접 스타일을 줘야함.
+  const games = {
+    "Rock Scissor Paper": {
+      name: "Rock Scissor Paper",
+      isCurrent: true,
+      func: function (userChoice) {
+        setUserSelect(choice[userChoice]);
+        let computerChoice = randomChoice();
+        setComputerSelect(choice[computerChoice]);
+        let user = judgement(choice[userChoice], choice[computerChoice]);
+        let computer = user === "Tie" ? "Tie" : user === "Win" ? "Lose" : "Win";
+        setUserResult(user);
+        setComputerResult(computer);
+        increaseScore(user, computer);
+      },
+    },
+    "Quickness Test": {
+      name: "Quickness Test",
+      isCurrent: false,
+      func: function (userChoice) {
+        setUserSelect(choice[userChoice]);
+        let user = judgement(choice[userChoice], computerSelect);
+        let computer = user === "Tie" ? "Tie" : user === "Win" ? "Lose" : "Win";
+        setUserResult(user);
+        setComputerResult(computer);
+        adjustPoint(user);
+      },
+    },
   };
-  //prettier-ignore
-  const play = (userChoice) => {
-    setUserSelect(choice[userChoice]);
-    let computerChoice = randomChoice();
-    setComputerSelect(choice[computerChoice]);
-    let user = judgement(choice[userChoice], choice[computerChoice]);
-    let computer = user === "Tie"? "Tie": user === "Win"? "Lose": "Win"
-    setUserResult(user);
-    setComputerResult(computer);
-    increaseScore(user,computer);
+
+  const start = (currentGame) => {
+    setIsStart(true);
+    if (currentGame === "Quickness Test") {
+      intervalId = setInterval(intervalSelect, interval);
+    }
+  };
+  let play = (userChoice) => {
+    games[currentGameName].func(userChoice);
   };
   const randomChoice = () => {
     let itemArray = Object.keys(choice);
@@ -76,6 +114,7 @@ function App() {
   };
   //prettier-ignore
   const judgement = (user, computer) => {
+    if(Boolean(computer) === false) return "Tie";
     if (user.name === computer.name) return "Tie";
     else if (user.name === "Scissor") return computer.name === "Paper" ? "Win" : "Lose";
     else if (user.name === "Rock") return computer.name === "Scissor" ? "Win" : "Lose";
@@ -84,6 +123,34 @@ function App() {
   const increaseScore = (user, computer) => {
     setUserScore(user === "Win" ? userScore + 1 : userScore);
     setComputerScore(computer === "Win" ? computerScore + 1 : computerScore);
+  };
+  const intervalSelect = () => {
+    let computerChoice = randomChoice();
+    setComputerSelect(choice[computerChoice]);
+    opacityVar = !opacityVar;
+    setOpacity(opacityVar);
+  };
+  const levelUp = () => {
+    pointGap /= 2;
+    interval -= 500;
+    if (level + 1 === goalLevel) {
+      clearInterval(intervalId);
+      console.log("done");
+    } else {
+      setPoint(0);
+      setLevel(level + 1);
+    }
+  };
+  const adjustPoint = (user) => {
+    if (user === "Win") {
+      setPoint(point + pointGap);
+      if (point + pointGap >= 100) levelUp();
+    } else if (user === "Lose") {
+      setPoint(point - pointGap);
+      if (point - pointGap < 0) {
+        clearInterval(intervalId);
+      }
+    }
   };
   const clickNextGame = () => {
     if (currentGameIdx < gameList.length - 1) {
@@ -133,17 +200,17 @@ function App() {
         />
       </div>
       <div className="game-container">
-        <div className={`game-header ${isStart ? "display-none" : ""}`}>
+        <div className={`game-header ${isStart && "display-none"}`}>
           <button
             onClick={() => clickPreGame()}
-            className={`arrow-button ${isFirst ? "disabled" : ""}`}
+            className={`arrow-button ${isFirst && "disabled"}`}
           >
             <img src="./image/left_arrow.png" className="pre-button"></img>
           </button>
           <div className={`game-name`}>{currentGameName}</div>
           <button
             onClick={() => clickNextGame()}
-            className={`arrow-button ${isLast ? "disabled" : ""}`}
+            className={`arrow-button ${isLast && "disabled"}`}
           >
             <img src="./image/right_arrow.png" className="next-button"></img>
           </button>
@@ -155,20 +222,23 @@ function App() {
             player={player.computer}
             item={computerSelect}
             result={computerResult}
+            interval={interval}
+            opacity={opacity}
           />
         </div>
         <div
-          className={`exp-box ${
-            currentGameName === "Quickness Test" ? "" : "display-none"
+          className={`point-box ${
+            currentGameName === "Quickness Test" || "display-none"
           }`}
         >
-          <progress max={100} value={50}></progress>
+          <progress max={100} value={point}></progress>
         </div>
 
         <div className={`button-container`}>
+          {/* 시작 버튼 */}
           <button
-            className={`start-button ${isStart ? "display-none" : ""}`}
-            onClick={() => start()}
+            className={`start-button ${isStart && "display-none"}`}
+            onClick={() => start(currentGameName)}
           >
             <div className="start-button-content">
               <div className="start-button-text">START</div>
@@ -176,19 +246,19 @@ function App() {
           </button>
           <div
             onClick={() => play("scissor")}
-            className={`${isStart ? "" : "display-none"}`}
+            className={`${isStart || "display-none"}`}
           >
             <Button item={choice.scissor} />
           </div>
           <div
             onClick={() => play("rock")}
-            className={`${isStart ? "" : "display-none"}`}
+            className={`${isStart || "display-none"}`}
           >
             <Button item={choice.rock} />
           </div>
           <div
             onClick={() => play("paper")}
-            className={`${isStart ? "" : "display-none"}`}
+            className={`${isStart || "display-none"}`}
           >
             <Button item={choice.paper} />
           </div>

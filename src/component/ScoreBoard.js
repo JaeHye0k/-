@@ -1,7 +1,6 @@
 import React from "react";
 
 const ScoreBoard = (props) => {
-  console.log(props);
   return (
     <div className="score-component">
       <div className="player-name">{props.player.name}</div>
