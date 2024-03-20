@@ -227,6 +227,9 @@ function App() {
             <img src="./image/right_arrow.png" className="next-button"></img>
           </button>
         </div>
+        {/* <div className={`${isStart || "display-none"}`}>
+          <ScoreBoard score={level} player={player.user} result={userResult} />
+        </div> */}
         <div className="main">
           <Box player={player.user} item={userSelect} result={userResult} />
           <img className="versus" src="./image/versus.png"></img>
