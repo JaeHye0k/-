@@ -32,9 +32,11 @@ const player = {
 
 const gameList = ["Rock Scissor Paper", "Quickness Test"];
 let pointGap = 20;
-let interval = 2000;
-let goalLevel = 2;
+let interval = 1500;
+let goalLevel = 5;
 let intervalId;
+let isFirst = true;
+let isEmpty = false;
 function App() {
   const [userSelect, setUserSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
@@ -44,12 +46,13 @@ function App() {
   const [currentGameName, setCurrentGameName] = useState("Rock Scissor Paper");
   const [userScore, setUserScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
-  const [isLast, setIsLast] = useState(false);
-  const [isFirst, setIsFirst] = useState(true);
+  const [isLastGame, setIsLastGame] = useState(false);
+  const [isFirstGame, setIsFirstGame] = useState(true);
   const [isStart, setIsStart] = useState(false);
   const [point, setPoint] = useState(0);
   const [level, setLevel] = useState(1);
   const [btnDisable, setBtnDisable] = useState(false);
+  //const [isEmpty, setIsEmpty] = useState(true);
   // 1. 유저가 start 버튼을 누른다.
   // 2. 컴퓨터의 가위바위보가 랜덤으로 interval 만큼의 시간을 주기로 나온다.
   //    2-1.유저가 이겼을 경우 point를 pointGap만큼 증가시킨다.
@@ -89,6 +92,8 @@ function App() {
         setComputerResult(computer);
         adjustPoint(user);
         setBtnDisable(true);
+        isEmpty = false;
+        isFirst = false;
       },
     },
   };
@@ -96,6 +101,7 @@ function App() {
   const start = (currentGame) => {
     setIsStart(true);
     if (currentGame === "Quickness Test") {
+      setBtnDisable(true);
       intervalId = setInterval(intervalSelect, interval);
     }
   };
@@ -109,7 +115,6 @@ function App() {
   };
   //prettier-ignore
   const judgement = (user, computer) => {
-    if(Boolean(computer) === false) return "Tie";
     if (user.name === computer.name) return "Tie";
     else if (user.name === "Scissor") return computer.name === "Paper" ? "Win" : "Lose";
     else if (user.name === "Rock") return computer.name === "Scissor" ? "Win" : "Lose";
@@ -120,13 +125,25 @@ function App() {
     setComputerScore(computer === "Win" ? computerScore + 1 : computerScore);
   };
   const intervalSelect = () => {
+    // 버튼 활성화
     setBtnDisable(false);
+    // 검정 테두리로 초기화
+    setUserResult("Tie");
+    setComputerResult("Tie");
+    // 비워주기
+    setUserSelect("");
     let computerChoice = randomChoice();
     setComputerSelect(choice[computerChoice]);
+    if (isEmpty && !isFirst) {
+      setUserResult("Lose");
+      setComputerResult("Win");
+      adjustPoint("Lose");
+    }
+    // 다음 번에 내지 않을 경우 isEmpty는 true가 됨
+    isEmpty = !isEmpty;
   };
   const levelUp = () => {
-    pointGap /= 2;
-    interval -= 500;
+    interval /= 2;
     if (level + 1 === goalLevel) {
       clearInterval(intervalId);
     } else {
@@ -135,11 +152,13 @@ function App() {
     }
   };
   const adjustPoint = (user) => {
+    console.log(point);
     if (user === "Win") {
       setPoint(point + pointGap);
       if (point + pointGap >= 100) levelUp();
     } else if (user === "Lose") {
       setPoint(point - pointGap);
+      console.log(point - pointGap);
       if (point - pointGap < 0) {
         clearInterval(intervalId);
       }
@@ -154,9 +173,9 @@ function App() {
       setCurrentGameName(nextGame.name);
       setCurrentGameIdx(currentGameIdx + 1);
       if (currentGameIdx === gameList.length - 2) {
-        setIsLast(true);
-        setIsFirst(false);
-      } else setIsFirst(false);
+        setIsLastGame(true);
+        setIsFirstGame(false);
+      } else setIsFirstGame(false);
     }
   };
   const clickPreGame = () => {
@@ -168,9 +187,9 @@ function App() {
       setCurrentGameName(preGame.name);
       setCurrentGameIdx(currentGameIdx - 1);
       if (currentGameIdx === 1) {
-        setIsFirst(true);
-        setIsLast(false);
-      } else setIsLast(false);
+        setIsFirstGame(true);
+        setIsLastGame(false);
+      } else setIsLastGame(false);
     }
   };
   return (
@@ -196,14 +215,14 @@ function App() {
         <div className={`game-header ${isStart && "display-none"}`}>
           <button
             onClick={() => clickPreGame()}
-            className={`arrow-button ${isFirst && "disabled"}`}
+            className={`arrow-button ${isFirstGame && "disabled"}`}
           >
             <img src="./image/left_arrow.png" className="pre-button"></img>
           </button>
           <div className={`game-name`}>{currentGameName}</div>
           <button
             onClick={() => clickNextGame()}
-            className={`arrow-button ${isLast && "disabled"}`}
+            className={`arrow-button ${isLastGame && "disabled"}`}
           >
             <img src="./image/right_arrow.png" className="next-button"></img>
           </button>
