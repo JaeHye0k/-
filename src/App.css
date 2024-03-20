@@ -121,11 +121,10 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.box-container:first-of-type {
-  margin-right: 1%;
-}
-.box-container:last-of-type {
-  margin-left: 1%;
+
+.versus {
+  height: 25%;
+  width: 25%;
 }
 .box {
   position: relative;
@@ -143,6 +142,7 @@ body {
 .main {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* Button Container */
@@ -155,7 +155,7 @@ body {
   justify-content: center;
   margin-top: 4vh;
 }
-.button-container button {
+.rcp-button {
   border: 0.2vw solid #888888;
   padding: 0;
   background-color: #f4f5f6;
@@ -165,30 +165,29 @@ body {
   transition: 0.13s ease-in-out;
 }
 
-.button-container button:active {
+.rcp-button:active {
   box-shadow: none;
 }
-.button-container button:active .button-content {
+.rcp-button:active .button-content {
   box-shadow: none;
 }
-.button-container button:active .button-content img {
+.rcp-button:active .button-content img {
   transform: translate3d(0px, 0px, 0px);
 }
-.button-container button .button-content {
+.rcp-button .button-content {
   padding: 15%;
   box-shadow: inset 0px -0.5vw 0px #ddd, 0px -0.5vw 0px #f4f5f6;
   border-radius: 50%;
   transition: 0.13s ease-in-out;
 }
-.button-container button .button-content img {
+.rcp-button .button-content img {
   width: 100%;
-  transform: translate3d(0px, -7px, 0px);
+  transform: translate3d(0px, -4px, 0px);
 }
 .start-button {
+  width: 20vw;
   border: 0.2vw solid #888888;
   padding: 0;
-  margin-top: 4%;
-  width: 50%;
   background-color: #f4f5f6;
   box-shadow: 0vw -20px 35px #ffffff, 0vw -10px 15px #ffffff,
     0vw 0px 30px #ffffff, 0vw 2vw 1vw rgba(0, 0, 0, 0.2);
@@ -196,7 +195,9 @@ body {
   transition: 0.13s ease-in-out;
 }
 .start-button-content {
-  padding: 10%;
+  display: flex;
+  justify-content: center;
+  padding: 3%;
   border-radius: inherit;
   box-shadow: inset 0px -0.5vw 0px #cccccc, 0px -0.5vw 0px #f4f5f6;
   transition: 0.13s ease-in-out;
@@ -208,8 +209,8 @@ body {
   box-shadow: none;
 }
 .start-button-text {
-  transform: translate3d(0px, -7px, 0px);
-  font-size: 5rem;
+  transform: translate3d(0px, -4px, 0px);
+  font-size: 5vw;
 }
 .start-button-text:active {
   transform: translate3d(0px, 0px, 0px);

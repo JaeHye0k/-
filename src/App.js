@@ -4,12 +4,6 @@ import Box from "./component/Box";
 import Button from "./component/Button";
 import ScoreBoard from "./component/ScoreBoard";
 
-// 1. 박스 2개 (타이틀, 이미지, 결과)
-// 2. 가위 바위 보 버튼
-// 3. 버튼 클릭시 선택한 아이템으로 바뀜
-// 4. 컴퓨터는 랜덤하게 선택됨
-// 5. 3 4 에 따라 승패를 결정한다.
-// 6. 승패 결과에 따라 테두리 색 변경 (지면-빨강, 이기면-초록, 비기면-검정)
 const choice = {
   rock: {
     name: "Rock",
@@ -25,10 +19,6 @@ const choice = {
   },
 };
 
-const random = {
-  name: "Random",
-  img: "./image/question_mark.png",
-};
 const player = {
   user: {
     name: "User",
@@ -41,7 +31,7 @@ const player = {
 };
 const games = {
   v1: {
-    name: "Rock Scissor Paper!",
+    name: "Rock Scissor Paper",
     isCurrent: true,
   },
   v2: {
@@ -56,13 +46,15 @@ function App() {
   const [userResult, setUserResult] = useState("");
   const [computerResult, setComputerResult] = useState("");
   const [currentGameIdx, setCurrentGameIdx] = useState(0);
-  const [currentGameName, setCurrentGameName] = useState("Rock Scissor Paper!");
+  const [currentGameName, setCurrentGameName] = useState("Rock Scissor Paper");
   const [userScore, setUserScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [isLast, setIsLast] = useState(false);
   const [isFirst, setIsFirst] = useState(true);
   const [isStart, setIsStart] = useState(false);
-
+  const [exp, setExp] = useState(0);
+  // 1. start 버튼을 누른다.
+  // 2. currentGameName에 따라 게임이 변해야 한다.
   const start = () => {
     setIsStart(true);
   };
@@ -123,7 +115,12 @@ function App() {
   };
   return (
     <div>
-      <div className="score-container">
+      {/* 점수판 */}
+      <div
+        className={`score-container ${
+          currentGameName === "Rock Scissor Paper" ? "" : "display-none"
+        }`}
+      >
         <ScoreBoard
           score={userScore}
           player={player.user}
@@ -136,7 +133,7 @@ function App() {
         />
       </div>
       <div className="game-container">
-        <div className={`game-header ${isStart ? "disabled" : ""}`}>
+        <div className={`game-header ${isStart ? "display-none" : ""}`}>
           <button
             onClick={() => clickPreGame()}
             className={`arrow-button ${isFirst ? "disabled" : ""}`}
@@ -153,33 +150,48 @@ function App() {
         </div>
         <div className="main">
           <Box player={player.user} item={userSelect} result={userResult} />
+          <img className="versus" src="./image/versus.png"></img>
           <Box
             player={player.computer}
             item={computerSelect}
             result={computerResult}
           />
         </div>
-        <button
-          className={`start-button ${isStart ? "display-none" : ""}`}
-          onClick={() => start()}
+        <div
+          className={`exp-box ${
+            currentGameName === "Quickness Test" ? "" : "display-none"
+          }`}
         >
-          <div className="start-button-content">
-            <div className="start-button-text">START</div>
-          </div>
-        </button>
-        <div className={`button-container ${isStart ? "" : "display-none"}`}>
-          <div onClick={() => play("scissor")}>
+          <progress max={100} value={50}></progress>
+        </div>
+
+        <div className={`button-container`}>
+          <button
+            className={`start-button ${isStart ? "display-none" : ""}`}
+            onClick={() => start()}
+          >
+            <div className="start-button-content">
+              <div className="start-button-text">START</div>
+            </div>
+          </button>
+          <div
+            onClick={() => play("scissor")}
+            className={`${isStart ? "" : "display-none"}`}
+          >
             <Button item={choice.scissor} />
           </div>
-          <div onClick={() => play("rock")}>
+          <div
+            onClick={() => play("rock")}
+            className={`${isStart ? "" : "display-none"}`}
+          >
             <Button item={choice.rock} />
           </div>
-          <div onClick={() => play("paper")}>
+          <div
+            onClick={() => play("paper")}
+            className={`${isStart ? "" : "display-none"}`}
+          >
             <Button item={choice.paper} />
           </div>
-          {/* <div onClick={() => play(randomChoice())}>
-            <Button item={random} />
-          </div> */}
         </div>
       </div>
     </div>
@@ -187,10 +199,3 @@ function App() {
 }
 
 export default App;
-/*
-<button onClick={() => play("scissor")}>
-  <div className="button-content">
-    <img src={choice.scissor.img}></img>
-  </div>
-</button>
-*/
