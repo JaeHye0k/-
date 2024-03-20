@@ -15,6 +15,7 @@ button {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  display: block;
 }
 html {
   height: 100vh;
@@ -94,28 +95,27 @@ body {
   font-size: 3vw;
   font-weight: bold;
 }
-.game-header button {
+.arrow-button {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.game-header button:hover {
+.arrow-button:hover {
   transform: scale(1.3);
 }
-.game-header button:first-child {
+.arrow-button:first-child {
   margin-right: 10%;
 }
-.game-header button:last-child {
+.arrow-button:last-child {
   margin-left: 10%;
 }
-.game-header button img {
-  width: 5rem;
+.arrow-button img {
+  width: 5vw;
 }
+
 .game-name {
   margin-bottom: 1vh;
   text-align: center;
 }
-.disabled {
-  visibility: hidden;
-}
+
 .box-container {
   display: flex;
   flex-direction: column;
@@ -145,8 +145,9 @@ body {
   justify-content: center;
 }
 
+/* Button Container */
 .button-container > div {
-  margin: 0 2.5% 0 2.5%;
+  margin: 0 5% 0 5%;
 }
 .button-container {
   width: inherit;
@@ -155,10 +156,8 @@ body {
   margin-top: 4vh;
 }
 .button-container button {
-  position: relative;
+  border: 0.2vw solid #888888;
   padding: 0;
-  border: 4px solid #888888;
-  outline: none;
   background-color: #f4f5f6;
   border-radius: 50%;
   box-shadow: 0vw -20px 35px #ffffff, 0vw -10px 15px #ffffff,
@@ -169,22 +168,51 @@ body {
 .button-container button:active {
   box-shadow: none;
 }
-.button-container button:active .button-content img {
+.button-container button:active .button-content {
   box-shadow: none;
+}
+.button-container button:active .button-content img {
   transform: translate3d(0px, 0px, 0px);
 }
 .button-container button .button-content {
-  position: relative;
-  display: grid;
   padding: 15%;
-  box-shadow: inset 0px -0.5vw 0px #dddddd, 0px -0.5vw 0px #f4f5f6;
+  box-shadow: inset 0px -0.5vw 0px #ddd, 0px -0.5vw 0px #f4f5f6;
   border-radius: 50%;
   transition: 0.13s ease-in-out;
-  z-index: 1;
 }
 .button-container button .button-content img {
   width: 100%;
-  transform: translate3d(0px, -4px, 0px);
+  transform: translate3d(0px, -7px, 0px);
+}
+.start-button {
+  border: 0.2vw solid #888888;
+  padding: 0;
+  margin-top: 4%;
+  width: 50%;
+  background-color: #f4f5f6;
+  box-shadow: 0vw -20px 35px #ffffff, 0vw -10px 15px #ffffff,
+    0vw 0px 30px #ffffff, 0vw 2vw 1vw rgba(0, 0, 0, 0.2);
+  border-radius: 1.5rem;
+  transition: 0.13s ease-in-out;
+}
+.start-button-content {
+  padding: 10%;
+  border-radius: inherit;
+  box-shadow: inset 0px -0.5vw 0px #cccccc, 0px -0.5vw 0px #f4f5f6;
+  transition: 0.13s ease-in-out;
+}
+.start-button:active {
+  box-shadow: none;
+}
+.start-button:active .start-button-content {
+  box-shadow: none;
+}
+.start-button-text {
+  transform: translate3d(0px, -7px, 0px);
+  font-size: 5rem;
+}
+.start-button-text:active {
+  transform: translate3d(0px, 0px, 0px);
 }
 .Win {
   border-color: rgb(94, 255, 0);
@@ -208,7 +236,12 @@ body {
 .result h2 {
   font-size: 7rem;
 }
-
+.disabled {
+  visibility: hidden;
+}
+.display-none {
+  display: none;
+}
 /* Media Query */
 @media screen and (max-width: 700px) {
   .button-container button {

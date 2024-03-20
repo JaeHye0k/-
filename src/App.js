@@ -62,6 +62,10 @@ function App() {
   const [isLast, setIsLast] = useState(false);
   const [isFirst, setIsFirst] = useState(true);
   const [isStart, setIsStart] = useState(false);
+
+  const start = () => {
+    setIsStart(true);
+  };
   //prettier-ignore
   const play = (userChoice) => {
     setUserSelect(choice[userChoice]);
@@ -72,7 +76,6 @@ function App() {
     setUserResult(user);
     setComputerResult(computer);
     increaseScore(user,computer);
-    setIsStart(true);
   };
   const randomChoice = () => {
     let itemArray = Object.keys(choice);
@@ -90,34 +93,34 @@ function App() {
     setUserScore(user === "Win" ? userScore + 1 : userScore);
     setComputerScore(computer === "Win" ? computerScore + 1 : computerScore);
   };
-  // const clickNextGame = () => {
-  //   if (currentGameIdx < gameList.length - 1) {
-  //     let curGame = games[gameList[currentGameIdx]];
-  //     let nextGame = games[gameList[currentGameIdx + 1]];
-  //     curGame.isCurrent = false;
-  //     nextGame.isCurrent = true;
-  //     setCurrentGameName(nextGame.name);
-  //     setCurrentGameIdx(currentGameIdx + 1);
-  //     if (currentGameIdx === gameList.length - 2) {
-  //       setIsLast(true);
-  //       setIsFirst(false);
-  //     } else setIsFirst(false);
-  //   }
-  // };
-  // const clickPreGame = () => {
-  //   if (currentGameIdx > 0) {
-  //     let curGame = games[gameList[currentGameIdx]];
-  //     let preGame = games[gameList[currentGameIdx - 1]];
-  //     curGame.isCurrent = false;
-  //     preGame.isCurrent = true;
-  //     setCurrentGameName(preGame.name);
-  //     setCurrentGameIdx(currentGameIdx - 1);
-  //     if (currentGameIdx === 1) {
-  //       setIsFirst(true);
-  //       setIsLast(false);
-  //     } else setIsLast(false);
-  //   }
-  // };
+  const clickNextGame = () => {
+    if (currentGameIdx < gameList.length - 1) {
+      let curGame = games[gameList[currentGameIdx]];
+      let nextGame = games[gameList[currentGameIdx + 1]];
+      curGame.isCurrent = false;
+      nextGame.isCurrent = true;
+      setCurrentGameName(nextGame.name);
+      setCurrentGameIdx(currentGameIdx + 1);
+      if (currentGameIdx === gameList.length - 2) {
+        setIsLast(true);
+        setIsFirst(false);
+      } else setIsFirst(false);
+    }
+  };
+  const clickPreGame = () => {
+    if (currentGameIdx > 0) {
+      let curGame = games[gameList[currentGameIdx]];
+      let preGame = games[gameList[currentGameIdx - 1]];
+      curGame.isCurrent = false;
+      preGame.isCurrent = true;
+      setCurrentGameName(preGame.name);
+      setCurrentGameIdx(currentGameIdx - 1);
+      if (currentGameIdx === 1) {
+        setIsFirst(true);
+        setIsLast(false);
+      } else setIsLast(false);
+    }
+  };
   return (
     <div>
       <div className="score-container">
@@ -133,22 +136,20 @@ function App() {
         />
       </div>
       <div className="game-container">
-        <div className="game-header">
-          {/* <button
+        <div className={`game-header ${isStart ? "disabled" : ""}`}>
+          <button
             onClick={() => clickPreGame()}
-            className={`${isFirst ? "disabled" : ""}`}
+            className={`arrow-button ${isFirst ? "disabled" : ""}`}
           >
             <img src="./image/left_arrow.png" className="pre-button"></img>
-          </button> */}
-          <div className={`game-name ${isStart ? "disabled" : ""}`}>
-            {currentGameName}
-          </div>
-          {/* <button
+          </button>
+          <div className={`game-name`}>{currentGameName}</div>
+          <button
             onClick={() => clickNextGame()}
-            className={`${isLast ? "disabled" : ""}`}
+            className={`arrow-button ${isLast ? "disabled" : ""}`}
           >
             <img src="./image/right_arrow.png" className="next-button"></img>
-          </button> */}
+          </button>
         </div>
         <div className="main">
           <Box player={player.user} item={userSelect} result={userResult} />
@@ -158,7 +159,15 @@ function App() {
             result={computerResult}
           />
         </div>
-        <div className="button-container">
+        <button
+          className={`start-button ${isStart ? "display-none" : ""}`}
+          onClick={() => start()}
+        >
+          <div className="start-button-content">
+            <div className="start-button-text">START</div>
+          </div>
+        </button>
+        <div className={`button-container ${isStart ? "" : "display-none"}`}>
           <div onClick={() => play("scissor")}>
             <Button item={choice.scissor} />
           </div>
