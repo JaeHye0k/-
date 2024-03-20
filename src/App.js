@@ -49,6 +49,7 @@ function App() {
   const [isStart, setIsStart] = useState(false);
   const [point, setPoint] = useState(0);
   const [level, setLevel] = useState(1);
+  const [btnDisable, setBtnDisable] = useState(false);
   // 1. 유저가 start 버튼을 누른다.
   // 2. 컴퓨터의 가위바위보가 랜덤으로 interval 만큼의 시간을 주기로 나온다.
   //    2-1.유저가 이겼을 경우 point를 pointGap만큼 증가시킨다.
@@ -57,11 +58,6 @@ function App() {
   //            2-2-1-1. level이 goalLevel 이 되었을 경우 게임을 종료한다.
   //            2-2-1-2. point를 0으로 초기화 시키고, interval이 감소하며 level이 1 증가한다.
   //        2-2-2. point가 음수가 되었을 경우 "Game over"를 출력하고 게임을 종료하며 점수를 표시한다.
-
-  // 문제 1. 버튼 클릭시 점수 계산을 하도록 만들면 컴퓨터가 한번 냈을 때 여러번 클릭해서
-  // 한 번에 점수를 여러번 획득할 수 있는 문제가 있음.
-  // 해결책 1. 버튼을 클릭했으면 다음 주기가 되기 전까지 버튼 비활성화
-  // 해결책 2.
 
   // 문제 2. 컴퓨터가 동일한 걸 냈을 때 새로 낸건지 이전 게 그대로 있는건지 분간이 안됨
   // 해결책 1. interval에 비례하여 투명도 100 -> 0 까지 transition 해주기
@@ -92,6 +88,7 @@ function App() {
         setUserResult(user);
         setComputerResult(computer);
         adjustPoint(user);
+        setBtnDisable(true);
       },
     },
   };
@@ -123,6 +120,7 @@ function App() {
     setComputerScore(computer === "Win" ? computerScore + 1 : computerScore);
   };
   const intervalSelect = () => {
+    setBtnDisable(false);
     let computerChoice = randomChoice();
     setComputerSelect(choice[computerChoice]);
   };
@@ -237,24 +235,33 @@ function App() {
               <div className="start-button-text">START</div>
             </div>
           </button>
-          <div
+          <button
             onClick={() => play("scissor")}
-            className={`${isStart || "display-none"}`}
+            className={`${isStart || "display-none"} ${
+              btnDisable ? "btn-disabled" : ""
+            }`}
+            disabled={btnDisable}
           >
             <Button item={choice.scissor} />
-          </div>
-          <div
+          </button>
+          <button
             onClick={() => play("rock")}
-            className={`${isStart || "display-none"}`}
+            className={`${isStart || "display-none"} ${
+              btnDisable ? "btn-disabled" : ""
+            }`}
+            disabled={btnDisable}
           >
             <Button item={choice.rock} />
-          </div>
-          <div
+          </button>
+          <button
             onClick={() => play("paper")}
-            className={`${isStart || "display-none"}`}
+            className={`${isStart || "display-none"} ${
+              btnDisable ? "btn-disabled" : ""
+            }`}
+            disabled={btnDisable}
           >
             <Button item={choice.paper} />
-          </div>
+          </button>
         </div>
       </div>
     </div>

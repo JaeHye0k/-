@@ -147,7 +147,7 @@ body {
 }
 
 /* Button Container */
-.button-container > div {
+.button-container > button {
   margin: 0 5% 0 5%;
 }
 .button-container {
@@ -165,7 +165,6 @@ body {
     0vw 0px 30px #ffffff, 0vw 2vw 1vw rgba(0, 0, 0, 0.2);
   transition: 0.13s ease-in-out;
 }
-
 .rcp-button:active {
   box-shadow: none;
 }
@@ -184,6 +183,12 @@ body {
 .rcp-button .button-content img {
   width: 100%;
   transform: translate3d(0px, -4px, 0px);
+}
+.btn-disabled :is(.rcp-button, .button-content) {
+  box-shadow: none;
+}
+.btn-disabled .button-content img {
+  transform: translate3d(0px, 0px, 0px);
 }
 .start-button {
   width: 20vw;
