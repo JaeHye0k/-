@@ -244,13 +244,6 @@ body {
 .display-none {
   display: none;
 }
-.fade-out {
-  opacity: 0;
-}
-.fade-out.fade-in {
-  transition: none;
-  opacity: 1;
-}
 /* Media Query */
 @media screen and (max-width: 700px) {
   .button-container button {

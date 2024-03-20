@@ -35,7 +35,6 @@ let pointGap = 20;
 let interval = 2000;
 let goalLevel = 2;
 let intervalId;
-let opacityVar = 1;
 function App() {
   const [userSelect, setUserSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
@@ -50,7 +49,6 @@ function App() {
   const [isStart, setIsStart] = useState(false);
   const [point, setPoint] = useState(0);
   const [level, setLevel] = useState(1);
-  const [opacity, setOpacity] = useState(null);
   // 1. 유저가 start 버튼을 누른다.
   // 2. 컴퓨터의 가위바위보가 랜덤으로 interval 만큼의 시간을 주기로 나온다.
   //    2-1.유저가 이겼을 경우 point를 pointGap만큼 증가시킨다.
@@ -127,15 +125,12 @@ function App() {
   const intervalSelect = () => {
     let computerChoice = randomChoice();
     setComputerSelect(choice[computerChoice]);
-    opacityVar = !opacityVar;
-    setOpacity(opacityVar);
   };
   const levelUp = () => {
     pointGap /= 2;
     interval -= 500;
     if (level + 1 === goalLevel) {
       clearInterval(intervalId);
-      console.log("done");
     } else {
       setPoint(0);
       setLevel(level + 1);
@@ -222,8 +217,6 @@ function App() {
             player={player.computer}
             item={computerSelect}
             result={computerResult}
-            interval={interval}
-            opacity={opacity}
           />
         </div>
         <div
