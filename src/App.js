@@ -1,32 +1,32 @@
 import { useState } from "react";
 import "./App.css";
-import Box from "./component/Box";
-import Button from "./component/Button";
-import ScoreBoard from "./component/ScoreBoard";
+import Box from "./function_component/Box";
+import Button from "./function_component/Button";
+import ScoreBoard from "./function_component/ScoreBoard";
 
 const choice = {
   rock: {
     name: "Rock",
-    img: "./image/rock.png",
+    img: "./assets/images/rock.png",
   },
   scissor: {
     name: "Scissor",
-    img: "./image/scissor.png",
+    img: "./assets/images/scissor.png",
   },
   paper: {
     name: "Paper",
-    img: "./image/paper.png",
+    img: "./assets/images/paper.png",
   },
 };
 
 const player = {
   user: {
     name: "User",
-    img: "./image/user.png",
+    img: "./assets/images/user.png",
   },
   computer: {
     name: "Computer",
-    img: "./image/robot.png",
+    img: "./assets/images/robot.png",
   },
 };
 
@@ -38,6 +38,7 @@ let intervalId;
 let isFirst = true;
 let isEmpty = false;
 function App() {
+  console.log(isEmpty);
   const [userSelect, setUserSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
   const [userResult, setUserResult] = useState("");
@@ -70,7 +71,7 @@ function App() {
     "Rock Scissor Paper": {
       name: "Rock Scissor Paper",
       isCurrent: true,
-      func: function (userChoice) {
+      func: (userChoice) => {
         setUserSelect(choice[userChoice]);
         let computerChoice = randomChoice();
         setComputerSelect(choice[computerChoice]);
@@ -84,7 +85,7 @@ function App() {
     "Quickness Test": {
       name: "Quickness Test",
       isCurrent: false,
-      func: function (userChoice) {
+      func: (userChoice) => {
         setUserSelect(choice[userChoice]);
         let user = judgement(choice[userChoice], computerSelect);
         let computer = user === "Tie" ? "Tie" : user === "Win" ? "Lose" : "Win";
@@ -152,13 +153,11 @@ function App() {
     }
   };
   const adjustPoint = (user) => {
-    console.log(point);
     if (user === "Win") {
       setPoint(point + pointGap);
       if (point + pointGap >= 100) levelUp();
     } else if (user === "Lose") {
       setPoint(point - pointGap);
-      console.log(point - pointGap);
       if (point - pointGap < 0) {
         clearInterval(intervalId);
       }
@@ -217,14 +216,20 @@ function App() {
             onClick={() => clickPreGame()}
             className={`arrow-button ${isFirstGame && "disabled"}`}
           >
-            <img src="./image/left_arrow.png" className="pre-button"></img>
+            <img
+              src="./assets/images/left_arrow.png"
+              className="pre-button"
+            ></img>
           </button>
           <div className={`game-name`}>{currentGameName}</div>
           <button
             onClick={() => clickNextGame()}
             className={`arrow-button ${isLastGame && "disabled"}`}
           >
-            <img src="./image/right_arrow.png" className="next-button"></img>
+            <img
+              src="./assets/images/right_arrow.png"
+              className="next-button"
+            ></img>
           </button>
         </div>
         {/* <div className={`${isStart || "display-none"}`}>
@@ -232,7 +237,7 @@ function App() {
         </div> */}
         <div className="main">
           <Box player={player.user} item={userSelect} result={userResult} />
-          <img className="versus" src="./image/versus.png"></img>
+          <img className="versus" src="./assets/images/versus.png"></img>
           <Box
             player={player.computer}
             item={computerSelect}

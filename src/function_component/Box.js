@@ -12,7 +12,9 @@ const Box = (props) => {
         <div className={`${props.result === "Lose" && "loser"}`} />
         <img
           className={`item-img`}
-          src={props.item ? props.item.img : "./image/transparentImage.png"}
+          src={
+            props.item ? props.item.img : "./assets/images/transparentImage.png"
+          }
           alt="Rock Scissor Paper Image"
         ></img>
       </div>

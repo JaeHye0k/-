@@ -1,0 +1,56 @@
+/* Score Board */
+.score-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 25%;
+}
+.score-component {
+  position: absolute;
+  width: 15%;
+  top: 15%;
+}
+.score-component:first-of-type {
+  left: 10%;
+  transform: perspective(30vw) rotateY(45deg);
+}
+.score-component:last-of-type {
+  right: 10%;
+  transform: perspective(30vw) rotateY(-45deg);
+}
+.player-name {
+  font-size: 3vw;
+  text-align: center;
+  font-weight: bold;
+}
+.score-board {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 200%;
+  border: 1vw solid black;
+  border-radius: 1rem;
+  padding: 5%;
+}
+.level-board {
+  position: absolute;
+  width: 15%;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.score-board.Win {
+  border-color: rgb(94, 255, 0);
+}
+.score {
+  width: 100%;
+  font-size: 5vw;
+  font-weight: bold;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
