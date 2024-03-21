@@ -36,6 +36,8 @@ let interval = 2000;
 let goalLevel = 5;
 let intervalId;
 let isFirst = true;
+const loseSound = new Audio("./assets/sounds/lose1.mp3");
+const winSound = new Audio("./assets/sounds/win1.mp3");
 
 export default class AppClass extends Component {
   constructor(props) {
@@ -137,6 +139,8 @@ export default class AppClass extends Component {
     if (this.state.level === goalLevel) {
       this.games["Quickness Test"].result = "Win";
       clearInterval(intervalId);
+      winSound.play();
+      winSound.currentTime = 0;
       this.setState({ isEnd: true });
       return;
     }
@@ -180,6 +184,8 @@ export default class AppClass extends Component {
       if (this.state.point - pointGap < 0) {
         this.games["Quickness Test"].result = "Lose";
         clearInterval(intervalId);
+        loseSound.play();
+        loseSound.currentTime = 0;
         this.setState({
           isEnd: true,
           btnDisable: true,
