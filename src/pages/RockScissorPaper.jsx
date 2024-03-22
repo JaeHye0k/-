@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../styles/RockScissorPaper.css";
-import Box from "./Box";
-import Button from "./Button";
-import ScoreBoard from "./ScoreBoard";
+import Box from "../function_component/Box";
+import Button from "../function_component/Button";
+import ScoreBoard from "../function_component/ScoreBoard";
 
 const choice = {
   rock: {
@@ -219,6 +219,7 @@ function App() {
             <img
               src="./assets/images/left_arrow.png"
               className="pre-button"
+              alt="previous button"
             ></img>
           </button>
           <div className={`game-name`}>{currentGameName}</div>
@@ -229,15 +230,17 @@ function App() {
             <img
               src="./assets/images/right_arrow.png"
               className="next-button"
+              alt="next button"
             ></img>
           </button>
         </div>
-        {/* <div className={`${isStart || "display-none"}`}>
-          <ScoreBoard score={level} player={player.user} result={userResult} />
-        </div> */}
         <div className="main">
           <Box player={player.user} item={userSelect} result={userResult} />
-          <img className="versus" src="./assets/images/versus.png"></img>
+          <img
+            className="versus"
+            src="./assets/images/versus.png"
+            alt="versus"
+          ></img>
           <Box
             player={player.computer}
             item={computerSelect}

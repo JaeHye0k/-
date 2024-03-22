@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ScoreBoardClass from "./ScoreBoardClass";
-import BoxClass from "./BoxClass";
-import ButtonClass from "./ButtonClass";
+import ScoreBoardClass from "../class_component/ScoreBoardClass";
+import BoxClass from "../class_component/BoxClass";
+import ButtonClass from "../class_component/ButtonClass";
 import "../styles/RockScissorPaper.css";
 
 const choice = {
