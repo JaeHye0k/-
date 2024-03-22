@@ -3,11 +3,7 @@ import React from "react";
 const Box = (props) => {
   return (
     <div className="box-container">
-      <img
-        className="player-img"
-        src={props.player.img}
-        alt="player Image"
-      ></img>
+      <img className="player-img" src={props.player.img} alt="player"></img>
       <div className={`box ${props.result}`}>
         <div className={`${props.result === "Lose" && "loser"}`} />
         <img
@@ -15,7 +11,7 @@ const Box = (props) => {
           src={
             props.item ? props.item.img : "./assets/images/transparentImage.png"
           }
-          alt="Rock Scissor Paper Image"
+          alt="Rock Scissor Paper"
         ></img>
       </div>
       {/* <div className="result">

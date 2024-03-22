@@ -5,7 +5,7 @@ const Button = (props) => {
   return (
     <button className={`rcp-button`}>
       <div className="button-content">
-        <img src={props.item && props.item.img} alt="button Image"></img>
+        <img src={props.item && props.item.img} alt="button"></img>
       </div>
     </button>
   );
