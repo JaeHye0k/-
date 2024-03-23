@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/Weather.css";
 import { useEffect, useState } from "react";
+import WeatherBox from "../component/Weather/WeatherBox";
+import WeatherButton from "../component/Weather/WeatherButton";
 
 // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
 // 2. 날씨 정보에는 도시 이름, 섭씨 온도, 화씨 온도, 날씨 상태
@@ -10,6 +12,11 @@ import { useEffect, useState } from "react";
 // 6. 날씨 정보 데이터를 가져오는 동안 로딩 스피너가 돈다.
 
 const Weather = () => {
+  const [weather, setWeather] = useState(null);
+  const [city, setCity] = useState("");
+  const cities = ["osaka", "tokyo", "seoul"];
+  const apiKey = "37145ca12efe07b866fade0a0ab89107";
+
   const getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
@@ -18,20 +25,38 @@ const Weather = () => {
     });
   };
   const getWeatherByCurrentLocation = async (lat, lon) => {
-    const apiKey = "37145ca12efe07b866fade0a0ab89107";
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&&units=metric`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log("data", data);
+    setWeather(data);
   };
+
+  const getWeatherByCityName = async (city) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&&units=metric`;
+    const response = await fetch(url);
+    const data = await response.json();
+    setWeather(data);
+  };
+
   useEffect(() => {
-    getCurrentLocation();
-  }, []);
+    if (city === "") getCurrentLocation();
+    else getWeatherByCityName(city);
+  }, [city]);
+
   return (
-    <div>
-      <div className="background">
-        <div className="screen">
-          <div className="content">Hi</div>
+    <div className="weather-container">
+      <div className="weather-screen">
+        <div className="weather-contents">
+          <div className="weather-box">
+            <WeatherBox weather={weather} />
+          </div>
+          <div className="weather-buttons">
+            <WeatherButton
+              cities={cities}
+              setCity={setCity}
+              getCurrentLocation={getCurrentLocation}
+            />
+          </div>
         </div>
       </div>
     </div>

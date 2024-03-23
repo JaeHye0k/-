@@ -1,0 +1,41 @@
+.weather-container {
+  background: url("../../public/assets/images/weather/clouds.jpeg") no-repeat
+    center;
+  height: 100vh;
+  background-size: cover;
+}
+
+.weather-screen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  padding-bottom: 40%;
+  background-color: white;
+  border: 3.5vw solid black;
+  border-radius: 2vw;
+}
+
+.weather-contents {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.weather-box {
+  text-align: center;
+  font-size: 4vw;
+}
+.weather-buttons > div {
+  display: flex;
+  justify-content: center;
+}
+.weather-buttons button {
+  margin: 1vh 0.5vw;
+  font-size: 3vw;
+  width: fit-content;
+  padding: 0 1vw;
+}

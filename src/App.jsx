@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import RockScissorPaper from "./pages/RockScissorPaper";
 import RockScissorPaperClass from "./pages/RockScissorPaperClass";
 import Weather from "./pages/Weather";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
