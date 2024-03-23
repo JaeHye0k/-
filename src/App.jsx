@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import RockScissorPaper from "./pages/RockScissorPaper";
 import RockScissorPaperClass from "./pages/RockScissorPaperClass";
+import Weather from "./pages/Weather";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           path="/rock-scissor-paper-class"
           element={<RockScissorPaperClass />}
         />
+        <Route path="/weather" element={<Weather />}></Route>
       </Routes>
     </div>
   );

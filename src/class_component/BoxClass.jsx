@@ -17,7 +17,7 @@ export default class BoxClass extends Component {
             src={
               this.props.item
                 ? this.props.item.img
-                : "./assets/images/transparentImage.png"
+                : "./assets/images/rockscissorpaper/transparentImage.png"
             }
             alt="Rock Scissor Paper"
           ></img>

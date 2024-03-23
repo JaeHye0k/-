@@ -9,7 +9,9 @@ const Box = (props) => {
         <img
           className={`item-img`}
           src={
-            props.item ? props.item.img : "./assets/images/transparentImage.png"
+            props.item
+              ? props.item.img
+              : "./assets/images/rockscissorpaper/transparentImage.png"
           }
           alt="Rock Scissor Paper"
         ></img>

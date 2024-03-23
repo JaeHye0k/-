@@ -7,26 +7,26 @@ import ScoreBoard from "../function_component/ScoreBoard";
 const choice = {
   rock: {
     name: "Rock",
-    img: "./assets/images/rock.png",
+    img: "./assets/images/rockscissorpaper/rock.png",
   },
   scissor: {
     name: "Scissor",
-    img: "./assets/images/scissor.png",
+    img: "./assets/images/rockscissorpaper/scissor.png",
   },
   paper: {
     name: "Paper",
-    img: "./assets/images/paper.png",
+    img: "./assets/images/rockscissorpaper/paper.png",
   },
 };
 
 const player = {
   user: {
     name: "User",
-    img: "./assets/images/user.png",
+    img: "./assets/images/rockscissorpaper/user.png",
   },
   computer: {
     name: "Computer",
-    img: "./assets/images/robot.png",
+    img: "./assets/images/rockscissorpaper/robot.png",
   },
 };
 
@@ -217,7 +217,7 @@ function App() {
             className={`arrow-button ${isFirstGame && "disabled"}`}
           >
             <img
-              src="./assets/images/left_arrow.png"
+              src="./assets/images/rockscissorpaper/left_arrow.png"
               className="pre-button"
               alt="previous button"
             ></img>
@@ -228,7 +228,7 @@ function App() {
             className={`arrow-button ${isLastGame && "disabled"}`}
           >
             <img
-              src="./assets/images/right_arrow.png"
+              src="./assets/images/rockscissorpaper/right_arrow.png"
               className="next-button"
               alt="next button"
             ></img>
@@ -238,7 +238,7 @@ function App() {
           <Box player={player.user} item={userSelect} result={userResult} />
           <img
             className="versus"
-            src="./assets/images/versus.png"
+            src="./assets/images/rockscissorpaper/versus.png"
             alt="versus"
           ></img>
           <Box
