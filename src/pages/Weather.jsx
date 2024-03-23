@@ -15,10 +15,10 @@ const Weather = () => {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
   const [btnX, setBtnX] = useState(20);
-  const [curCarousel, setCurCarousel] = useState(1);
-  const [carouselTransition, setCarouselTransition] = useState(
-    "transform 500ms ease-in-out"
-  );
+  // const [curCarousel, setCurCarousel] = useState(1);
+  // const [carouselTransition, setCarouselTransition] = useState(
+  //   "transform 500ms ease-in-out"
+  // );
 
   const cities = [
     "",
