@@ -1,5 +1,5 @@
 import React from "react";
-import IndexList from "../function_component/IndexList";
+import IndexList from "../component/IndexList";
 import "../styles/index.css";
 
 const Index = () => {
@@ -7,31 +7,25 @@ const Index = () => {
     {
       id: 1,
       week: 1,
-      title: "2. 가위바위보 게임 5강~6강",
+      title: "가위바위보 게임 5강~6강",
       url: "rock-scissor-paper",
     },
     {
       id: 2,
       week: 1,
-      title: "3. 클래스 컴포넌트 - 가위바위보 게임",
+      title: "클래스 컴포넌트 - 가위바위보 게임",
       url: "rock-scissor-paper-class",
     },
     {
       id: 3,
       week: 1,
-      title: "4. 리액트 Lifecycle 1강~2강",
-      url: "",
+      title: "두번째 프로젝트: 날씨앱 만들기 1강~6강",
+      url: "weather",
     },
     {
       id: 4,
       week: 1,
-      title: "5. 두번째 프로젝트: 날씨앱 만들기 1강~6강",
-      url: "",
-    },
-    {
-      id: 5,
-      week: 1,
-      title: "5. 두번째 프로젝트: 날씨앱 만들기 7강~9강",
+      title: "두번째 프로젝트: 날씨앱 만들기 7강~9강",
       url: "",
     },
   ];

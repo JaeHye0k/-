@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/Button.css";
+import "../../styles/Button.css";
 
 export default class BoxClass extends Component {
   render() {
@@ -22,9 +22,6 @@ export default class BoxClass extends Component {
             alt="Rock Scissor Paper"
           ></img>
         </div>
-        {/* <div className="result">
-            <h2>{props.result}</h2>
-          </div> */}
       </div>
     );
   }

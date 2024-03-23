@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/ScoreBoard.css";
+import "../../styles/ScoreBoard.css";
 
 export default class ScoreBoardClass extends Component {
   render() {

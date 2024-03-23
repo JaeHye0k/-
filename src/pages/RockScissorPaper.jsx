@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../styles/RockScissorPaper.css";
-import Box from "../function_component/Box";
-import Button from "../function_component/Button";
-import ScoreBoard from "../function_component/ScoreBoard";
+import Box from "../component/RockScissorPaper/Box";
+import Button from "../component/RockScissorPaper/Button";
+import ScoreBoard from "../component/RockScissorPaper/ScoreBoard";
 
 const choice = {
   rock: {
