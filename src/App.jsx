@@ -16,7 +16,7 @@ const App = () => {
           path="/rock-scissor-paper-class"
           element={<RockScissorPaperClass />}
         />
-        <Route path="/weather" element={<Weather />}></Route>
+        <Route path="/weather" element={<Weather />} />
       </Routes>
     </div>
   );
