@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Weather.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import WeatherBox from "../component/Weather/WeatherBox";
 import WeatherButton from "../component/Weather/WeatherButton";
 
@@ -14,7 +14,21 @@ import WeatherButton from "../component/Weather/WeatherButton";
 const Weather = () => {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
-  const cities = ["osaka", "tokyo", "seoul"];
+  const [btnX, setBtnX] = useState(20);
+  const [curCarousel, setCurCarousel] = useState(1);
+  const [carouselTransition, setCarouselTransition] = useState(
+    "transform 500ms ease-in-out"
+  );
+
+  const cities = [
+    "",
+    "Osaka",
+    "Tokyo",
+    "Seoul",
+    "Sapporo",
+    "Los Angeles",
+    "Las Vegas",
+  ];
   const apiKey = "37145ca12efe07b866fade0a0ab89107";
 
   const getCurrentLocation = () => {
@@ -37,6 +51,25 @@ const Weather = () => {
     const data = await response.json();
     setWeather(data);
   };
+  // const makeNewCarouselItem = (arr) => {
+  //   const itemStart = arr[0];
+  //   const itemEnd = arr[arr.length - 1];
+  //   const newCarousel = [itemEnd, ...arr, itemStart];
+  //   return newCarousel;
+  // };
+  // const MyComponent = () => {
+  //   const ref = useRef(null);
+  //   useEffect(() => {
+  //     console.log(ref.current);
+  //   }, [ref.current]);
+  //   return <div ref={ref}>Hello</div>;
+  // };
+  const clickNextButton = () => {
+    setBtnX(btnX - 20);
+  };
+  const clickPreButton = () => {
+    setBtnX(btnX + 20);
+  };
 
   useEffect(() => {
     if (city === "") getCurrentLocation();
@@ -50,12 +83,23 @@ const Weather = () => {
           <div className="weather-box">
             <WeatherBox weather={weather} />
           </div>
-          <div className="weather-buttons">
-            <WeatherButton
-              cities={cities}
-              setCity={setCity}
-              getCurrentLocation={getCurrentLocation}
-            />
+          <div className="carousel-button">
+            <div className="weather-button-container">
+              {btnX < 20 && (
+                <button
+                  className={`pre-button`}
+                  onClick={() => clickPreButton()}
+                >
+                  &lt;
+                </button>
+              )}
+
+              <WeatherButton cities={cities} setCity={setCity} btnX={btnX} />
+              <button className="next-button" onClick={() => clickNextButton()}>
+                {" "}
+                &gt;
+              </button>
+            </div>
           </div>
         </div>
       </div>

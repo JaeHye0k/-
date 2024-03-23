@@ -23,19 +23,40 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  padding: 0 8vw;
 }
 
 .weather-box {
   text-align: center;
   font-size: 4vw;
 }
-.weather-buttons > div {
-  display: flex;
-  justify-content: center;
+.weather-button-container > div {
+  /* display: flex;
+  justify-content: center; */
+  float: left;
 }
-.weather-buttons button {
+.weather-buttons > button {
   margin: 1vh 0.5vw;
   font-size: 3vw;
   width: fit-content;
   padding: 0 1vw;
+}
+.next-button {
+  position: absolute;
+  right: 3vw;
+  font-size: 5vw;
+}
+.pre-button {
+  position: absolute;
+  left: 3vw;
+  font-size: 5vw;
+}
+.carousel-button {
+  overflow: hidden;
+}
+.weather-button-container {
+  width: 300vw;
+}
+.weather-buttons {
+  transition: transform 500ms ease-in-out;
 }

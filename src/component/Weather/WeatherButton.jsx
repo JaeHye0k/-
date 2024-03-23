@@ -1,19 +1,15 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const WeatherButton = ({ cities, setCity, getCurrentLocation }) => {
-  const clickCurrentLocation = () => {
-    getCurrentLocation();
-    setCity("");
-  };
+const WeatherButton = ({ cities, setCity, btnX }) => {
   return (
-    <div>
-      <Button variant="warning" onClick={() => clickCurrentLocation()}>
-        Current Location
-      </Button>
+    <div
+      className="weather-buttons"
+      style={{ transform: `translateX(${btnX}vw)` }}
+    >
       {cities.map((item, idx) => (
         <Button variant="warning" onClick={() => setCity(item)} key={idx}>
-          {item}
+          {item === "" ? "Current Location" : item}
         </Button>
       ))}
     </div>
