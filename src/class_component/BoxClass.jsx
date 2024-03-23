@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../Button.css";
+import "../styles/Button.css";
 
 export default class BoxClass extends Component {
   render() {

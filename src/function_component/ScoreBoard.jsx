@@ -1,5 +1,5 @@
 import React from "react";
-import "../ScoreBoard.css";
+import "../styles/ScoreBoard.css";
 
 const ScoreBoard = (props) => {
   return (
