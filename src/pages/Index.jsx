@@ -1,5 +1,6 @@
 import React from "react";
 import IndexList from "../function_component/IndexList";
+import "../styles/index.css";
 
 const Index = () => {
   const assignmentArray = [
