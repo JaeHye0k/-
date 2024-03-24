@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ScoreBoardClass from "../component/RockScissorPaperClass/ScoreBoardClass";
 import BoxClass from "../component/RockScissorPaperClass/BoxClass";
 import ButtonClass from "../component/RockScissorPaperClass/ButtonClass";
-import "../styles/RockScissorPaper.css";
+import style from "../styles/RockScissorPaper.module.css";
 import IndexButton from "../component/IndexButton";
 
 const choice = {
@@ -118,12 +118,15 @@ export default class AppClass extends Component {
     let randomItem = Math.floor(Math.random() * itemArray.length);
     return itemArray[randomItem];
   };
-  //prettier-ignore
+  //prettier_ignore
   judgement = (user, computer) => {
     if (user.name === computer.name) return "Tie";
-    else if (user.name === "Scissor") return computer.name === "Paper" ? "Win" : "Lose";
-    else if (user.name === "Rock") return computer.name === "Scissor" ? "Win" : "Lose";
-    else if (user.name === "Paper") return computer.name === "Rock" ? "Win" : "Lose";
+    else if (user.name === "Scissor")
+      return computer.name === "Paper" ? "Win" : "Lose";
+    else if (user.name === "Rock")
+      return computer.name === "Scissor" ? "Win" : "Lose";
+    else if (user.name === "Paper")
+      return computer.name === "Rock" ? "Win" : "Lose";
   };
   increaseScore = (user, computer) => {
     this.setState({
@@ -253,93 +256,104 @@ export default class AppClass extends Component {
     return (
       <div>
         <IndexButton />
-        <button
-          onClick={() => this.moveGameSelect()}
-          className={`game-select-button ${
-            !this.state.isStart ? "display-none" : ""
-          }`}
-        >
-          <div className="game-select-button-content">
-            <div className="game-select-button-text">게임 선택 화면으로</div>
-          </div>
-        </button>
+        {this.state.isStart && (
+          <button
+            onClick={() => this.moveGameSelect()}
+            className={`${style.game_select_button}`}
+          >
+            <div className={style.game_select_button_content}>
+              <div className={style.game_select_button_text}>
+                게임 선택 화면으로
+              </div>
+            </div>
+          </button>
+        )}
         {/* 점수판 */}
-        <div className={`score-container`}>
-          <ScoreBoardClass
-            score={this.state.userScore}
-            player={player.user.name}
-            result={this.state.userResult}
-            className={`score-component ${
-              this.state.currentGameName === "Rock Scissor Paper"
-                ? ""
-                : "display-none"
-            }`}
-          />
+        <div className={style.score_container}>
+          {this.state.currentGameName === "Rock Scissor Paper" && (
+            <ScoreBoardClass
+              score={this.state.userScore}
+              player={player.user.name}
+              result={this.state.userResult}
+              className={style.score_component}
+            />
+          )}
+
           {/* 순발력 테스트 레벨 표시 */}
-          <ScoreBoardClass
-            goal={goalLevel}
-            score={this.state.level}
-            player={"Level"}
-            className={`level-board ${
-              this.state.currentGameName === "Quickness Test"
-                ? ""
-                : "display-none"
-            } ${this.state.isStart ? "" : "display-none"}`}
-          />
-          <div
-            className={`${
-              !this.state.isEnd ? "display-none" : "quickness-result"
-            } ${this.games["Quickness Test"].result}`}
-          >
-            {this.games["Quickness Test"].result === "Win"
-              ? "Win! :)"
-              : "Game Over :("}
-          </div>
-          <ScoreBoardClass
-            score={this.state.computerScore}
-            player={player.computer.name}
-            result={this.state.computerResult}
-            className={`score-component ${
-              this.state.currentGameName === "Rock Scissor Paper"
-                ? ""
-                : "display-none"
-            }`}
-          />
+          {this.state.currentGameName === "Quickness Test" &&
+            this.state.isStart && (
+              <ScoreBoardClass
+                goal={goalLevel}
+                score={this.state.level}
+                player={"Level"}
+                className={style.level_board}
+              />
+            )}
+          {/* 순발력 테스트 결과 표시 */}
+          {this.state.isEnd && (
+            <div
+              className={`${style.quickness_result} ${
+                this.games["Quickness Test"].result === "Win"
+                  ? style.Win
+                  : style.Lose
+              }`}
+            >
+              {this.games["Quickness Test"].result === "Win"
+                ? "Win! :)"
+                : "Game Over :("}
+            </div>
+          )}
+
+          {this.state.currentGameName === "Rock Scissor Paper" && (
+            <ScoreBoardClass
+              score={this.state.computerScore}
+              player={player.computer.name}
+              result={this.state.computerResult}
+              className={style.score_component}
+            />
+          )}
         </div>
-        <div className="game-container">
-          <div
-            className={`game-header ${this.state.isStart && "display-none"}`}
-          >
-            <button
-              onClick={() => this.clickPreGame()}
-              className={`arrow-button ${this.state.isFirstGame && "disabled"}`}
-            >
-              <img
-                src="./assets/images/rockscissorpaper/left_arrow.png"
-                className="pre-button"
-                alt="left arrow"
-              ></img>
-            </button>
-            <div className={`game-name`}>{this.state.currentGameName}</div>
-            <button
-              onClick={() => this.clickNextGame()}
-              className={`arrow-button ${this.state.isLastGame && "disabled"}`}
-            >
-              <img
-                src="./assets/images/rockscissorpaper/right_arrow.png"
-                className="next-button"
-                alt="right arrow"
-              ></img>
-            </button>
-          </div>
-          <div className="main">
+        <div className={style.game_container}>
+          {!this.state.isStart && (
+            <div className={style.game_header}>
+              <button
+                onClick={() => this.clickPreGame()}
+                className={`${style.arrow_button} ${
+                  this.state.isFirstGame && style.disabled
+                }`}
+              >
+                <img
+                  src="./assets/images/rockscissorpaper/left_arrow.png"
+                  className={style.pre_button}
+                  alt="left arrow"
+                ></img>
+              </button>
+              <div className={style.game_name}>
+                {this.state.currentGameName}
+              </div>
+              <button
+                onClick={() => this.clickNextGame()}
+                className={`${style.arrow_button} ${
+                  this.state.isLastGame && style.disabled
+                }`}
+              >
+                <img
+                  src="./assets/images/rockscissorpaper/right_arrow.png"
+                  className={style.next_button}
+                  alt="right arrow"
+                ></img>
+              </button>
+            </div>
+          )}
+
+          <div className={style.main}>
             <BoxClass
               player={player.user}
               item={this.state.userSelect}
               result={this.state.userResult}
             />
             <img
-              className="versus"
+              className={style.versus}
               src="./assets/images/rockscissorpaper/versus.png"
               alt="versus"
             ></img>
@@ -350,54 +364,57 @@ export default class AppClass extends Component {
             />
           </div>
 
-          <div
-            className={`progress-outter ${
-              this.state.currentGameName === "Quickness Test" || "display-none"
-            }`}
-          >
-            <div
-              className="progress-inner"
-              style={{ width: this.state.point + "%" }}
-            ></div>
-          </div>
+          {this.state.currentGameName === "Quickness Test" && (
+            <div className={style.progress_outter}>
+              <div
+                className={style.progress_inner}
+                style={{ width: this.state.point + "%" }}
+              ></div>
+            </div>
+          )}
 
-          <div className={`button-container`}>
+          <div className={style.button_container}>
             {/* 시작 버튼 */}
-            <button
-              className={`start-button ${this.state.isStart && "display-none"}`}
-              onClick={() => this.start(this.state.currentGameName)}
-            >
-              <div className="start-button-content">
-                <div className="start-button-text">START</div>
-              </div>
-            </button>
-            <button
-              onClick={() => this.play("scissor")}
-              className={`${this.state.isStart || "display-none"} ${
-                this.state.btnDisable ? "btn-disabled" : ""
-              }`}
-              disabled={this.state.btnDisable}
-            >
-              <ButtonClass item={choice.scissor} />
-            </button>
-            <button
-              onClick={() => this.play("rock")}
-              className={`${this.state.isStart || "display-none"} ${
-                this.state.btnDisable ? "btn-disabled" : ""
-              }`}
-              disabled={this.state.btnDisable}
-            >
-              <ButtonClass item={choice.rock} />
-            </button>
-            <button
-              onClick={() => this.play("paper")}
-              className={`${this.state.isStart || "display-none"} ${
-                this.state.btnDisable ? "btn-disabled" : ""
-              }`}
-              disabled={this.state.btnDisable}
-            >
-              <ButtonClass item={choice.paper} />
-            </button>
+            {!this.state.isStart && (
+              <button
+                className={style.start_button}
+                onClick={() => this.start(this.state.currentGameName)}
+              >
+                <div className={style.start_button_content}>
+                  <div className={style.start_button_text}>START</div>
+                </div>
+              </button>
+            )}
+            {/* 가위 바위 보 버튼 */}
+            {this.state.isStart && (
+              <button
+                onClick={() => this.play("scissor")}
+                className={`${this.state.btnDisable ? style.btn_disabled : ""}`}
+                disabled={this.state.btnDisable}
+              >
+                <ButtonClass item={choice.scissor} />
+              </button>
+            )}
+
+            {this.state.isStart && (
+              <button
+                onClick={() => this.play("rock")}
+                className={`${this.state.btnDisable ? style.btn_disabled : ""}`}
+                disabled={this.state.btnDisable}
+              >
+                <ButtonClass item={choice.rock} />
+              </button>
+            )}
+
+            {this.state.isStart && (
+              <button
+                onClick={() => this.play("paper")}
+                className={`${this.state.btnDisable ? style.btn_disabled : ""}`}
+                disabled={this.state.btnDisable}
+              >
+                <ButtonClass item={choice.paper} />
+              </button>
+            )}
           </div>
         </div>
       </div>

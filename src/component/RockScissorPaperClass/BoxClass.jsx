@@ -1,19 +1,27 @@
 import React, { Component } from "react";
-import "../../styles/Button.css";
+import style from "../../styles/RockScissorPaper.module.css";
 
 export default class BoxClass extends Component {
   render() {
     return (
-      <div className="box-container">
+      <div className={style.box_container}>
         <img
-          className="player-img"
+          className={style.player_img}
           src={this.props.player.img}
           alt="player"
         ></img>
-        <div className={`box ${this.props.result}`}>
-          <div className={`${this.props.result === "Lose" && "loser"}`} />
+        <div
+          className={`${style.box} ${
+            this.props.result === "Win"
+              ? style.Win
+              : this.props.result === "Lose"
+              ? style.Lose
+              : style.Tie
+          }`}
+        >
+          <div className={this.props.result === "Lose" ? style.loser : ""} />
           <img
-            className={`item-img`}
+            className={style.item_img}
             src={
               this.props.item
                 ? this.props.item.img

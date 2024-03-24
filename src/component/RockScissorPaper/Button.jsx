@@ -1,10 +1,10 @@
 import React from "react";
-import "../../styles/Button.css";
+import style from "../../styles/RockScissorPaper.module.css";
 
 const Button = (props) => {
   return (
-    <button className={`rcp-button`}>
-      <div className="button-content">
+    <button className={style.rcp_button}>
+      <div className={style.button_content}>
         <img src={props.item && props.item.img} alt="button"></img>
       </div>
     </button>

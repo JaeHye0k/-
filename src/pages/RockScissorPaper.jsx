@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/RockScissorPaper.css";
+import style from "../styles/RockScissorPaper.module.css";
 import Box from "../component/RockScissorPaper/Box";
 import Button from "../component/RockScissorPaper/Button";
 import ScoreBoard from "../component/RockScissorPaper/ScoreBoard";
@@ -196,50 +196,56 @@ function App() {
     <div>
       <IndexButton />
       {/* 점수판 */}
-      <div
-        className={`score-container ${
-          currentGameName === "Rock Scissor Paper" ? "" : "display-none"
-        }`}
-      >
-        <ScoreBoard
-          score={userScore}
-          player={player.user}
-          result={userResult}
-        />
-        <ScoreBoard
-          score={computerScore}
-          player={player.computer}
-          result={computerResult}
-        />
-      </div>
-      <div className="game-container">
-        <div className={`game-header ${isStart && "display-none"}`}>
-          <button
-            onClick={() => clickPreGame()}
-            className={`arrow-button ${isFirstGame && "disabled"}`}
-          >
-            <img
-              src="./assets/images/rockscissorpaper/left_arrow.png"
-              className="pre-button"
-              alt="previous button"
-            ></img>
-          </button>
-          <div className={`game-name`}>{currentGameName}</div>
-          <button
-            onClick={() => clickNextGame()}
-            className={`arrow-button ${isLastGame && "disabled"}`}
-          >
-            <img
-              src="./assets/images/rockscissorpaper/right_arrow.png"
-              className="next-button"
-              alt="next button"
-            ></img>
-          </button>
+      {currentGameName === "Rock Scissor Paper" && (
+        <div className={style.score_container}>
+          <ScoreBoard
+            score={userScore}
+            player={player.user}
+            result={userResult}
+          />
+          <ScoreBoard
+            score={computerScore}
+            player={player.computer}
+            result={computerResult}
+          />
         </div>
-        <div className="main">
+      )}
+
+      <div className={style.game_container}>
+        {!isStart && (
+          <div className={style.game_header}>
+            <button
+              onClick={() => clickPreGame()}
+              className={`${style.arrow_button} ${
+                isFirstGame && style.disabled
+              }`}
+            >
+              <img
+                src="./assets/images/rockscissorpaper/left_arrow.png"
+                className={style.pre_button}
+                alt="previous button"
+              ></img>
+            </button>
+            <div className={style.game_name}>{currentGameName}</div>
+            <button
+              onClick={() => clickNextGame()}
+              className={`${style.arrow_button} ${
+                isLastGame && style.disabled
+              }`}
+            >
+              <img
+                src="./assets/images/rockscissorpaper/right_arrow.png"
+                className={style.next_button}
+                alt="next button"
+              ></img>
+            </button>
+          </div>
+        )}
+
+        <div className={style.main}>
           <Box player={player.user} item={userSelect} result={userResult} />
           <img
-            className="versus"
+            className={style.versus}
             src="./assets/images/rockscissorpaper/versus.png"
             alt="versus"
           ></img>
@@ -249,51 +255,54 @@ function App() {
             result={computerResult}
           />
         </div>
-        <div
-          className={`point-box ${
-            currentGameName === "Quickness Test" || "display-none"
-          }`}
-        >
-          <progress max={100} value={point}></progress>
-        </div>
+        {currentGameName === "Quickness Test" && (
+          <div className={style.point_box}>
+            <progress max={100} value={point}></progress>
+          </div>
+        )}
 
-        <div className={`button-container`}>
+        <div className={style.button_container}>
           {/* 시작 버튼 */}
-          <button
-            className={`start-button ${isStart && "display-none"}`}
-            onClick={() => start(currentGameName)}
-          >
-            <div className="start-button-content">
-              <div className="start-button-text">START</div>
-            </div>
-          </button>
-          <button
-            onClick={() => play("scissor")}
-            className={`${isStart || "display-none"} ${
-              btnDisable ? "btn-disabled" : ""
-            }`}
-            disabled={btnDisable}
-          >
-            <Button item={choice.scissor} />
-          </button>
-          <button
-            onClick={() => play("rock")}
-            className={`${isStart || "display-none"} ${
-              btnDisable ? "btn-disabled" : ""
-            }`}
-            disabled={btnDisable}
-          >
-            <Button item={choice.rock} />
-          </button>
-          <button
-            onClick={() => play("paper")}
-            className={`${isStart || "display-none"} ${
-              btnDisable ? "btn-disabled" : ""
-            }`}
-            disabled={btnDisable}
-          >
-            <Button item={choice.paper} />
-          </button>
+          {!isStart && (
+            <button
+              className={style.start_button}
+              onClick={() => start(currentGameName)}
+            >
+              <div className={style.start_button_content}>
+                <div className={style.start_button_text}>START</div>
+              </div>
+            </button>
+          )}
+
+          {!isStart && (
+            <button
+              onClick={() => play("scissor")}
+              className={`${btnDisable ? style.btn_disabled : ""}`}
+              disabled={btnDisable}
+            >
+              <Button item={choice.scissor} />
+            </button>
+          )}
+
+          {!isStart && (
+            <button
+              onClick={() => play("rock")}
+              className={`${btnDisable ? style.btn_disabled : ""}`}
+              disabled={btnDisable}
+            >
+              <Button item={choice.rock} />
+            </button>
+          )}
+
+          {!isStart && (
+            <button
+              onClick={() => play("paper")}
+              className={`${btnDisable ? style.btn_disabled : ""}`}
+              disabled={btnDisable}
+            >
+              <Button item={choice.paper} />
+            </button>
+          )}
         </div>
       </div>
     </div>
