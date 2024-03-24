@@ -1,6 +1,6 @@
 import React from "react";
 import IndexList from "../component/IndexList";
-import "../styles/index.css";
+import style from "../styles/index.module.css";
 
 const Index = () => {
   const assignmentArray = [
@@ -30,12 +30,12 @@ const Index = () => {
     },
   ];
   return (
-    <div className="wrap">
+    <div className={style.wrap}>
       <h1>
         <strong>코딩알려주는누나 리액트 스터디 1기</strong>
         <div>이재혁 / 2024.03.18 ~ 2024.04.21</div>
       </h1>
-      <ul className="list">
+      <ul className={style.list}>
         {assignmentArray.map((assignment) => (
           <IndexList
             key={assignment.id}
