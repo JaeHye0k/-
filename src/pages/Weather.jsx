@@ -1,8 +1,9 @@
 import React from "react";
-import "../styles/Weather.css";
 import { useEffect, useState, useRef } from "react";
 import WeatherBox from "../component/Weather/WeatherBox";
 import WeatherButton from "../component/Weather/WeatherButton";
+import style from "../styles/Weather.module.css";
+import IndexButton from "../component/IndexButton";
 
 // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
 // 2. 날씨 정보에는 도시 이름, 섭씨 온도, 화씨 온도, 날씨 상태
@@ -74,20 +75,22 @@ const Weather = () => {
   useEffect(() => {
     if (city === "") getCurrentLocation();
     else getWeatherByCityName(city);
+    console.log(city);
   }, [city]);
 
   return (
-    <div className="weather-container">
-      <div className="weather-screen">
-        <div className="weather-contents">
-          <div className="weather-box">
+    <div className={style.weather_container}>
+      <IndexButton />
+      <div className={style.weather_screen}>
+        <div className={style.weather_contents}>
+          <div className={style.weather_box}>
             <WeatherBox weather={weather} />
           </div>
-          <div className="carousel-button">
-            <div className="weather-button-container">
+          <div className={style.carousel_button}>
+            <div className={style.weather_button_container}>
               {btnX < 20 && (
                 <button
-                  className={`pre-button`}
+                  className={style.pre_button}
                   onClick={() => clickPreButton()}
                 >
                   &lt;
@@ -95,7 +98,10 @@ const Weather = () => {
               )}
 
               <WeatherButton cities={cities} setCity={setCity} btnX={btnX} />
-              <button className="next-button" onClick={() => clickNextButton()}>
+              <button
+                className={style.next_button}
+                onClick={() => clickNextButton()}
+              >
                 {" "}
                 &gt;
               </button>

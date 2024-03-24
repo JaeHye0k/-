@@ -3,6 +3,7 @@ import "../styles/RockScissorPaper.css";
 import Box from "../component/RockScissorPaper/Box";
 import Button from "../component/RockScissorPaper/Button";
 import ScoreBoard from "../component/RockScissorPaper/ScoreBoard";
+import IndexButton from "../component/IndexButton";
 
 const choice = {
   rock: {
@@ -193,6 +194,7 @@ function App() {
   };
   return (
     <div>
+      <IndexButton />
       {/* 점수판 */}
       <div
         className={`score-container ${

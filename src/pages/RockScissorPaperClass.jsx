@@ -3,6 +3,7 @@ import ScoreBoardClass from "../component/RockScissorPaperClass/ScoreBoardClass"
 import BoxClass from "../component/RockScissorPaperClass/BoxClass";
 import ButtonClass from "../component/RockScissorPaperClass/ButtonClass";
 import "../styles/RockScissorPaper.css";
+import IndexButton from "../component/IndexButton";
 
 const choice = {
   rock: {
@@ -251,6 +252,7 @@ export default class AppClass extends Component {
   render() {
     return (
       <div>
+        <IndexButton />
         <button
           onClick={() => this.moveGameSelect()}
           className={`game-select-button ${
