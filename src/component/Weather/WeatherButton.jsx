@@ -1,10 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import style from "../../styles/Weather.module.css";
 
 const WeatherButton = ({ cities, setCity, btnX }) => {
   return (
     <div
-      className="weather-buttons"
+      className={style.weather_buttons}
       style={{ transform: `translateX(${btnX}vw)` }}
     >
       {cities.map((item, idx) => (
