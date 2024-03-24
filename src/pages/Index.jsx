@@ -19,14 +19,8 @@ const Index = () => {
     {
       id: 3,
       week: 1,
-      title: "날씨앱 (1~6강)",
+      title: "날씨앱",
       url: "weather",
-    },
-    {
-      id: 4,
-      week: 1,
-      title: "날씨앱 (7~9강)",
-      url: "",
     },
   ];
   return (

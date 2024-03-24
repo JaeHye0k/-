@@ -1,15 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Badge } from "react-bootstrap";
 import style from "../styles/index.module.css";
 
-const IndexList = ({ key, week, title, url }) => {
+const IndexList = ({ week, title, url }) => {
+  const navigate = useNavigate();
+  const goToPage = () => {
+    navigate(url);
+  };
   return (
     <li>
-      <Badge className={style.badge} bg="secondary">
-        {week}주차
-      </Badge>
-      <Link to={url}>{title}</Link>
+      <button onClick={goToPage}>
+        <Badge className={style.badge} bg="secondary">
+          {week}주차
+        </Badge>
+        {title}
+      </button>
     </li>
   );
 };

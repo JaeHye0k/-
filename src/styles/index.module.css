@@ -24,8 +24,27 @@ html,
   list-style: none;
   font-size: 2rem;
   padding-left: 0;
+  margin: 40px;
+}
+.list li {
+  border: 2px solid #1d3557;
+  border-radius: 1rem;
+  margin-bottom: 1vh;
 }
 
+.list li > button {
+  padding: 1vh 1vw;
+  width: 100%;
+  text-align: start;
+  border-radius: 1rem;
+}
+
+.list li > button:hover {
+  box-shadow: 4px 4px 18px #00000040, -4px 4px 5px #00000040;
+}
+.list li > button:active {
+  background-color: #e9ecef;
+}
 .list a {
   color: black;
   text-decoration: none;
@@ -54,5 +73,5 @@ html,
 }
 
 .badge {
-  margin-right: 3vw;
+  margin-right: 1vw;
 }
