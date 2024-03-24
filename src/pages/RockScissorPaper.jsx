@@ -39,7 +39,6 @@ let intervalId;
 let isFirst = true;
 let isEmpty = false;
 function App() {
-  console.log(isEmpty);
   const [userSelect, setUserSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
   const [userResult, setUserResult] = useState("");
