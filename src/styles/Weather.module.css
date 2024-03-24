@@ -1,11 +1,11 @@
-.weather-container {
+.weather_container {
   background: url("../../public/assets/images/weather/clouds.jpeg") no-repeat
     center;
   height: 100vh;
   background-size: cover;
 }
 
-.weather-screen {
+.weather_screen {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -17,7 +17,7 @@
   border-radius: 2vw;
 }
 
-.weather-contents {
+.weather_contents {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -26,37 +26,37 @@
   padding: 0 8vw;
 }
 
-.weather-box {
+.weather_box {
   text-align: center;
   font-size: 4vw;
 }
-.weather-button-container > div {
+.weather_button_container > div {
   /* display: flex;
   justify-content: center; */
   float: left;
 }
-.weather-buttons > button {
+.weather_buttons > button {
   margin: 1vh 0.5vw;
   font-size: 3vw;
   width: fit-content;
   padding: 0 1vw;
 }
-.next-button {
+.next_button {
   position: absolute;
   right: 3vw;
   font-size: 5vw;
 }
-.pre-button {
+.pre_button {
   position: absolute;
   left: 3vw;
   font-size: 5vw;
 }
-.carousel-button {
+.carousel_button {
   overflow: hidden;
 }
-.weather-button-container {
+.weather_button_container {
   width: 300vw;
 }
-.weather-buttons {
+.weather_buttons {
   transition: transform 500ms ease-in-out;
 }
