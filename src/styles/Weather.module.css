@@ -12,7 +12,6 @@
   transform: translate(-50%, -50%);
   width: 80%;
   padding-bottom: 40%;
-  background-color: white;
   border: 3.5vw solid black;
   border-radius: 2vw;
 }
@@ -35,12 +34,6 @@
   justify-content: center; */
   float: left;
 }
-.weather_buttons > button {
-  margin: 1vh 0.5vw;
-  font-size: 3vw;
-  width: fit-content;
-  padding: 0 1vw;
-}
 .next_button {
   position: absolute;
   right: 3vw;
@@ -57,6 +50,41 @@
 .weather_button_container {
   width: 300vw;
 }
-.weather_buttons {
+#weather_buttons {
   transition: transform 500ms ease-in-out;
+}
+.weather_button:hover {
+  box-shadow: 4px 4px 18px #00000040, -4px 4px 5px #00000040;
+}
+#weather_buttons .weather_button {
+  margin: 1vh 0.5vw;
+  font-size: 3vw;
+  width: fit-content;
+  padding: 0 1vw;
+  border-radius: 1vw;
+}
+
+.weather_box .bs_spinner {
+  width: 5vw;
+  height: 5vw;
+  border-width: 0.3vw;
+}
+
+#weather_buttons .selected_button {
+  transition: all 500ms ease-in-out;
+  background-color: #f07ba6;
+  border-color: #fa72a4;
+}
+.selected_button:hover {
+  background-color: #f07ba6;
+  border-color: #fa72a4;
+}
+
+.video_background {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  border-radius: 2vw;
 }
