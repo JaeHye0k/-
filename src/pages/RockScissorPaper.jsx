@@ -274,7 +274,7 @@ function App() {
             </button>
           )}
 
-          {!isStart && (
+          {isStart && (
             <button
               onClick={() => play("scissor")}
               className={`${btnDisable ? style.btn_disabled : ""}`}
@@ -284,7 +284,7 @@ function App() {
             </button>
           )}
 
-          {!isStart && (
+          {isStart && (
             <button
               onClick={() => play("rock")}
               className={`${btnDisable ? style.btn_disabled : ""}`}
@@ -294,7 +294,7 @@ function App() {
             </button>
           )}
 
-          {!isStart && (
+          {isStart && (
             <button
               onClick={() => play("paper")}
               className={`${btnDisable ? style.btn_disabled : ""}`}
