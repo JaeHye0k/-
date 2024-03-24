@@ -7,25 +7,25 @@ const Index = () => {
     {
       id: 1,
       week: 1,
-      title: "가위바위보 게임 5강~6강",
+      title: "가위바위보 게임 (function Component)",
       url: "rock-scissor-paper",
     },
     {
       id: 2,
       week: 1,
-      title: "클래스 컴포넌트 - 가위바위보 게임",
+      title: "가위바위보 게임 (Class Component)",
       url: "rock-scissor-paper-class",
     },
     {
       id: 3,
       week: 1,
-      title: "두번째 프로젝트: 날씨앱 만들기 1강~6강",
+      title: "날씨앱 (1~6강)",
       url: "weather",
     },
     {
       id: 4,
       week: 1,
-      title: "두번째 프로젝트: 날씨앱 만들기 7강~9강",
+      title: "날씨앱 (7~9강)",
       url: "",
     },
   ];
