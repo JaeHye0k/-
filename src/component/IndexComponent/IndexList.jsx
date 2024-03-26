@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "react-bootstrap";
-import style from "../styles/index.module.css";
+import style from "../../styles/index.module.css";
 
 const IndexList = ({ week, title, url }) => {
   const navigate = useNavigate();

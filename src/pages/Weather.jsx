@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
-import WeatherBox from "../component/Weather/WeatherBox";
-import WeatherButton from "../component/Weather/WeatherButton";
-import IndexButton from "../component/IndexButton";
+import WeatherBox from "../component/WeatherComponent/WeatherBox";
+import WeatherButton from "../component/WeatherComponent/WeatherButton";
+import IndexButton from "../component/IndexComponent/IndexButton";
 import { Spinner } from "react-bootstrap";
 import style from "../styles/Weather.module.css";
 

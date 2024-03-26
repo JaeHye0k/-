@@ -1,9 +1,9 @@
 import { useState } from "react";
 import style from "../styles/RockScissorPaper.module.css";
-import Box from "../component/RockScissorPaper/Box";
-import Button from "../component/RockScissorPaper/Button";
-import ScoreBoard from "../component/RockScissorPaper/ScoreBoard";
-import IndexButton from "../component/IndexButton";
+import Box from "../component/RockScissorPaperComponent/Box";
+import Button from "../component/RockScissorPaperComponent/Button";
+import ScoreBoard from "../component/RockScissorPaperComponent/ScoreBoard";
+import IndexButton from "../component/IndexComponent/IndexButton";
 
 const choice = {
   rock: {

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import ScoreBoardClass from "../component/RockScissorPaperClass/ScoreBoardClass";
-import BoxClass from "../component/RockScissorPaperClass/BoxClass";
-import ButtonClass from "../component/RockScissorPaperClass/ButtonClass";
+import ScoreBoardClass from "../component/RockScissorPaperClassComponent/ScoreBoardClass";
+import BoxClass from "../component/RockScissorPaperClassComponent/BoxClass";
+import ButtonClass from "../component/RockScissorPaperClassComponent/ButtonClass";
 import style from "../styles/RockScissorPaper.module.css";
-import IndexButton from "../component/IndexButton";
+import IndexButton from "../component/IndexComponent/IndexButton";
 
 const choice = {
   rock: {

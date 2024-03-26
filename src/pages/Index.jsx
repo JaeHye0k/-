@@ -1,5 +1,5 @@
 import React from "react";
-import IndexList from "../component/IndexList";
+import IndexList from "../component/IndexComponent/IndexList";
 import style from "../styles/index.module.css";
 
 const Index = () => {
