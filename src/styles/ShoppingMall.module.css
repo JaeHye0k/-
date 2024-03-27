@@ -1,0 +1,25 @@
+.login {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.logo_section {
+  display: flex;
+  justify-content: center;
+}
+
+.menu_section {
+  display: flex;
+  justify-content: center;
+}
+
+.menu_list {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.menu_list li {
+  padding: 10px;
+}

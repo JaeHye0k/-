@@ -192,7 +192,7 @@ function App() {
     }
   };
   return (
-    <div>
+    <div className={`${style.dongle_font}`}>
       <IndexButton />
       {/* 점수판 */}
       {currentGameName === "Rock Scissor Paper" && (

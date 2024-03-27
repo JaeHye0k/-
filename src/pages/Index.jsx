@@ -22,9 +22,15 @@ const Index = () => {
       title: "날씨앱",
       url: "weather",
     },
+    {
+      id: 4,
+      week: 2,
+      title: "쇼핑몰",
+      url: "shopping-mall",
+    },
   ];
   return (
-    <div className={style.wrap}>
+    <div className={`${style.wrap} ${style.dongle_font}`}>
       <h1>
         <strong>코딩알려주는누나 리액트 스터디 1기</strong>
         <div>이재혁 / 2024.03.18 ~ 2024.04.21</div>

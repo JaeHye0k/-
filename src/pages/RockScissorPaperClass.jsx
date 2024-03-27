@@ -254,7 +254,7 @@ export default class AppClass extends Component {
   };
   render() {
     return (
-      <div>
+      <div className={style.dongle_font}>
         <IndexButton />
         {this.state.isStart && (
           <button
