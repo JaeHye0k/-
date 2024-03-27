@@ -1,13 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import Index from "./pages/Index";
+import RockScissorPaper from "./pages/RockScissorPaper";
+import RockScissorPaperClass from "./pages/RockScissorPaperClass";
+import Weather from "./pages/Weather";
+import ShoppingMall from "./pages/ShoppingMall";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <App />
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/rock-scissor-paper" element={<RockScissorPaper />} />
+      <Route
+        path="/rock-scissor-paper-class"
+        element={<RockScissorPaperClass />}
+      />
+      <Route path="/weather" element={<Weather />} />
+      <Route path="/shopping-mall/*" element={<ShoppingMall />} />
+    </Routes>
   </BrowserRouter>
 );
 
