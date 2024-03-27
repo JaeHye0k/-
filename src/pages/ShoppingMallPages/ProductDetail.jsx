@@ -11,7 +11,8 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   const getProductDetail = async () => {
-    const url = `http://localhost:5000/products/${id}`;
+    // const url = `http://localhost:5000/products/${id}`;
+    const url = `https://my-json-server.typicode.com/JaeHye0k/React-study/products/${id}`;
     const response = await fetch(url);
     const data = await response.json();
     setProduct(data);
