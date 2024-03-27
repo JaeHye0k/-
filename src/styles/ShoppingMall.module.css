@@ -1,25 +1,122 @@
+header {
+  margin-bottom: 4vw;
+}
+
+.IBM_font {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .login {
   display: flex;
   justify-content: flex-end;
-  margin: 10px;
+  align-items: center;
+  margin: 1.5vw 2vw 0 0;
+  cursor: pointer;
 }
-
+.login_icon {
+  padding-right: 0.5rem;
+}
 .logo_section {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .menu_section {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 1vh;
 }
 
 .menu_list {
   display: flex;
   flex-direction: row;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .menu_list li {
   padding: 10px;
+}
+
+.search_container {
+  position: absolute;
+  right: 3vw;
+}
+
+.search_icon {
+  margin-right: 5px;
+}
+
+.search_navbar {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid black;
+}
+
+.product_card {
+  font-size: 0.8rem;
+  width: fit-content;
+}
+
+.product_card:hover {
+  transform: scale(1.12);
+}
+
+.product_card_new {
+  padding: 3px 4px;
+  width: fit-content;
+  border-radius: 0.3rem;
+  border: 1px solid #f4a261;
+  background-color: #f4a261;
+  color: white;
+}
+
+.product_card_information {
+  margin-bottom: 1.5rem;
+}
+
+#product_all_container .product_col {
+  width: fit-content;
+}
+
+#product_all_container .product_all_row {
+  justify-content: center;
+}
+
+#product_detail .product_detail_dropdown {
+  background-color: white;
+  border-color: black;
+  color: black;
+  margin-top: 2vh;
+}
+
+#product_detail .product_detail_buy {
+  margin-top: 10vh;
+  background-color: black;
+  border-color: white;
+  color: white;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  transition: all 500ms ease-in-out;
+}
+
+#product_detail .product_detail_buy:hover {
+  background-color: #c1121f;
+  border-color: #c1121f;
+}
+
+.product_detail_title {
+  font-size: 2rem;
+}
+
+.style.product_detail_img {
+  margin-right: 1.5vw;
+  display: flex;
+  justify-content: flex-end;
 }
