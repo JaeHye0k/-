@@ -86,6 +86,23 @@ header {
 .product_card_information {
   margin-bottom: 1.5rem;
 }
+#product_all_container .main_banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+#product_all_container .main_banner .main_banner_model {
+  width: 80%;
+}
+
+#product_all_container .main_banner .main_banner_logo {
+  position: absolute;
+  width: 20%;
+  bottom: 2rem;
+}
 
 #product_all_container .product_col {
   width: fit-content;
@@ -149,7 +166,7 @@ header {
   .navbar_hamburger {
     display: block;
     padding: 0;
-    position: absolute;
+    position: fixed;
     right: 3vw;
     top: 3rem;
     z-index: 2;
@@ -185,5 +202,11 @@ header {
   .logo_section img {
     width: 50px;
     margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  #product_all_container .main_banner {
+    display: none;
   }
 }

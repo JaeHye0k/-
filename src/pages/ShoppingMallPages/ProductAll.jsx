@@ -23,6 +23,18 @@ const ProductAll = () => {
   return (
     <Container id={style.product_all_container}>
       <IndexButton />
+      <Row className={style.main_banner}>
+        <img
+          className={style.main_banner_model}
+          src="/assets/images/shoppingmall/model.jpg"
+          alt="main banner"
+        />
+        <img
+          className={style.main_banner_logo}
+          src="/assets/images/shoppingmall/logo.png"
+          alt="banner logo"
+        />
+      </Row>
       <Row className={style.product_all_row}>
         {productList.map((product) => (
           <Col lg={3} className={style.product_col}>
