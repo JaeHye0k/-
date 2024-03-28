@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import ProductAll from "./ShoppingMallPages/ProductAll";
 import Login from "./ShoppingMallPages/Login";
 import NavBar from "../component/ShoppingMallComponent/NavBar";
-import IndexButton from "../component/IndexComponent/IndexButton";
 import PrivateRoute from "../Routes/PrivateRoute";
 import style from "../styles/ShoppingMall.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -33,7 +32,6 @@ const ShoppingMall = () => {
 
   return (
     <div className={style.IBM_font}>
-      <IndexButton />
       <NavBar auth={auth} setAuth={setAuth} />
       <Routes>
         <Route path={url.main} element={<ProductAll auth={auth} />} />

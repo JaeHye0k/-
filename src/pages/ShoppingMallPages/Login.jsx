@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
-import style from "../../styles/ShoppingMall.module.css";
 
 const Login = ({ setAuth }) => {
   const navigate = useNavigate();
