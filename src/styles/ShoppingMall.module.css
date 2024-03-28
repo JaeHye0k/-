@@ -8,7 +8,7 @@ header {
   font-style: normal;
 }
 
-.login {
+.login_button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -24,14 +24,14 @@ header {
   cursor: pointer;
 }
 
-.menu_section {
+.top {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1vh;
 }
 
-.menu_list {
+.top .menu_list {
   display: flex;
   flex-direction: row;
   list-style-type: none;
@@ -39,7 +39,7 @@ header {
   padding: 0;
 }
 
-.menu_list li {
+.top .menu_list li {
   padding: 10px;
 }
 
@@ -56,6 +56,7 @@ header {
   outline: none;
   border: 0;
   border-bottom: 1px solid black;
+  width: 10vw;
 }
 
 .product_card {
@@ -119,4 +120,55 @@ header {
   margin-right: 1.5vw;
   display: flex;
   justify-content: flex-end;
+}
+
+.side .menu_section {
+  transition: all 500ms ease-in-out;
+}
+
+@media screen and (max-width: 800px) {
+  .top .menu_list {
+    display: none;
+  }
+
+  .search_container {
+    position: static;
+  }
+
+  .navbar_hamburger {
+    display: block;
+    padding: 0;
+  }
+  .navbar_hamburger svg {
+    height: 1.5em;
+  }
+  .side {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 2rem;
+    transition: all 500ms ease-in-out;
+  }
+  .side .menu_section {
+    transform: translateX(300px);
+  }
+  .side .menu_list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 2rem 0 0 0;
+    padding: 0;
+  }
+  .side .menu_list li:not(:first-child) {
+    padding: 1rem;
+    margin: 3px;
+  }
+  .side .menu_list li:not(:first-child):hover {
+    background-color: black;
+    color: white;
+  }
+  .logo_section img {
+    width: 50px;
+    margin-top: 2rem;
+  }
 }

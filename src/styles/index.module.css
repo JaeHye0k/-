@@ -78,3 +78,10 @@ html,
 .badge {
   margin-right: 1vw;
 }
+
+@media screen and (max-width: 800px) {
+  .index_button {
+    height: 15px;
+    width: 10px;
+  }
+}
