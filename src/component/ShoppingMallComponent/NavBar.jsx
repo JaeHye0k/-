@@ -28,11 +28,9 @@ const NavBar = ({ auth, setAuth }) => {
   };
 
   useEffect(() => {}, [width]);
-  const showNavbar = () => {};
-  // 1. 햄버거 메뉴를 클릭하면 숨겨져 있던 navbar가 보인다.
   return (
     <header>
-      {width > 800 ? <LoginButton auth={auth} setAuth={setAuth} /> : ""}
+      {width > 1000 ? <LoginButton auth={auth} setAuth={setAuth} /> : ""}
       <div className={style.logo_section} onClick={() => navigate("")}>
         <img
           alt="logo"
@@ -48,32 +46,34 @@ const NavBar = ({ auth, setAuth }) => {
           {location.pathname === "/shopping-mall/login" ? "" : <Search />}
         </ul>
       </div>
-      {width <= 800 ? (
-        <div className={style.side}>
+      {width <= 1000 ? (
+        <>
           <button className={style.navbar_hamburger} onClick={showSideNavbar}>
             <FontAwesomeIcon className={style.hamburger_icon} icon={faBars} />
           </button>
           <div
-            className={style.menu_section}
+            className={style.side}
             style={
               showingSideBar
-                ? { transform: "translateX(300px)" }
-                : { transform: "translateX(0)" }
+                ? { transform: "translateX(0)" }
+                : { transform: "translateX(300px)" }
             }
           >
-            <ul className={style.menu_list}>
-              <li>
-                <Search />
-              </li>
-              {menuList.map((menu, i) => (
-                <li key={i}>{menu}</li>
-              ))}
-              <li>
-                <LoginButton auth={auth} setAuth={setAuth} />
-              </li>
-            </ul>
+            <div className={style.menu_section}>
+              <ul className={style.menu_list}>
+                <li>
+                  <Search />
+                </li>
+                {menuList.map((menu, i) => (
+                  <li key={i}>{menu}</li>
+                ))}
+                <li>
+                  <LoginButton auth={auth} setAuth={setAuth} />
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </>
       ) : (
         ""
       )}

@@ -1,28 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
+import style from "../../styles/ShoppingMall.module.css";
 
 const Login = ({ setAuth }) => {
+  const [validated, setValidated] = useState(false);
+
   const navigate = useNavigate();
-  const loginUser = (event) => {
-    event.preventDefault();
+  const loginUser = () => {
     setAuth(true);
     navigate("/shopping-mall");
   };
+
+  const handleSubmit = (e) => {
+    const form = e.currentTarget;
+    console.log(form.checkValidity());
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      loginUser();
+    }
+    setValidated(true);
+  };
   return (
-    <Container>
-      <Form onSubmit={(event) => loginUser(event)}>
+    <Container id={style.login_container}>
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Email" />
+          <Form.Label>Nick Name</Form.Label>
+          <Form.Control type="text" placeholder="Nickname" required />
+          <Form.Control.Feedback type="invalid">
+            닉네임을 입력해주세요
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="ID 저장" />
+          <Form.Control type="password" placeholder="Password" required />
+          <Form.Control.Feedback type="invalid">
+            패스워드를 입력해주세요
+          </Form.Control.Feedback>
         </Form.Group>
         <Button variant="danger" type="submit">
           로그인
