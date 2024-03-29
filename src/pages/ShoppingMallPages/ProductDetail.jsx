@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Dropdown, Button } from "react-bootstrap";
+import { Col, Container, Row, Button, ButtonGroup } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import style from "../../styles/ShoppingMall.module.css";
 
@@ -11,7 +11,6 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   const getProductDetail = async () => {
-    // const url = `http://localhost:5000/products/${id}`;
     const url = `https://my-json-server.typicode.com/JaeHye0k/React-study/products/${id}`;
     const response = await fetch(url);
     const data = await response.json();
@@ -24,7 +23,7 @@ const ProductDetail = () => {
     setIsMouseHover(false);
   };
   const goToBuy = () => {
-    navigate("buy");
+    navigate("buy", { state: selectedSize });
   };
   useEffect(() => {
     getProductDetail();
@@ -32,8 +31,8 @@ const ProductDetail = () => {
   }, [selectedSize]);
   return (
     <Container id={style.product_detail}>
-      <Row>
-        <Col>
+      <Row className={style.product_detail_row}>
+        <Col className={style.product_detail_col}>
           <img
             src={product?.img}
             alt="상품 디테일"
@@ -49,21 +48,17 @@ const ProductDetail = () => {
             {product?.choice ? "Conscious Choice" : <br />}
           </div>
           <div>
-            <Dropdown>
-              <Dropdown.Toggle className={style.product_detail_dropdown}>
-                {selectedSize ? selectedSize : "사이즈 선택"}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                {product?.size.map((e) => (
-                  <Dropdown.Item
-                    eventKey={e}
-                    onClick={() => setSelectedSize(e)}
-                  >
-                    {e}
-                  </Dropdown.Item>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
+            <ButtonGroup>
+              {product?.size.map((e) => (
+                <Button
+                  className={style.product_detail_size_button}
+                  eventKey={e}
+                  onClick={() => setSelectedSize(e)}
+                >
+                  {e}
+                </Button>
+              ))}
+            </ButtonGroup>
           </div>
           <Button
             className={style.product_detail_buy}

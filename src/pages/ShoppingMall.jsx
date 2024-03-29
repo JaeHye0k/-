@@ -8,6 +8,7 @@ import style from "../styles/ShoppingMall.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProductBuy from "./ShoppingMallPages/ProductBuy";
 import ProductDetail from "./ShoppingMallPages/ProductDetail";
+import SideBar from "../component/ShoppingMallComponent/SideBar";
 
 // 1. 전체 상품 페이지, 로그인 페이지, 상품 상세 페이지
 // 1-1. nav바
@@ -33,18 +34,23 @@ const ShoppingMall = () => {
   return (
     <div className={style.IBM_font}>
       <NavBar auth={auth} setAuth={setAuth} />
-      <Routes>
-        <Route path={url.main} element={<ProductAll auth={auth} />} />
-        <Route path={url.login} element={<Login setAuth={setAuth} />} />
-        <Route
-          path={url.detail}
-          element={<PrivateRoute auth={auth} path={<ProductDetail />} />}
-        />
-        <Route
-          path={url.buy}
-          element={<PrivateRoute auth={auth} path={<ProductBuy />} />}
-        />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path={url.main} element={<ProductAll auth={auth} />} />
+          <Route path={url.login} element={<Login setAuth={setAuth} />} />
+          <Route
+            path={url.detail}
+            element={<PrivateRoute auth={auth} path={<ProductDetail />} />}
+          />
+          <Route
+            path={url.buy}
+            element={<PrivateRoute auth={auth} path={<ProductBuy />} />}
+          />
+        </Routes>
+      </main>
+      <aside>
+        <SideBar auth={auth} setAuth={setAuth} />
+      </aside>
     </div>
   );
 };

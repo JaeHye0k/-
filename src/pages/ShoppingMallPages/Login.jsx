@@ -5,6 +5,8 @@ import style from "../../styles/ShoppingMall.module.css";
 
 const Login = ({ setAuth }) => {
   const [validated, setValidated] = useState(false);
+  const [value, setValue] = useState();
+  const onInput = ({ target: { value } }) => setValue(value);
 
   const navigate = useNavigate();
   const loginUser = () => {
@@ -14,7 +16,10 @@ const Login = ({ setAuth }) => {
 
   const handleSubmit = (e) => {
     const form = e.currentTarget;
-    console.log(form.checkValidity());
+    localStorage.setItem("id", value);
+    console.log(value);
+    setValue();
+
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
@@ -22,13 +27,20 @@ const Login = ({ setAuth }) => {
       loginUser();
     }
     setValidated(true);
+    return false;
   };
   return (
     <Container id={style.login_container}>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Nick Name</Form.Label>
-          <Form.Control type="text" placeholder="Nickname" required />
+          <Form.Control
+            type="text"
+            placeholder="Nickname"
+            required
+            onChange={onInput}
+            value={value}
+          />
           <Form.Control.Feedback type="invalid">
             닉네임을 입력해주세요
           </Form.Control.Feedback>

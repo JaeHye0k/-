@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../component/ShoppingMallComponent/ProductCard";
-import IndexButton from "../../component/IndexComponent/IndexButton";
 import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import style from "../../styles/ShoppingMall.module.css";
@@ -22,7 +21,6 @@ const ProductAll = () => {
   }, [query]);
   return (
     <Container id={style.product_all_container}>
-      <IndexButton />
       <Row className={style.main_banner}>
         <img
           className={style.main_banner_model}
@@ -37,7 +35,10 @@ const ProductAll = () => {
       </Row>
       <Row className={style.product_all_row}>
         {productList.map((product) => (
-          <Col lg={3} className={style.product_col}>
+          <Col
+            lg={3}
+            className={`${style.product_col} col-xl-3 col-md-4 col-6`}
+          >
             <ProductCard item={product} />
           </Col>
         ))}

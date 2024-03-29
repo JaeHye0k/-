@@ -9,6 +9,7 @@ const LoginButton = ({ auth, setAuth }) => {
   const goToLoginPage = () => {
     if (auth) {
       setAuth(false);
+      localStorage.clear();
     } else {
       navigate("login");
     }

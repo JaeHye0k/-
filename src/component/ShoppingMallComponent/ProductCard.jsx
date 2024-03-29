@@ -11,14 +11,16 @@ const ProductCard = ({ item }) => {
 
   return (
     <div className={style.product_card} onClick={() => showDetail()}>
-      <img width={250} src={item?.img} alt="product"></img>
+      <div className={style.product_card_image_box}>
+        <img src={item?.img} alt="product"></img>
+      </div>
       <div className={style.product_card_information}>
         <div>{item?.choice ? "conscious choice" : <br />}</div>
         <div>{item?.title}</div>
         <div>
           ₩{item?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </div>
-        {item?.new && <div className={style.product_card_new}>신제품</div>}
+        {item?.new && <div className={style.product_card_new}>New!</div>}
       </div>
     </div>
   );

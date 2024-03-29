@@ -1,36 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import style from "../../styles/ShoppingMall.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import Search from "./Search";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+
 import LoginButton from "./LoginButton";
+import IndexButton from "../IndexComponent/IndexButton";
+
+export const menuList = [
+  "Women",
+  "Men",
+  "Baby",
+  "Kids",
+  "H&M HOME",
+  "SportSale",
+  "지속가능성",
+];
 
 const NavBar = ({ auth, setAuth }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { height, width } = useWindowDimensions();
-  const [showingSideBar, setShowingSideBar] = useState(false);
 
-  const menuList = [
-    "Women",
-    "Men",
-    "Baby",
-    "Kids",
-    "H&M HOME",
-    "SportSale",
-    "지속가능성",
-  ];
-
-  const showSideNavbar = () => {
-    setShowingSideBar(!showingSideBar);
-  };
-
-  useEffect(() => {}, [width]);
   return (
-    <header>
-      {width > 1000 ? <LoginButton auth={auth} setAuth={setAuth} /> : ""}
+    <header className={style.navbar}>
+      <IndexButton />
+      <LoginButton auth={auth} setAuth={setAuth} />
       <div className={style.logo_section} onClick={() => navigate("")}>
         <img
           alt="logo"
@@ -46,37 +39,6 @@ const NavBar = ({ auth, setAuth }) => {
           {location.pathname === "/shopping-mall/login" ? "" : <Search />}
         </ul>
       </div>
-      {width <= 1000 ? (
-        <>
-          <button className={style.navbar_hamburger} onClick={showSideNavbar}>
-            <FontAwesomeIcon className={style.hamburger_icon} icon={faBars} />
-          </button>
-          <div
-            className={style.side}
-            style={
-              showingSideBar
-                ? { transform: "translateX(100vw)" }
-                : { transform: "translateX(0)" }
-            }
-          >
-            <div className={style.menu_section}>
-              <ul className={style.menu_list}>
-                <li>
-                  <Search />
-                </li>
-                {menuList.map((menu, i) => (
-                  <li key={i}>{menu}</li>
-                ))}
-                <li>
-                  <LoginButton auth={auth} setAuth={setAuth} />
-                </li>
-              </ul>
-            </div>
-          </div>
-        </>
-      ) : (
-        ""
-      )}
     </header>
   );
 };
