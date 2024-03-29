@@ -55,8 +55,8 @@ const NavBar = ({ auth, setAuth }) => {
             className={style.side}
             style={
               showingSideBar
-                ? { transform: "translateX(0)" }
-                : { transform: "translateX(300px)" }
+                ? { transform: "translateX(100vw)" }
+                : { transform: "translateX(0)" }
             }
           >
             <div className={style.menu_section}>
