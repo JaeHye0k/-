@@ -178,7 +178,11 @@ main {
   border-color: #c1121f;
   color: white;
 }
-
+#product_detail .product_detail_size_button:focus {
+  background-color: #c1121f;
+  border-color: #c1121f;
+  color: white;
+}
 #product_detail .product_detail_buy {
   margin-top: 10vh;
   background-color: black;
