@@ -6,7 +6,10 @@ import RockScissorPaper from "./pages/RockScissorPaper";
 import RockScissorPaperClass from "./pages/RockScissorPaperClass";
 import Weather from "./pages/Weather";
 import ShoppingMall from "./pages/ShoppingMall";
+import ReduxCounter from "./pages/ReduxCounter";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +23,15 @@ root.render(
       />
       <Route path="/weather" element={<Weather />} />
       <Route path="/shopping-mall/*" element={<ShoppingMall />} />
+
+      <Route
+        path="/redux-counter"
+        element={
+          <Provider store={store}>
+            <ReduxCounter />
+          </Provider>
+        }
+      />
     </Routes>
   </BrowserRouter>
 );

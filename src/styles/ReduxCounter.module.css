@@ -1,0 +1,163 @@
+form > div > label {
+  width: 50px;
+  margin-right: 5vw;
+}
+
+#character_card .left {
+  border: 1px solid #888888;
+  box-shadow: inset 1px 1px 5px 5px rgba(226, 226, 226, 0.9),
+    inset -1px -1px rgba(226, 226, 226, 0.5);
+  margin: 5px;
+  border-radius: 1rem;
+  position: relative;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#character_card .right {
+  padding-top: 5px;
+}
+
+.left .name_container {
+  padding: 0 1rem;
+  position: relative;
+  width: 100%;
+  height: 2rem;
+}
+
+.right_down ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.right_down li {
+  display: flex;
+  border: 1px solid #8e9191;
+  border-radius: 0.5rem;
+  margin: 4px 4px;
+}
+
+.right_down li span {
+  display: block;
+  width: 70px;
+  border: 2px solid #8e9191;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  background: linear-gradient(#aba9a9, #868989);
+  color: white;
+  text-shadow: -1px -1px 0 #888888, 1px -1px 0 #888888, -1px 1px 0 #888888,
+    1px 1px 0 #888888;
+  padding-left: 2px;
+}
+
+.right_down li div {
+  padding-left: 5px;
+}
+
+.submit_button {
+  float: right;
+  margin-top: 3vw;
+}
+
+.center_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#naming_box {
+  border: 1px solid #888888;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#character_card {
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+.right_up a {
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+#character_card {
+  margin: 0;
+}
+#character_card .right_up > a {
+  border: 1px solid #6d9244;
+  background: linear-gradient(#d2fc05, #8ed305);
+  border-radius: 0.3rem;
+  text-shadow: -1px -1px 0 #619b01, 1px -1px 0 #619b01, -1px 1px 0 #619b01,
+    1px 1px 0 #619b01;
+  color: white;
+  width: fit-content;
+  padding: 0 10px;
+}
+
+#character_card .right_up > a:hover,
+#counter_box button:hover,
+#naming_box button:hover {
+  cursor: pointer;
+  background: #8ed305;
+}
+
+#character_card .right_up > a:active,
+#counter_box button:active,
+#naming_box button:active {
+  background: #619b01;
+}
+
+.fullName {
+  text-align: center;
+  border: 1px solid #5a919e;
+  background: linear-gradient(#33bbeb, #0088bc);
+  box-shadow: inset 1px 1px white, inset -1px -1px white;
+  text-shadow: -1px -1px 0 #378cab, 1px -1px 0 #378cab, -1px 1px 0 #378cab,
+    1px 1px 0 #378cab;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 3px 0;
+  height: 2rem;
+  position: relative;
+}
+#counter_box {
+  display: flex;
+}
+
+#counter_box .increase_decrease {
+  position: absolute;
+  right: 0;
+  padding-right: 4px;
+}
+
+#counter_box .increase_decrease button:first-of-type {
+  margin-right: -7px;
+}
+
+#counter_box button,
+#naming_box button {
+  border: 1px solid #6d9244;
+  background: linear-gradient(#d2fc05, #8ac80c);
+  color: white;
+  transform: scale(0.7);
+  border-radius: 0.25rem;
+  margin: 0;
+  text-shadow: -1px -1px 0 #619b01, 1px -1px 0 #619b01, -1px 1px 0 #619b01,
+    1px 1px 0 #619b01;
+}
+
+.submit_button {
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+
+.increase_decrease {
+  display: flex;
+}
