@@ -7,9 +7,11 @@ import RockScissorPaperClass from "./pages/RockScissorPaperClass";
 import Weather from "./pages/Weather";
 import ShoppingMall from "./pages/ShoppingMall";
 import ReduxCounter from "./pages/ReduxCounter";
+import PhoneBook from "./pages/PhoneBook";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import store1 from "./redux/ReduxCounter/store1";
+import store2 from "./redux/PhoneBook/store2";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,8 +29,16 @@ root.render(
       <Route
         path="/redux-counter"
         element={
-          <Provider store={store}>
+          <Provider store={store1}>
             <ReduxCounter />
+          </Provider>
+        }
+      />
+      <Route
+        path="/phone-book"
+        element={
+          <Provider store={store2}>
+            <PhoneBook />
           </Provider>
         }
       />

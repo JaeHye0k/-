@@ -34,6 +34,12 @@ const Index = () => {
       title: "Redux Counter",
       url: "redux-counter",
     },
+    {
+      id: 6,
+      week: 3,
+      title: "Phone Book",
+      url: "phone-book",
+    },
   ];
   return (
     <div className={`${style.wrap} ${style.dongle_font}`}>
