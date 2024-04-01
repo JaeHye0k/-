@@ -21,17 +21,15 @@ const PhoneBook = () => {
           <KakaoMap />
         </div>
       </div>
-      <div className={style.right}>
-        <div
-          className={style.hamburger_icon}
-          onClick={() => setOnHamburger(!onHamburger)}
-        >
-          <FontAwesomeIcon icon={faBars} size="xl" />
-        </div>
-        <div className={`${style.side_bar} ${onHamburger && style.on}`}>
-          <SearchBox />
-          <ContactList />
-        </div>
+      <div
+        className={style.hamburger_icon}
+        onClick={() => setOnHamburger(!onHamburger)}
+      >
+        <FontAwesomeIcon icon={faBars} size="xl" />
+      </div>
+      <div className={`${style.right} ${onHamburger && style.on}`}>
+        <SearchBox />
+        <ContactList />
       </div>
     </>
   );

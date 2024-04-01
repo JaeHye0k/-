@@ -24,7 +24,7 @@ const SearchBox = () => {
     });
   };
   return (
-    <div className={style.search_box}>
+    <div id={style.search_box}>
       <div>
         <Form.Control
           type="text"
@@ -35,7 +35,9 @@ const SearchBox = () => {
         />
       </div>
       <div>
-        <Button onClick={onSearch}>찾기</Button>
+        <Button className={style.search_button} onClick={onSearch}>
+          찾기
+        </Button>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ const ContactForm = () => {
         <Form.Label>지역으로 검색</Form.Label>
         <Form.Control
           type="text"
-          placeholder="지역을 입력해주세요"
+          placeholder="미구현"
           onChange={handleChange}
           name="name"
           value={values.name}
@@ -45,7 +45,7 @@ const ContactForm = () => {
         <Form.Label>키워드로 검색</Form.Label>
         <Form.Control
           type="tel"
-          placeholder="음식점의 키워드를 입력해주세요"
+          placeholder="미구현"
           onChange={handleChange}
           name="tel"
           value={values.tel}

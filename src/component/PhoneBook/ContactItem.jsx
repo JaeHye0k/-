@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
 import style from "../../styles/PhoneBook/PhoneBook.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
