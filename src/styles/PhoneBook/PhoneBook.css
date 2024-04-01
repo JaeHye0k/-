@@ -1,0 +1,14 @@
+[class*="col"] {
+  padding: 0;
+}
+[class*="row"] {
+  margin: 0;
+}
+.form-label {
+  margin: 0;
+  width: 100%;
+}
+#map {
+  width: 100%;
+  height: 30vh;
+}

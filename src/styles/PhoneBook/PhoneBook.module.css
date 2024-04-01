@@ -1,0 +1,38 @@
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style-type: none;
+}
+
+.title {
+  text-align: center;
+}
+
+.delete {
+  font-size: 0.5rem;
+}
+#list_item .delete_box {
+  /* height: 100%; */
+  display: flex;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  justify-content: center;
+  align-items: center;
+}
+#list_item .delete_box:hover {
+  background-color: #dddddd;
+}
+
+#list_item:hover .delete_box {
+  opacity: 1;
+}
+
+#list_item {
+  transition: background-color 200ms ease-in-out;
+}
+
+#list_item:hover {
+  background-color: #eeeeee;
+}

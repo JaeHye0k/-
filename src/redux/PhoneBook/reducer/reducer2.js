@@ -1,3 +1,7 @@
+/**
+ * @param {Array} initialState.contactList : 이름과 전화번호 객체가 저장된 배열
+ */
+
 const initialState = {
   contactList: [],
   searchList: [],
@@ -20,9 +24,19 @@ function reducer(state = initialState, action) {
         ...state,
         searchList: payload,
       };
+    case "DELETE_CONTACT":
+      return {
+        ...state,
+        contactList: deleteContact(state.contactList, payload),
+      };
     default:
       return { ...state };
   }
 }
 
+function deleteContact(contactList, payload) {
+  return contactList.filter((contact) => {
+    return contact.tel !== payload.tel;
+  });
+}
 export default reducer;

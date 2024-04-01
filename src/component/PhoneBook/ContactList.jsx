@@ -8,13 +8,13 @@ const ContactList = () => {
   return (
     <ul>
       {searchList.length === 0
-        ? contactList.map((item) => (
-            <li>
+        ? contactList.map((item, i) => (
+            <li key={i}>
               <ContactItem item={item} />
             </li>
           ))
-        : searchList.map((item) => (
-            <li>
+        : searchList.map((item, i) => (
+            <li key={i}>
               <ContactItem item={item} />
             </li>
           ))}
