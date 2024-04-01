@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import style from "../../styles/PhoneBook/PhoneBook.module.css";
 
 // 1. 유저가 searchBox 에 찾을 이름을 입력한 뒤에 버튼을 누른다.
 // 2. onSearch 함수가 실행되며 유저가 입력한 이름을 불러온다.
@@ -23,8 +24,8 @@ const SearchBox = () => {
     });
   };
   return (
-    <Row>
-      <Col lg={10}>
+    <div className={style.search_box}>
+      <div>
         <Form.Control
           type="text"
           placeholder="이름 또는 연락처"
@@ -32,13 +33,11 @@ const SearchBox = () => {
             setSearchName(e.target.value);
           }}
         />
-      </Col>
-      <Col>
-        <Button lg={2} onClick={onSearch}>
-          찾기
-        </Button>
-      </Col>
-    </Row>
+      </div>
+      <div>
+        <Button onClick={onSearch}>찾기</Button>
+      </div>
+    </div>
   );
 };
 

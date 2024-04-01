@@ -28,6 +28,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         contactList: deleteContact(state.contactList, payload),
+        searchList: deleteContact(state.searchList, payload),
       };
     default:
       return { ...state };

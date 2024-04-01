@@ -16,19 +16,19 @@ const ContactItem = ({ item }) => {
   };
 
   return (
-    <Row id={style.list_item}>
-      <Col lg={2}>
+    <div id={style.list_item}>
+      <div>
         <img
           width={50}
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/925px-Unknown_person.jpg"
           alt="person"
         />
-      </Col>
-      <Col lg={8}>
+      </div>
+      <div>
         <div>{item.name}</div>
         <div>{item.tel}</div>
-      </Col>
-      <Col lg={2} className={style.delete_box}>
+      </div>
+      <div className={style.delete_box}>
         <button
           className={style.delete_button}
           onClick={(e) => deleteItem(e, item.tel)}
@@ -36,8 +36,8 @@ const ContactItem = ({ item }) => {
           <FontAwesomeIcon icon={faTrash} />
           <div className={style.delete}>삭제</div>
         </button>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 };
 

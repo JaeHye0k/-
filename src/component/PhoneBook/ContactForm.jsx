@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import style from "../../styles/PhoneBook/PhoneBook.module.css";
 
 const ContactForm = () => {
   const [values, setValues] = useState({
@@ -15,23 +16,25 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: "ADD_CONTACT",
-      payload: { ...values },
-    });
-    setValues({
-      name: "",
-      tel: "",
-    });
+    if (values.name || values.tel) {
+      dispatch({
+        type: "ADD_CONTACT",
+        payload: { ...values },
+      });
+      setValues({
+        name: "",
+        tel: "",
+      });
+    }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form id={style.contact_form} onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formName">
-        <Form.Label>이름</Form.Label>
+        <Form.Label>지역으로 검색</Form.Label>
         <Form.Control
           type="text"
-          placeholder="이름을 입력하세요"
+          placeholder="지역을 입력해주세요"
           onChange={handleChange}
           name="name"
           value={values.name}
@@ -39,17 +42,17 @@ const ContactForm = () => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formNumber">
-        <Form.Label>전화번호</Form.Label>
+        <Form.Label>키워드로 검색</Form.Label>
         <Form.Control
           type="tel"
-          placeholder="전화번호를 입력해주세요"
+          placeholder="음식점의 키워드를 입력해주세요"
           onChange={handleChange}
           name="tel"
           value={values.tel}
         />
       </Form.Group>
       <Button variant="primary" type="submit">
-        추가
+        검색
       </Button>
     </Form>
   );
