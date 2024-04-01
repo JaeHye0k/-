@@ -1,13 +1,10 @@
 #phone_book {
+  width: 80vw;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-body {
-  overflow: hidden;
-}
-
 ul {
   padding: 0;
   margin: 0;
@@ -20,7 +17,6 @@ li {
   position: absolute;
   right: 0;
   height: 100%;
-  padding: 0 1rem;
 }
 
 .search_box {
@@ -112,6 +108,8 @@ li {
 }
 
 .side_bar {
+  padding: 0 1rem;
+  background-color: #fefae0;
   overflow: hidden;
   transition: transform 500ms ease-in-out;
   transform: translateX(300px);

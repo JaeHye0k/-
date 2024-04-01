@@ -31,6 +31,7 @@ const KakaoMap = () => {
         searchByCartegory();
       });
       const searchByCartegory = async () => {
+        console.log(lat, lon);
         const url = `https://dapi.kakao.com/v2/local/search/category.json?category_group_code=FD6&x=${lon}&y=${lat}&radius=20000`;
         const response = await fetch(url, {
           headers: {
@@ -38,6 +39,7 @@ const KakaoMap = () => {
           },
         });
         const data = await response.json();
+        console.log(data);
         data.documents.forEach(({ x, y, place_name, phone, place_url }) => {
           // 마커가 표시될 위치
           let markerPosition = new kakao.maps.LatLng(y, x);
