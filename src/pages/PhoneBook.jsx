@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const PhoneBook = () => {
-  const [onHamburger, setOnHamburger] = useState(false);
+  const [onHamburger, setOnHamburger] = useState(true);
 
   return (
     <>
@@ -19,6 +19,7 @@ const PhoneBook = () => {
         <div className={style.left}>
           <ContactForm />
           <KakaoMap />
+          <h4>*마커를 클릭해보세요!</h4>
         </div>
       </div>
       <div

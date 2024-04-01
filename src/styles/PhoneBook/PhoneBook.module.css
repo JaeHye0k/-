@@ -23,7 +23,7 @@ li {
   background-color: #fefae0;
   overflow: hidden;
   transition: all 500ms ease-in-out;
-  transform: translateX(300px);
+  transform: translateX(350px);
 }
 
 .right.on {
