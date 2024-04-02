@@ -1,3 +1,13 @@
+#phone_book_page {
+  font-family: "Gaegu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
 #phone_book {
   width: 80vw;
   position: absolute;
