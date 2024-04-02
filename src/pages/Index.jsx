@@ -40,6 +40,12 @@ const Index = () => {
       title: "Phone Book",
       url: "phone-book",
     },
+    {
+      id: 7,
+      week: 3,
+      title: "쇼핑몰 (Redux)",
+      url: "shopping-mall-redux",
+    },
   ];
   return (
     <div className={`${style.wrap} ${style.dongle_font}`}>

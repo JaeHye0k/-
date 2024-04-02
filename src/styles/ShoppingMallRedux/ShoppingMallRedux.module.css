@@ -1,0 +1,389 @@
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4.5px);
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+main {
+  padding-top: 15vh;
+  margin: 0 10vw;
+}
+.IBM_font {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.login_button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.5vw 2vw 0 0;
+  cursor: pointer;
+}
+
+.login_icon {
+  padding-right: 0.5rem;
+}
+
+.logo_section {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vh;
+}
+
+.top .menu_list {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top .menu_list li {
+  padding: 10px;
+}
+
+.top .menu_list li:hover {
+  cursor: pointer;
+  color: #c1121f;
+}
+
+.top .menu_list li::after {
+  transform: scale(0);
+  content: "";
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  background-color: black;
+  height: 1px;
+  transition: all 200ms ease-in-out;
+}
+
+.top .menu_list li:hover::after {
+  transform: scale(1);
+}
+
+.search_container {
+  position: absolute;
+  right: 3vw;
+}
+
+.search_icon {
+  margin-right: 5px;
+}
+
+.search_navbar {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid black;
+  background: inherit;
+}
+
+#login_container {
+  max-width: 540px;
+}
+
+.product_card {
+  font-size: 0.8rem;
+  width: fit-content;
+  padding: 0 0.5rem;
+}
+
+.product_card:hover .product_card_image_box img {
+  transform: scale(1.1);
+}
+
+.product_card_image_box {
+  overflow: hidden;
+}
+
+.product_card_image_box img {
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+
+.product_card_new {
+  padding: 3px 4px;
+  width: fit-content;
+  border-radius: 0.3rem;
+  border: 1px solid #f4a261;
+  background-color: #f4a261;
+  color: white;
+}
+
+.product_card_information {
+  margin-bottom: 1.5rem;
+}
+
+#product_all_container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: none;
+}
+
+#product_all_container .main_banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+#product_all_container .main_banner img {
+  padding: 0;
+}
+
+#product_all_container .main_banner .main_banner_logo {
+  position: absolute;
+  width: 20%;
+  bottom: 2rem;
+}
+
+#product_all_container .product_col {
+  padding: 0;
+}
+
+#product_all_container .product_all_row {
+  justify-content: center;
+}
+#product_detail {
+  padding: 0;
+  max-width: none;
+}
+
+#product_detail .product_detail_size_button {
+  background-color: white;
+  border-color: black;
+  color: black;
+  margin-top: 2vh;
+}
+
+#product_detail .product_detail_size_button:hover {
+  background-color: #c1121f;
+  border-color: #c1121f;
+  color: white;
+}
+#product_detail .product_detail_size_button:focus {
+  background-color: #c1121f;
+  border-color: #c1121f;
+  color: white;
+}
+#product_detail .product_detail_buy {
+  margin-top: 10vh;
+  background-color: black;
+  border-color: white;
+  color: white;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  transition: all 500ms ease-in-out;
+}
+
+#product_detail .product_detail_buy:hover {
+  background-color: #c1121f;
+  border-color: #c1121f;
+}
+
+#product_detail .product_detail_col {
+  padding: 0;
+}
+
+.product_detail_title {
+  font-size: 2rem;
+}
+
+.product_detail_img {
+  margin-right: 1.5vw;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.delivery_info li {
+  display: flex;
+  padding: 10px;
+  list-style-type: none;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-color: #ddd;
+}
+.delivery_info li:last-of-type {
+  border-bottom: 1px solid #ddd;
+}
+.delivery_info li span {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.delivery_info,
+.product_info {
+  margin-bottom: 6vh;
+}
+
+.delivery_info_title,
+.product_info_title {
+  padding-bottom: 1vh;
+  font-weight: bold;
+}
+
+.delivery_info li span {
+  width: 150px;
+}
+
+.delivery_info .select_adress {
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.delivery_info .select_request {
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.delivery_info .select_request option {
+  cursor: pointer;
+}
+
+#product_buy .product_table_info {
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  border: 0;
+}
+
+.product_table_info span {
+  padding-left: 1vw;
+}
+
+#product_buy table {
+  width: 100%;
+  font-size: 0.8rem;
+}
+#product_buy table :is(tr, td, th) {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#product_buy .product_img {
+  width: 62px;
+}
+
+#product_buy .pay_button {
+  background-color: black;
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+
+#product_buy .pay_button:hover {
+  background-color: #c1121f;
+  border-color: #c1121f;
+}
+
+.side .menu_section {
+  transition: all 500ms ease-in-out;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@media screen and (max-width: 700px) {
+  .product_table_info {
+    flex-direction: column;
+  }
+  .product_table_info span {
+    padding-top: 5px;
+  }
+  #product_detail .product_detail_row {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main {
+    margin: 0 20vw;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  main {
+    margin: 0 25vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .top .menu_list {
+    display: none;
+  }
+
+  .search_container {
+    position: static;
+  }
+
+  .navbar_hamburger {
+    display: block;
+    padding: 0;
+    position: fixed;
+    right: 3vw;
+    top: 3rem;
+    z-index: 2;
+  }
+  .navbar_hamburger svg {
+    height: 1.5em;
+  }
+  .navbar .login_button {
+    display: none;
+  }
+  .side_bar .login_button {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .side {
+    z-index: 1;
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 500ms ease-in-out;
+    height: 100%;
+    background-color: #00f5d4;
+  }
+  .side .menu_list {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 5rem 0 0 0;
+    padding: 0;
+  }
+  .side .menu_list li {
+    padding: 1rem;
+    margin: 3px;
+  }
+  .side .menu_list li:first-child {
+    width: 70vw;
+  }
+  .side .menu_list li:not(:first-child):hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
+  .logo_section img {
+    width: 50px;
+    margin-top: 2rem;
+  }
+}

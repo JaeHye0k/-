@@ -8,6 +8,7 @@ import Weather from "./pages/Weather";
 import ShoppingMall from "./pages/ShoppingMall";
 import ReduxCounter from "./pages/ReduxCounter";
 import PhoneBook from "./pages/PhoneBook";
+import ShoppingMallRedux from "./pages/ShoppingMallRedux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store1 from "./redux/ReduxCounter/store1";
@@ -42,6 +43,7 @@ root.render(
           </Provider>
         }
       />
+      <Route path="/shopping-mall-redux/*" element={<ShoppingMallRedux />} />
     </Routes>
   </BrowserRouter>
 );

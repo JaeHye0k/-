@@ -13,7 +13,7 @@ const PhoneBook = () => {
   const [onHamburger, setOnHamburger] = useState(true);
 
   return (
-    <>
+    <div id={style.phone_book_page}>
       <div id={style.phone_book}>
         <h3 className={style.title}>나만의 작은 맛집 리스트 만들기</h3>
         <div className={style.left}>
@@ -32,7 +32,7 @@ const PhoneBook = () => {
         <SearchBox />
         <ContactList />
       </div>
-    </>
+    </div>
   );
 };
 
