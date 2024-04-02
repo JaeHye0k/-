@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProductAll from "./ShoppingMallReduxPages/ProductAll";
 import Login from "./ShoppingMallReduxPages/Login";
@@ -17,27 +17,25 @@ const url = {
   buy: "/products/:id/buy",
 };
 const ShoppingMall = () => {
-  const [auth, setAuth] = useState(false);
-
   return (
     <div className={style.IBM_font}>
-      <NavBar auth={auth} setAuth={setAuth} />
+      <NavBar />
       <main>
         <Routes>
-          <Route path={url.main} element={<ProductAll auth={auth} />} />
-          <Route path={url.login} element={<Login setAuth={setAuth} />} />
+          <Route path={url.main} element={<ProductAll />} />
+          <Route path={url.login} element={<Login />} />
           <Route
             path={url.detail}
-            element={<PrivateRoute auth={auth} path={<ProductDetail />} />}
+            element={<PrivateRoute path={<ProductDetail />} />}
           />
           <Route
             path={url.buy}
-            element={<PrivateRoute auth={auth} path={<ProductBuy />} />}
+            element={<PrivateRoute path={<ProductBuy />} />}
           />
         </Routes>
       </main>
       <aside>
-        <SideBar auth={auth} setAuth={setAuth} />
+        <SideBar />
       </aside>
     </div>
   );

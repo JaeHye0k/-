@@ -6,20 +6,3 @@
   width: 100%;
   height: 50vh;
 }
-
-.btn {
-  background-color: #ffd6ff;
-  border-color: #ffd6ff;
-
-  transition: background-color 200ms ease-in-out;
-}
-
-.btn:hover {
-  border-color: #bbd0ff;
-  background-color: #bbd0ff;
-}
-
-#root .btn:active {
-  border-color: #c8b6ff;
-  background-color: #c8b6ff;
-}

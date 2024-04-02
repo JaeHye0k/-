@@ -10,7 +10,7 @@ ul {
   padding: 0;
 }
 main {
-  padding-top: 15vh;
+  padding-top: 21vh;
   margin: 0 10vw;
 }
 .IBM_font {
@@ -178,7 +178,7 @@ main {
   border-color: #c1121f;
   color: white;
 }
-#product_detail .product_detail_size_button:focus {
+#product_detail .clicked {
   background-color: #c1121f;
   border-color: #c1121f;
   color: white;
@@ -253,6 +253,7 @@ main {
   border: 1px solid #ddd;
   cursor: pointer;
   font-size: 0.8rem;
+  width: 100%;
 }
 .delivery_info .select_request option {
   cursor: pointer;
@@ -291,6 +292,10 @@ main {
 #product_buy .pay_button:hover {
   background-color: #c1121f;
   border-color: #c1121f;
+}
+
+#product_buy .delivery_request {
+  width: 100%;
 }
 
 .side .menu_section {
@@ -386,4 +391,7 @@ main {
     width: 50px;
     margin-top: 2rem;
   }
+}
+.size_validation_label {
+  color: #c1121f;
 }

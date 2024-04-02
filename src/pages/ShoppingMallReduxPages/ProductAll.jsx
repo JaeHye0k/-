@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductCard from "../../component/ShoppingMallReduxComponent/ProductCard";
 import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
+import { productActions } from "../../redux/ShoppingMallRedux/actions/productActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.product.productList);
   const [query, setQuery] = useSearchParams();
+  const dispatch = useDispatch();
 
   const getProducts = async () => {
     let selectQuery = query.get("q") || "";
-    const url = `https://my-json-server.typicode.com/JaeHye0k/React-study/products?q=${selectQuery}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    setProductList(data);
+    dispatch(productActions.getProducts(selectQuery));
   };
 
   useEffect(() => {
@@ -34,12 +34,13 @@ const ProductAll = () => {
         />
       </Row>
       <Row className={style.product_all_row}>
-        {productList.map((product) => (
+        {productList.map((product, key) => (
           <Col
+            key={key}
             lg={3}
             className={`${style.product_col} col-xl-3 col-md-4 col-6`}
           >
-            <ProductCard item={product} />
+            <ProductCard item={product} key={key} />
           </Col>
         ))}
       </Row>

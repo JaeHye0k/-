@@ -2,20 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Button, ButtonGroup } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
+import { productActions } from "../../redux/ShoppingMallRedux/actions/productActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
   const [isMouseHover, setIsMouseHover] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
+  const [validated, setValidated] = useState(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.product.product);
 
-  const getProductDetail = async () => {
-    const url = `https://my-json-server.typicode.com/JaeHye0k/React-study/products/${id}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    setProduct(data);
-  };
   const showPrice = () => {
     setIsMouseHover(true);
   };
@@ -23,11 +21,17 @@ const ProductDetail = () => {
     setIsMouseHover(false);
   };
   const goToBuy = () => {
-    navigate("buy", { state: selectedSize });
+    if (selectedSize) {
+      setValidated(true);
+      navigate("buy", { state: selectedSize });
+    } else setValidated(false);
+  };
+  const selectSize = (size) => {
+    setSelectedSize(size);
+    setValidated(true);
   };
   useEffect(() => {
-    getProductDetail();
-    console.log(selectedSize);
+    dispatch(productActions.getProductDetail(id));
   }, [selectedSize]);
   return (
     <Container id={style.product_detail}>
@@ -49,17 +53,24 @@ const ProductDetail = () => {
           </div>
           <div>
             <ButtonGroup>
-              {product?.size.map((e) => (
+              {product?.size.map((size, key) => (
                 <Button
-                  className={style.product_detail_size_button}
-                  eventKey={e}
-                  onClick={() => setSelectedSize(e)}
+                  key={key}
+                  className={`${style.product_detail_size_button} ${
+                    selectedSize === size && style.clicked
+                  }`}
+                  onClick={() => selectSize(size)}
                 >
-                  {e}
+                  {size}
                 </Button>
               ))}
             </ButtonGroup>
           </div>
+          {!validated && (
+            <div className={style.size_validation_label}>
+              사이즈를 선택해주세요
+            </div>
+          )}
           <Button
             className={style.product_detail_buy}
             onMouseOver={() => showPrice()}

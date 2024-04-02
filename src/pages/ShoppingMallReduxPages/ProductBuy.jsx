@@ -5,6 +5,8 @@ import { postcodeScriptUrl } from "react-daum-postcode/lib/loadPostcode";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { Button } from "react-bootstrap";
 import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { productActions } from "../../redux/ShoppingMallRedux/actions/productActions";
 
 const deliveryRequest = [
   "부재 시 경비실에 맡겨주세요",
@@ -17,21 +19,11 @@ const deliveryRequest = [
 const ProductBuy = () => {
   const location = useLocation();
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const product = useSelector((state) => state.product.product);
   const open = useDaumPostcodePopup(postcodeScriptUrl);
   const [address, setAddress] = useState();
   const { height, width } = useWindowDimensions();
-
-  const getProduct = async () => {
-    try {
-      const url = `https://my-json-server.typicode.com/JaeHye0k/React-study/products/${id}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      setProduct(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const dispatch = useDispatch();
 
   const handleComplete = (data) => {
     const zonecode = data.zonecode;
@@ -42,10 +34,9 @@ const ProductBuy = () => {
 
   const searchAddress = () => {
     open({ onComplete: handleComplete });
-    console.log(open);
   };
   useEffect(() => {
-    getProduct();
+    dispatch(productActions.getProductDetail(id));
   }, [width]);
 
   return (
@@ -69,17 +60,17 @@ const ProductBuy = () => {
             <span>주소</span>
             <div>{address ? address : ""}</div>
           </li>
-          <li>
+          <li className={style.delivery_request}>
             {width >= 500 ? <span>배송 요청사항</span> : ""}
 
             <div>
               {width < 500 ? <span>배송 요청사항</span> : ""}
-              <select className={style.select_request}>
-                <option value="" selected="selected">
-                  배송 시 요청사항을 선택해주세요
-                </option>
-                {deliveryRequest.map((request) => (
-                  <option value={request}>{request}</option>
+              <select className={style.select_request} defaultValue="default">
+                <option value="default">배송 시 요청사항을 선택해주세요</option>
+                {deliveryRequest.map((request, key) => (
+                  <option value={request} key={key}>
+                    {request}
+                  </option>
                 ))}
                 <option value="etc">직접입력</option>
               </select>

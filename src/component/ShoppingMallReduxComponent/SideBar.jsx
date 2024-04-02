@@ -7,7 +7,7 @@ import Search from "./Search";
 import LoginButton from "./LoginButton";
 import { menuList } from "./NavBar";
 
-const SideBar = ({ auth, setAuth }) => {
+const SideBar = () => {
   const { height, width } = useWindowDimensions();
   const [showingSideBar, setShowingSideBar] = useState(false);
 
@@ -38,7 +38,7 @@ const SideBar = ({ auth, setAuth }) => {
               <li key={i}>{menu}</li>
             ))}
             <li onClick={showSideNavbar}>
-              <LoginButton auth={auth} setAuth={setAuth} />
+              <LoginButton />
             </li>
           </ul>
         </div>

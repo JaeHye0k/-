@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store1 from "./redux/ReduxCounter/store1";
 import store2 from "./redux/PhoneBook/store2";
+import ShoppingMallStore from "./redux/ShoppingMallRedux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -43,7 +44,14 @@ root.render(
           </Provider>
         }
       />
-      <Route path="/shopping-mall-redux/*" element={<ShoppingMallRedux />} />
+      <Route
+        path="/shopping-mall-redux/*"
+        element={
+          <Provider store={ShoppingMallStore}>
+            <ShoppingMallRedux />
+          </Provider>
+        }
+      />
     </Routes>
   </BrowserRouter>
 );

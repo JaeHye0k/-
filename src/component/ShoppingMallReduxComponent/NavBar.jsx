@@ -15,14 +15,14 @@ export const menuList = [
   "지속가능성",
 ];
 
-const NavBar = ({ auth, setAuth }) => {
+const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   return (
     <header className={style.navbar}>
       <IndexButton />
-      <LoginButton auth={auth} setAuth={setAuth} />
+      <LoginButton />
       <div className={style.logo_section} onClick={() => navigate("")}>
         <img
           alt="logo"

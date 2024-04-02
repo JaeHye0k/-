@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "../../styles/PhoneBook/PhoneBook.css";
 
 const { kakao } = window;
 
 const KakaoMap = () => {
   const dispatch = useDispatch();
-  const contactList = useSelector((state) => state.contactList);
   const REST_API_KEY = "d146c69a13c3c1dab7c5d7a2a4de2e25";
   // 현재 위치 구하기
   const showKakaoMap = () => {
@@ -31,7 +30,6 @@ const KakaoMap = () => {
         searchByCartegory();
       });
       const searchByCartegory = async () => {
-        console.log(lat, lon);
         const url = `https://dapi.kakao.com/v2/local/search/category.json?category_group_code=FD6&x=${lon}&y=${lat}&radius=20000`;
         const response = await fetch(url, {
           headers: {
