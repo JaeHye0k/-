@@ -6,7 +6,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { Button } from "react-bootstrap";
 import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { productAction } from "../../redux/ShoppingMallRedux/actions/productAction";
+import { fetchProductDetail } from "../../redux/ShoppingMallRedux/reducers/productSlice";
 
 const deliveryRequest = [
   "부재 시 경비실에 맡겨주세요",
@@ -36,7 +36,7 @@ const ProductBuy = () => {
     open({ onComplete: handleComplete });
   };
   useEffect(() => {
-    dispatch(productAction.getProductDetail(id));
+    dispatch(fetchProductDetail(id));
   }, [width]);
 
   return (

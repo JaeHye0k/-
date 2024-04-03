@@ -7,6 +7,7 @@ const initialState = {
   error: null,
 };
 
+// 실제 컴포넌트에서 dispatch에 전달되는 부분.
 export const fetchProducts = createAsyncThunk(
   "product/fetchAll",
   async (selectQuery, thunkApi) => {
@@ -20,6 +21,19 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+export const fetchProductDetail = createAsyncThunk(
+  "product/fetchDetail",
+  async (id, thunkApi) => {
+    try {
+      const url = `https://my-json-server.typicode.com/JaeHye0k/React-study/products/${id}`;
+      const response = await fetch(url);
+      return await response.json();
+    } catch (error) {
+      thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -27,9 +41,9 @@ const productSlice = createSlice({
     // getProductAll(state, action) {
     //   state.productList = action.payload.data;
     // },
-    getProductDetail(state, action) {
-      state.product = action.payload.data;
-    },
+    // getProductDetail(state, action) {
+    //   state.product = action.payload.data;
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -41,6 +55,17 @@ const productSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchProductDetail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchProductDetail.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.product = action.payload;
+      })
+      .addCase(fetchProductDetail.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Button, ButtonGroup } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
-import { productAction } from "../../redux/ShoppingMallRedux/actions/productAction";
+import { fetchProductDetail } from "../../redux/ShoppingMallRedux/reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetail = () => {
@@ -31,7 +31,7 @@ const ProductDetail = () => {
     setValidated(true);
   };
   useEffect(() => {
-    dispatch(productAction.getProductDetail(id));
+    dispatch(fetchProductDetail(id));
   }, [selectedSize]);
   return (
     <Container id={style.product_detail}>
