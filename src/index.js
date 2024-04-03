@@ -14,6 +14,7 @@ import { Provider } from "react-redux";
 import store1 from "./redux/ReduxCounter/store1";
 import store2 from "./redux/PhoneBook/store2";
 import ShoppingMallStore from "./redux/ShoppingMallRedux/store";
+import weatherStore from "./redux/Weather/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,7 +26,14 @@ root.render(
         path="/rock-scissor-paper-class"
         element={<RockScissorPaperClass />}
       />
-      <Route path="/weather" element={<Weather />} />
+      <Route
+        path="/weather"
+        element={
+          <Provider store={weatherStore}>
+            <Weather />
+          </Provider>
+        }
+      />
       <Route path="/shopping-mall/*" element={<ShoppingMall />} />
 
       <Route

@@ -1,8 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import style from "../../styles/Weather.module.css";
+import { useDispatch } from "react-redux";
+import { cities } from "../../pages/Weather";
 
-const WeatherButton = ({ cities, setCity, btnX, selectedCity }) => {
+const WeatherButton = ({ btnX, selectedCity }) => {
+  const dispatch = useDispatch();
+
   return (
     <div
       id={style.weather_buttons}
@@ -14,7 +18,7 @@ const WeatherButton = ({ cities, setCity, btnX, selectedCity }) => {
             city === selectedCity && style.selected_button
           }`}
           variant="warning"
-          onClick={() => setCity(city)}
+          onClick={() => dispatch({ type: "SET_CITY", payload: { city } })}
           key={idx}
         >
           {city === "" ? "Current Location" : city}
