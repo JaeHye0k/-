@@ -3,8 +3,9 @@ import ProductCard from "../../component/ShoppingMallReduxComponent/ProductCard"
 import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
-import { productActions } from "../../redux/ShoppingMallRedux/actions/productActions";
+// import { productAction } from "../../redux/ShoppingMallRedux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../redux/ShoppingMallRedux/reducers/productSlice";
 
 const ProductAll = () => {
   const productList = useSelector((state) => state.product.productList);
@@ -13,7 +14,7 @@ const ProductAll = () => {
 
   const getProducts = async () => {
     let selectQuery = query.get("q") || "";
-    dispatch(productActions.getProducts(selectQuery));
+    dispatch(fetchProducts(selectQuery));
   };
 
   useEffect(() => {

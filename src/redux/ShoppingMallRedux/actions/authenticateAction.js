@@ -15,4 +15,4 @@ function logout() {
   };
 }
 
-export const authenticateActions = { login, logout };
+export const authenticateAction = { login, logout };
