@@ -200,6 +200,9 @@ main {
 }
 
 #product_detail .product_detail_col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
 }
 

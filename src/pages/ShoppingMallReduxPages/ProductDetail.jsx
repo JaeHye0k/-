@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
 import { fetchProductDetail } from "../../redux/ShoppingMallRedux/reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Spinner } from "react-bootstrap";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product.product);
+  const isLoading = useSelector((state) => state.product.isLoading);
 
   const showPrice = () => {
     setIsMouseHover(true);
@@ -37,11 +39,15 @@ const ProductDetail = () => {
     <Container id={style.product_detail}>
       <Row className={style.product_detail_row}>
         <Col className={style.product_detail_col}>
-          <img
-            src={product?.img}
-            alt="상품 디테일"
-            className={style.product_detail_img}
-          />
+          {isLoading ? (
+            <Spinner animation="border" />
+          ) : (
+            <img
+              src={product?.img}
+              alt="상품 디테일"
+              className={style.product_detail_img}
+            />
+          )}
         </Col>
         <Col>
           <div className={style.product_detail_title}>{product?.title}</div>
