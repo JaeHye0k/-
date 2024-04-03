@@ -4,7 +4,7 @@ import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
-import { authenticateAction } from "../../redux/ShoppingMallRedux/actions/authenticateAction";
+import { authenticateActions } from "../../redux/ShoppingMallRedux/reducers/authenticateSlice";
 
 const LoginButton = () => {
   const auth = useSelector((state) => state.auth.auth);
@@ -12,7 +12,7 @@ const LoginButton = () => {
   const navigate = useNavigate();
   const goToLoginPage = () => {
     if (auth) {
-      dispatch(authenticateAction.logout());
+      dispatch(authenticateActions.logout());
       localStorage.clear();
     } else {
       navigate("login");

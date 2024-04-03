@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
 import style from "../../styles/ShoppingMallRedux/ShoppingMallRedux.module.css";
 import { useDispatch } from "react-redux";
-import { authenticateAction } from "../../redux/ShoppingMallRedux/actions/authenticateAction";
+import { authenticateActions } from "../../redux/ShoppingMallRedux/reducers/authenticateSlice";
 
 const Login = () => {
   const [id, setId] = useState("");
@@ -12,7 +12,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginUser = () => {
-    dispatch(authenticateAction.login(id, password));
+    dispatch(authenticateActions.login(id, password));
     navigate("/shopping-mall-redux");
   };
 

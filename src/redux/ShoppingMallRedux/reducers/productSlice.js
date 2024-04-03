@@ -74,8 +74,8 @@ const productSlice = createSlice({
 // reducer (Object): 동기적으로 state만 바꿀경우, redux 자체에서 처리 가능한 경우
 // extraReducer (function): 외부 라이브러리 등의 도움을 받아 처리하는 경우, 주로 비동기 처리
 
-export const productActions = productSlice.actions;
-export default productSlice.reducer;
+export const productActions = productSlice.actions; // reducers에 담긴 함수를 dispatch로 호출하기 위함
+export default productSlice.reducer; // 하나로 합쳐진 reducer를 store에 전달하기 위함
 
 // function productReducer(state = initialState, action) {
 //   const { type, payload } = action;
