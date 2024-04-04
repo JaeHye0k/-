@@ -6,7 +6,11 @@ import IndexButton from "../component/IndexComponent/IndexButton";
 import { Spinner } from "react-bootstrap";
 import style from "../styles/Weather.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { weatherActions } from "../redux/Weather/actions/weatherAction";
+import {
+  fetchWeatherByCityName,
+  fetchWeatherByCurrentLocation,
+} from "../redux/Weather/reducers/weatherSlice";
+import { weatherActions } from "../redux/Weather/reducers/weatherSlice";
 
 // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
 // 2. 날씨 정보에는 도시 이름, 섭씨 온도, 화씨 온도, 날씨 상태
@@ -36,57 +40,35 @@ export const cities = [
   "Cebu",
 ];
 
+export const API_KEY = "37145ca12efe07b866fade0a0ab89107";
+
 const Weather = () => {
   const [btnX, setBtnX] = useState(20);
-  const [loading, setLoading] = useState(true);
-  const [apiError, setAPIError] = useState("");
-  const city = useSelector((state) => state.city);
-  const weather = useSelector((state) => state.weather);
-  const weatherDescription = useSelector((state) => state.weatherDescription);
+  const city = useSelector((state) => state.weather.city);
+  const weatherDescription = useSelector(
+    (state) => state.weather.weatherDescription
+  );
+  console.log(weatherDescription);
+  const isLoading = useSelector((state) => state.weather.isLoading);
   const dispatch = useDispatch();
 
-  const API_KEY = "37145ca12efe07b866fade0a0ab89107";
   // 현재 위치 구하기
   const getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
       let lon = position.coords.longitude;
+      dispatch(weatherActions.setCurrentLocation({ lat, lon }));
       getWeatherByCurrentLocation(lat, lon);
     });
   };
   // 현재 위치 날씨 구하기
   const getWeatherByCurrentLocation = (lat, lon) => {
-    try {
-      dispatch(weatherActions.getWeatherByCurrentLocation(lat, lon, API_KEY));
-    } catch (err) {
-      setAPIError(err.message);
-    }
-    setLoading(false);
+    dispatch(fetchWeatherByCurrentLocation({ lat, lon }));
   };
   // 도시 날씨 구하기
   const getWeatherByCityName = (city) => {
-    try {
-      dispatch(weatherActions.getWeatherByCityName(city, API_KEY));
-    } catch (err) {
-      setAPIError(err.message);
-    }
-    setLoading(false);
+    dispatch(fetchWeatherByCityName(city));
   };
-
-  // const formatDescription = (description) => {
-  //   let formatted = description.split(" ");
-  //   let fullName = formatted.join("_");
-  //   let partOfName = formatted.at(-1);
-  //   // 완전히 일치하는 날씨 배경 이미지가 있다면 해당 날씨 배경으로 변경
-  //   if (backgroundWeather.includes(fullName)) {
-  //     dispatch({ type: "CHANGE_BACKGROUND", payload: { fullName } });
-  //   }
-  //   // 완전히 일치하는 게 없으면 비슷한 날씨로라도 변경.
-  //   else {
-  //     partOfName = backgroundWeather.find((e) => e.includes(partOfName));
-  //     dispatch({ type: "CHANGE_BACKGROUND", payload: { fullName } });
-  //   }
-  // };
 
   const clickNextButton = () => {
     setBtnX(btnX - 20);
@@ -96,7 +78,7 @@ const Weather = () => {
   };
 
   useEffect(() => {
-    if (city === "") getCurrentLocation();
+    if (!city) getCurrentLocation();
     else getWeatherByCityName(city);
   }, [city]);
 
@@ -115,10 +97,10 @@ const Weather = () => {
       <div className={style.weather_screen}>
         <div className={style.weather_contents}>
           <div className={style.weather_box}>
-            {loading ? (
+            {isLoading ? (
               <Spinner animation="border" className={style.bs_spinner} />
             ) : (
-              <WeatherBox weather={weather} />
+              <WeatherBox />
             )}
           </div>
           <div className={style.carousel_button}>

@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-const WeatherBox = ({ weather }) => {
+const WeatherBox = () => {
+  const weather = useSelector((state) => state.weather.weather);
   return (
     <div>
       <div>{weather?.name}</div>

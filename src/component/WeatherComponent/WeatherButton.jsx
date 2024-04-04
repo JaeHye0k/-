@@ -3,10 +3,18 @@ import { Button } from "react-bootstrap";
 import style from "../../styles/Weather.module.css";
 import { useDispatch } from "react-redux";
 import { cities } from "../../pages/Weather";
+import { weatherActions } from "../../redux/Weather/reducers/weatherSlice";
 
 const WeatherButton = ({ btnX, selectedCity }) => {
   const dispatch = useDispatch();
 
+  const handleClick = (city) => {
+    if (city) {
+      dispatch(weatherActions.setCity(city));
+    } else {
+      dispatch(weatherActions.setCity(""));
+    }
+  };
   return (
     <div
       id={style.weather_buttons}
@@ -18,7 +26,7 @@ const WeatherButton = ({ btnX, selectedCity }) => {
             city === selectedCity && style.selected_button
           }`}
           variant="warning"
-          onClick={() => dispatch({ type: "SET_CITY", payload: { city } })}
+          onClick={() => handleClick(city)}
           key={idx}
         >
           {city === "" ? "Current Location" : city}
