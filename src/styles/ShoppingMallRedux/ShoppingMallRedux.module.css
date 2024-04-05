@@ -1,15 +1,15 @@
-header {
+.IBM_font header {
   position: fixed;
   width: 100%;
   z-index: 2;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(4.5px);
 }
-ul {
+.IBM_font ul {
   margin: 0;
   padding: 0;
 }
-main {
+.IBM_font main {
   padding-top: 21vh;
   margin: 0 10vw;
 }
