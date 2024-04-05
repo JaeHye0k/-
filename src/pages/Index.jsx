@@ -46,6 +46,12 @@ const Index = () => {
       title: "쇼핑몰 (Redux)",
       url: "shopping-mall-redux",
     },
+    {
+      id: 8,
+      week: 4,
+      title: "Netflix",
+      url: "netflix",
+    },
   ];
   return (
     <div className={`${style.wrap} ${style.dongle_font}`}>

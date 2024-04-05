@@ -15,6 +15,7 @@ import store1 from "./redux/ReduxCounter/store1";
 import store2 from "./redux/PhoneBook/store2";
 import ShoppingMallStore from "./redux/ShoppingMallRedux/store";
 import weatherStore from "./redux/Weather/store";
+import Netflix from "./pages/Netflix";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -60,6 +61,7 @@ root.render(
           </Provider>
         }
       />
+      <Route path="/netflix/*" element={<Netflix />}></Route>
     </Routes>
   </BrowserRouter>
 );
