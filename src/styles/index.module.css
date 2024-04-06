@@ -12,11 +12,7 @@ button {
   cursor: pointer;
   display: block;
 }
-body,
-html,
-#root {
-  height: 100%;
-}
+
 .dongle_font {
   font-family: "Dongle", sans-serif;
   font-weight: 400;

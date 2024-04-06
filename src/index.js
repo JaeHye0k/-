@@ -15,55 +15,61 @@ import store1 from "./redux/ReduxCounter/store1";
 import store2 from "./redux/PhoneBook/store2";
 import ShoppingMallStore from "./redux/ShoppingMallRedux/store";
 import weatherStore from "./redux/Weather/store";
-import Netflix from "./pages/Netflix";
+import Netflix from "./pages/NetflixPages/Netflix/Netflix";
+import "./styles/index.style.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/rock-scissor-paper" element={<RockScissorPaper />} />
-      <Route
-        path="/rock-scissor-paper-class"
-        element={<RockScissorPaperClass />}
-      />
-      <Route
-        path="/weather"
-        element={
-          <Provider store={weatherStore}>
-            <Weather />
-          </Provider>
-        }
-      />
-      <Route path="/shopping-mall/*" element={<ShoppingMall />} />
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/rock-scissor-paper" element={<RockScissorPaper />} />
+        <Route
+          path="/rock-scissor-paper-class"
+          element={<RockScissorPaperClass />}
+        />
+        <Route
+          path="/weather"
+          element={
+            <Provider store={weatherStore}>
+              <Weather />
+            </Provider>
+          }
+        />
+        <Route path="/shopping-mall/*" element={<ShoppingMall />} />
 
-      <Route
-        path="/redux-counter"
-        element={
-          <Provider store={store1}>
-            <ReduxCounter />
-          </Provider>
-        }
-      />
-      <Route
-        path="/phone-book"
-        element={
-          <Provider store={store2}>
-            <PhoneBook />
-          </Provider>
-        }
-      />
-      <Route
-        path="/shopping-mall-redux/*"
-        element={
-          <Provider store={ShoppingMallStore}>
-            <ShoppingMallRedux />
-          </Provider>
-        }
-      />
-      <Route path="/netflix/*" element={<Netflix />}></Route>
-    </Routes>
-  </BrowserRouter>
+        <Route
+          path="/redux-counter"
+          element={
+            <Provider store={store1}>
+              <ReduxCounter />
+            </Provider>
+          }
+        />
+        <Route
+          path="/phone-book"
+          element={
+            <Provider store={store2}>
+              <PhoneBook />
+            </Provider>
+          }
+        />
+        <Route
+          path="/shopping-mall-redux/*"
+          element={
+            <Provider store={ShoppingMallStore}>
+              <ShoppingMallRedux />
+            </Provider>
+          }
+        />
+        <Route path="/netflix/*" element={<Netflix />}></Route>
+      </Routes>
+    </BrowserRouter>
+  </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
