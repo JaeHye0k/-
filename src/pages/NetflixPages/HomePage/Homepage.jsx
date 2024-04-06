@@ -7,11 +7,7 @@ import Banner from "./component/Banner/Banner";
 // 4. upcoming movie
 
 const Homepage = () => {
-  return (
-    <div>
-      <Banner />
-    </div>
-  );
+  return <Banner />;
 };
 
 export default Homepage;

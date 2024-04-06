@@ -1,7 +1,18 @@
+.banner-container {
+  position: relative;
+  height: 56vw;
+}
+@media screen and (min-width: 1024px) {
+  .banner-container {
+    height: 56vh;
+  }
+}
 .banner {
+  display: flex;
+  align-items: center;
   position: absolute;
   width: 100%;
-  height: 56vh;
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   transition: all 500ms ease-in-out;
@@ -17,18 +28,27 @@
   background: linear-gradient(to top, rgba(var(--bs-dark-rgb)), transparent);
   position: absolute;
   width: 100%;
-  height: 56vh;
+  height: 100%;
   left: 0;
 }
 .banner-text-area {
-  width: 36%;
-  height: 100%;
+  width: 45%;
+  height: 60%;
   display: flex;
-  justify-content: center;
   padding-left: 2rem;
   flex-direction: column;
 }
-
 .banner-text-area > * {
   z-index: 2;
+}
+.banner-text-area .banner-title {
+  white-space: nowrap;
+}
+
+.banner-text-area .banner-overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

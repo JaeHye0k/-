@@ -30,7 +30,7 @@ const Banner = () => {
   setInterval(changeBannerImage, 4000);
 
   return (
-    <>
+    <div className="banner-container">
       {data.results.map((result, key) => (
         <div
           style={{
@@ -42,12 +42,12 @@ const Banner = () => {
           ref={(el) => (elementRef.current[key] = el)}
         >
           <div className="text-white banner-text-area">
-            <h1>{result.title}</h1>
-            <p>{result.overview}</p>
+            <h1 className="banner-title">{result.title}</h1>
+            <p className="banner-overview">{result.overview}</p>
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
