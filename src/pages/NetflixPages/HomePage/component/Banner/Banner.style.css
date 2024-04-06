@@ -6,6 +6,15 @@
   .banner-container {
     height: 56vh;
   }
+  .banner-text-area {
+    width: 30%;
+  }
+  .banner-title {
+    font-size: 1.5rem;
+  }
+  .banner-overview {
+    font-size: 0.7rem;
+  }
 }
 .banner {
   display: flex;
@@ -47,7 +56,7 @@
 
 .banner-text-area .banner-overview {
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
