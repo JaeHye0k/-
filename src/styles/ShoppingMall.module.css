@@ -314,13 +314,13 @@
 }
 
 @media screen and (min-width: 1200px) {
-  main {
+  .IBM_font main {
     margin: 0 20vw;
   }
 }
 
 @media screen and (min-width: 2000px) {
-  main {
+  .IBM_font main {
     margin: 0 25vw;
   }
 }
