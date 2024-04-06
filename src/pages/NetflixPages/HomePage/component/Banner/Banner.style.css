@@ -6,6 +6,15 @@
   .banner-container {
     height: 56vh;
   }
+  .banner-text-area {
+    width: 30%;
+  }
+  .banner-title {
+    font-size: 1.5rem;
+  }
+  .banner-overview {
+    font-size: 0.7rem;
+  }
 }
 @media screen and (max-width: 1024px) {
   .banner-text-area {
