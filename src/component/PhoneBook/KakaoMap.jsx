@@ -3,10 +3,11 @@ import { useDispatch } from "react-redux";
 import "../../styles/PhoneBook/PhoneBook.css";
 
 const { kakao } = window;
+const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_MAP_API_KEY;
 
 const KakaoMap = () => {
   const dispatch = useDispatch();
-  const REST_API_KEY = "d146c69a13c3c1dab7c5d7a2a4de2e25";
+
   // 현재 위치 구하기
   const showKakaoMap = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -33,7 +34,7 @@ const KakaoMap = () => {
         const url = `https://dapi.kakao.com/v2/local/search/category.json?category_group_code=FD6&x=${lon}&y=${lat}&radius=20000`;
         const response = await fetch(url, {
           headers: {
-            Authorization: `KakaoAK ${REST_API_KEY}`,
+            Authorization: `KakaoAK ${KAKAO_API_KEY}`,
           },
         });
         const data = await response.json();

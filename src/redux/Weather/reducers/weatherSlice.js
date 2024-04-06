@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { backgroundWeather } from "../../../pages/Weather";
-import { API_KEY } from "../../../pages/Weather";
+
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 const initialState = {
   isLoading: false,

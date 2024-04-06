@@ -40,8 +40,6 @@ export const cities = [
   "Cebu",
 ];
 
-export const API_KEY = "37145ca12efe07b866fade0a0ab89107";
-
 const Weather = () => {
   const [btnX, setBtnX] = useState(20);
   const city = useSelector((state) => state.weather.city);
