@@ -14,7 +14,6 @@ import { Provider } from "react-redux";
 import store1 from "./redux/ReduxCounter/store1";
 import store2 from "./redux/PhoneBook/store2";
 import ShoppingMallStore from "./redux/ShoppingMallRedux/store";
-import netflixStore from "./redux/Netflix/store";
 import weatherStore from "./redux/Weather/store";
 import Netflix from "./pages/NetflixPages/Netflix/Netflix";
 import "./styles/index.style.css";
@@ -67,14 +66,7 @@ root.render(
             </Provider>
           }
         />
-        <Route
-          path="/netflix/*"
-          element={
-            <Provider store={netflixStore}>
-              <Netflix />
-            </Provider>
-          }
-        ></Route>
+        <Route path="/netflix/*" element={<Netflix />}></Route>
       </Routes>
     </BrowserRouter>
   </QueryClientProvider>
