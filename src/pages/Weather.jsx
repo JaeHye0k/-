@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import WeatherBox from "../component/WeatherComponent/WeatherBox";
 import WeatherButton from "../component/WeatherComponent/WeatherButton";
-import IndexButton from "../component/IndexComponent/IndexButton";
+import IndexButton from "./IndexPage/component/IndexButton/IndexButton";
 import { Spinner } from "react-bootstrap";
 import style from "../styles/Weather.module.css";
 import { useSelector, useDispatch } from "react-redux";

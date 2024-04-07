@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../../styles/index.module.css";
+import style from "./IndexButton.module.css";
 import { useNavigate } from "react-router-dom";
 
 const IndexButton = () => {

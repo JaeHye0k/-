@@ -3,7 +3,7 @@ import style from "../styles/RockScissorPaper.module.css";
 import Box from "../component/RockScissorPaperComponent/Box";
 import Button from "../component/RockScissorPaperComponent/Button";
 import ScoreBoard from "../component/RockScissorPaperComponent/ScoreBoard";
-import IndexButton from "../component/IndexComponent/IndexButton";
+import IndexButton from "./IndexPage/component/IndexButton/IndexButton";
 
 const choice = {
   rock: {

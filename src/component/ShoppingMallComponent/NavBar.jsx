@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Search from "./Search";
 
 import LoginButton from "./LoginButton";
-import IndexButton from "../IndexComponent/IndexButton";
+import IndexButton from "../../pages/IndexPage/component/IndexButton/IndexButton";
 
 export const menuList = [
   "Women",
