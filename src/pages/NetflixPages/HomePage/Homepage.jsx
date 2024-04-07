@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./component/Banner/Banner";
+import PopularMovieSlide from "./component/PopularMovieSlide/PopularMovieSlide";
 
 // 1. 배너
 // 2. popular movie
@@ -7,7 +8,12 @@ import Banner from "./component/Banner/Banner";
 // 4. upcoming movie
 
 const Homepage = () => {
-  return <Banner />;
+  return (
+    <>
+      <Banner />
+      <PopularMovieSlide />
+    </>
+  );
 };
 
 export default Homepage;
