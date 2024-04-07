@@ -46,7 +46,6 @@ const Weather = () => {
   const weatherDescription = useSelector(
     (state) => state.weather.weatherDescription
   );
-  console.log(weatherDescription);
   const isLoading = useSelector((state) => state.weather.isLoading);
   const dispatch = useDispatch();
 
