@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -10,9 +10,16 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import "./AppLayout.style.css";
+import Intro from "../../pages/NetflixPages/Intro/Intro";
 
 const AppLayout = () => {
-  return (
+  const [isIntro, setIsIntro] = useState(true);
+  setTimeout(() => {
+    setIsIntro(false);
+  }, 4500);
+  return isIntro ? (
+    <Intro />
+  ) : (
     <div id="netflix">
       <header>
         <Navbar variant="dark" expand="lg" className="bg-dark">
