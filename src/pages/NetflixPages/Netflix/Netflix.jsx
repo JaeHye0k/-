@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import AppLayout from "../../../layout/NetflixLayout/AppLayout";
 import Homepage from "../HomePage/Homepage";
@@ -13,6 +13,19 @@ import "./Netflix.style.css";
 // 영화 상세 페이지 path="/movies/:id"
 
 const Netflix = () => {
+  const titleEl = document.querySelector("title");
+  const faviconEl = document.querySelector("link[rel~='icon']");
+  const resetTitle = () => {
+    faviconEl.href = `/favicon.ico`;
+    titleEl.innerText = "React App";
+  };
+  // title, favicon 변경
+  useEffect(() => {
+    faviconEl.href = `assets/images/netflix/favicon.svg`;
+    titleEl.innerText = "Netflix";
+    return resetTitle;
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<AppLayout />}>
