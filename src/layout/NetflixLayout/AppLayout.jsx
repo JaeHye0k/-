@@ -17,51 +17,52 @@ const AppLayout = () => {
   setTimeout(() => {
     setIsIntro(false);
   }, 4500);
-  return isIntro ? (
-    <Intro />
-  ) : (
+  return (
     <div id="netflix">
-      <header>
-        <Navbar variant="dark" expand="lg" className="bg-dark">
-          <Container fluid>
-            <Navbar.Brand as={Link} to="">
-              <img
-                src="/assets/images/netflix/netflix_logo.svg"
-                alt="netflix logo"
-                width={100}
-              />
-            </Navbar.Brand>
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-            >
-              <Nav.Link as={Link} to="">
-                Home
-              </Nav.Link>
-              <Nav.Link as={Link} to="movies">
-                Movies
-              </Nav.Link>
-            </Nav>
-            <Form>
-              <InputGroup>
-                <Form.Control
-                  data-bs-theme="dark"
-                  type="search"
-                  placeholder="Search"
-                  className="me-2 search-box"
-                  aria-label="Search"
+      {isIntro && <Intro />}
+      <div className={isIntro ? "unshow" : ""}>
+        <header>
+          <Navbar variant="dark" expand="lg" className="bg-dark">
+            <Container fluid>
+              <Navbar.Brand as={Link} to="">
+                <img
+                  src="/assets/images/netflix/netflix_logo.svg"
+                  alt="netflix logo"
+                  width={100}
                 />
-                <Button variant="outline-danger">
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </Button>
-              </InputGroup>
-            </Form>
-          </Container>
-        </Navbar>
-      </header>
-      <main>
-        <Outlet />
-      </main>
+              </Navbar.Brand>
+              <Nav
+                className="me-auto my-2 my-lg-0"
+                style={{ maxHeight: "100px" }}
+              >
+                <Nav.Link as={Link} to="">
+                  Home
+                </Nav.Link>
+                <Nav.Link as={Link} to="movies">
+                  Movies
+                </Nav.Link>
+              </Nav>
+              <Form>
+                <InputGroup>
+                  <Form.Control
+                    data-bs-theme="dark"
+                    type="search"
+                    placeholder="Search"
+                    className="me-2 search-box"
+                    aria-label="Search"
+                  />
+                  <Button variant="outline-danger">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </Button>
+                </InputGroup>
+              </Form>
+            </Container>
+          </Navbar>
+        </header>
+        <main>
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };
