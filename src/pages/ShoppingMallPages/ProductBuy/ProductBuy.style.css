@@ -1,0 +1,82 @@
+#product_buy .product_table_info {
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  border: 0;
+}
+#product_buy table {
+  width: 100%;
+  font-size: 0.8rem;
+}
+#product_buy table :is(tr, td, th) {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#product_buy .product_img {
+  width: 62px;
+}
+
+#product_buy .pay_button {
+  background-color: black;
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+
+#product_buy .pay_button:hover {
+  background-color: #c1121f;
+  border-color: #c1121f;
+}
+
+.delivery_info li {
+  display: flex;
+  padding: 10px;
+  list-style-type: none;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-color: #ddd;
+}
+.delivery_info li:last-of-type {
+  border-bottom: 1px solid #ddd;
+}
+.delivery_info li span {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.delivery_info,
+.product_info {
+  margin-bottom: 6vh;
+}
+
+.delivery_info_title,
+.product_info_title {
+  padding-bottom: 1vh;
+  font-weight: bold;
+}
+
+.delivery_info li span {
+  width: 150px;
+}
+
+.delivery_info .select_adress {
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.delivery_info .select_request {
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.delivery_info .select_request option {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .product_table_info {
+    flex-direction: column;
+  }
+  .product_table_info span {
+    padding-top: 5px;
+  }
+}

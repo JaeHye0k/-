@@ -1,0 +1,40 @@
+.side .menu_section {
+  transition: all 500ms ease-in-out;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@media screen and (max-width: 1000px) {
+  .side {
+    z-index: 1;
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 500ms ease-in-out;
+    height: 100%;
+    background-color: #00f5d4;
+  }
+  .side .menu_list {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 5rem 0 0 0;
+    padding: 0;
+  }
+  .side .menu_list li {
+    padding: 1rem;
+    margin: 3px;
+  }
+  .side .menu_list li:first-child {
+    width: 70vw;
+  }
+  .side .menu_list li:not(:first-child):hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
+}

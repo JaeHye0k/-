@@ -1,0 +1,44 @@
+.shopping-mall header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4.5px);
+}
+.shopping-mall ul {
+  margin: 0;
+  padding: 0;
+}
+.shopping-mall main {
+  padding-top: 15vh;
+  margin: 0 10vw;
+}
+.shopping-mall {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.login_button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.5vw 2vw 0 0;
+  cursor: pointer;
+}
+
+.product_table_info span {
+  padding-left: 1vw;
+}
+
+@media screen and (min-width: 1200px) {
+  .shopping-mall main {
+    margin: 0 20vw;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .shopping-mall main {
+    margin: 0 25vw;
+  }
+}

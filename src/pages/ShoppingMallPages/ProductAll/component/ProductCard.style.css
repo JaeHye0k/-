@@ -1,0 +1,31 @@
+.product_card {
+  font-size: 0.8rem;
+  width: fit-content;
+  padding: 0 0.5rem;
+}
+
+.product_card:hover .product_card_image_box img {
+  transform: scale(1.1);
+}
+
+.product_card_image_box {
+  overflow: hidden;
+}
+
+.product_card_image_box img {
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+
+.product_card_new {
+  padding: 3px 4px;
+  width: fit-content;
+  border-radius: 0.3rem;
+  border: 1px solid #f4a261;
+  background-color: #f4a261;
+  color: white;
+}
+
+.product_card_information {
+  margin-bottom: 1.5rem;
+}

@@ -1,0 +1,68 @@
+.navbar_hamburger {
+  display: block;
+  padding: 0;
+  position: fixed;
+  right: 3vw;
+  top: 3rem;
+  z-index: 2;
+}
+.navbar_hamburger svg {
+  height: 1.5em;
+}
+
+.logo_section {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+}
+.logo_section img {
+  width: 50px;
+  margin-top: 2rem;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vh;
+}
+
+.top .menu_list {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top .menu_list li {
+  padding: 10px;
+}
+
+.top .menu_list li:hover {
+  cursor: pointer;
+  color: #c1121f;
+}
+
+.top .menu_list li::after {
+  transform: scale(0);
+  content: "";
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  background-color: black;
+  height: 1px;
+  transition: all 200ms ease-in-out;
+}
+
+.top .menu_list li:hover::after {
+  transform: scale(1);
+}
+
+@media screen and (max-width: 1000px) {
+  .top .menu_list {
+    display: none;
+  }
+}

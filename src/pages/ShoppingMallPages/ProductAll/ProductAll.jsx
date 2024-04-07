@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "../../component/ShoppingMallComponent/ProductCard";
+import ProductCard from "./component/ProductCard";
 import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import style from "../../styles/ShoppingMall.module.css";
+import "./ProductAll.style.css";
 
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
@@ -20,25 +20,22 @@ const ProductAll = () => {
     getProducts();
   }, [query]);
   return (
-    <Container id={style.product_all_container}>
-      <Row className={style.main_banner}>
+    <Container id="product_all_container">
+      <Row className="main_banner">
         <img
-          className={style.main_banner_model}
+          className="main_banner_model"
           src="/assets/images/shoppingmall/model.jpg"
           alt="main banner"
         />
         <img
-          className={style.main_banner_logo}
+          className="main_banner_logo"
           src="/assets/images/shoppingmall/logo.png"
           alt="banner logo"
         />
       </Row>
-      <Row className={style.product_all_row}>
+      <Row className="product_all_row">
         {productList.map((product) => (
-          <Col
-            lg={3}
-            className={`${style.product_col} col-xl-3 col-md-4 col-6`}
-          >
+          <Col lg={3} className="product_col col-xl-3 col-md-4 col-6">
             <ProductCard item={product} />
           </Col>
         ))}

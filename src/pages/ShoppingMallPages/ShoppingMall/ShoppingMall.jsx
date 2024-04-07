@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import ProductAll from "./ShoppingMallPages/ProductAll";
-import Login from "./ShoppingMallPages/Login";
-import NavBar from "../component/ShoppingMallComponent/NavBar";
-import PrivateRoute from "../Routes/PrivateRoute";
-import style from "../styles/ShoppingMall.module.css";
+import ProductAll from "../ProductAll/ProductAll";
+import Login from "../Login/Login";
+import NavBar from "./component/NavBar/NavBar";
+import PrivateRoute from "./route/PrivateRoute";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ProductBuy from "./ShoppingMallPages/ProductBuy";
-import ProductDetail from "./ShoppingMallPages/ProductDetail";
-import SideBar from "../component/ShoppingMallComponent/SideBar";
+import ProductBuy from "../ProductBuy/ProductBuy";
+import ProductDetail from "../ProductDetail/ProductDetail";
+import SideBar from "./component/SideBar/SideBar";
+import "./ShoppingMall.style.css";
 
 // 1. 전체 상품 페이지, 로그인 페이지, 상품 상세 페이지
 // 1-1. nav바
@@ -32,7 +32,7 @@ const ShoppingMall = () => {
   const [auth, setAuth] = useState(false);
 
   return (
-    <div className={style.IBM_font}>
+    <div className="shopping-mall">
       <NavBar auth={auth} setAuth={setAuth} />
       <main>
         <Routes>

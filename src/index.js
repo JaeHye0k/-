@@ -5,7 +5,7 @@ import Index from "./pages/IndexPage/component/Index/Index";
 import RockScissorPaper from "./pages/RockScissorPaper";
 import RockScissorPaperClass from "./pages/RockScissorPaperClass";
 import Weather from "./pages/Weather";
-import ShoppingMall from "./pages/ShoppingMall";
+import ShoppingMall from "./pages/ShoppingMallPages/ShoppingMall/ShoppingMall";
 import ReduxCounter from "./pages/ReduxCounter";
 import PhoneBook from "./pages/PhoneBook";
 import ShoppingMallRedux from "./pages/ShoppingMallRedux";

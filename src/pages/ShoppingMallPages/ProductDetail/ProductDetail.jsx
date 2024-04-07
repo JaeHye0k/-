@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Button, ButtonGroup } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
-import style from "../../styles/ShoppingMall.module.css";
+import "./ProductDetail.style.css";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -27,31 +27,30 @@ const ProductDetail = () => {
   };
   useEffect(() => {
     getProductDetail();
-    console.log(selectedSize);
   }, [selectedSize]);
   return (
-    <Container id={style.product_detail}>
-      <Row className={style.product_detail_row}>
-        <Col className={style.product_detail_col}>
+    <Container id="product_detail">
+      <Row className="product_detail_row">
+        <Col className="product_detail_col">
           <img
             src={product?.img}
             alt="상품 디테일"
-            className={style.product_detail_img}
+            className="product_detail_img"
           />
         </Col>
         <Col>
-          <div className={style.product_detail_title}>{product?.title}</div>
-          <div className={style.product_detail_price}>
+          <div className="product_detail_title">{product?.title}</div>
+          <div className="product_detail_price">
             ₩{product?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </div>
-          <div className={style.product_detail_choice}>
+          <div className="product_detail_choice">
             {product?.choice ? "Conscious Choice" : <br />}
           </div>
           <div>
             <ButtonGroup>
               {product?.size.map((e) => (
                 <Button
-                  className={style.product_detail_size_button}
+                  className="product_detail_size_button"
                   eventKey={e}
                   onClick={() => setSelectedSize(e)}
                 >
@@ -61,7 +60,7 @@ const ProductDetail = () => {
             </ButtonGroup>
           </div>
           <Button
-            className={style.product_detail_buy}
+            className="product_detail_buy"
             onMouseOver={() => showPrice()}
             onMouseOut={() => unshowPrice()}
             onClick={() => goToBuy()}

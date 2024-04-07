@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import style from "../../styles/ShoppingMall.module.css";
+import "./Search.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // 로그인 창에 오면 검색창 안보이게
@@ -16,10 +16,10 @@ const Search = () => {
     navigate(`?q=${e.target.value}`);
   };
   return (
-    <div className={style.search_container}>
-      <FontAwesomeIcon icon={faSearch} className={style.search_icon} />
+    <div className="search_container">
+      <FontAwesomeIcon icon={faSearch} className="search_icon" />
       <input
-        className={style.search_navbar}
+        className="search_navbar"
         type="text"
         placeholder="제품 검색"
         onChange={(e) => handleChage(e)}

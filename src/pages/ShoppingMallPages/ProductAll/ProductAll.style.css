@@ -1,0 +1,33 @@
+#product_all_container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: none;
+}
+
+#product_all_container .main_banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+#product_all_container .main_banner img {
+  padding: 0;
+}
+
+#product_all_container .main_banner .main_banner_logo {
+  position: absolute;
+  width: 20%;
+  bottom: 2rem;
+}
+
+#product_all_container .product_col {
+  padding: 0;
+}
+
+#product_all_container .product_all_row {
+  justify-content: center;
+}

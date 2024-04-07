@@ -1,0 +1,10 @@
+.navbar .login_button {
+  display: none;
+}
+.side_bar .login_button {
+  display: flex;
+  justify-content: flex-start;
+}
+.login_icon {
+  padding-right: 0.5rem;
+}

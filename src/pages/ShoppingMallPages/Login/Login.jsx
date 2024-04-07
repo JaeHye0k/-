@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
-import style from "../../styles/ShoppingMall.module.css";
+import "./Login.style.css";
 
 const Login = ({ setAuth }) => {
   const [validated, setValidated] = useState(false);
@@ -17,7 +17,6 @@ const Login = ({ setAuth }) => {
   const handleSubmit = (e) => {
     const form = e.currentTarget;
     localStorage.setItem("id", value);
-    console.log(value);
     setValue();
 
     if (form.checkValidity() === false) {
@@ -30,7 +29,7 @@ const Login = ({ setAuth }) => {
     return false;
   };
   return (
-    <Container id={style.login_container}>
+    <Container id="login_container">
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Nick Name</Form.Label>

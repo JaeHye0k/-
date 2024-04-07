@@ -1,0 +1,21 @@
+.search_navbar {
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid black;
+  background: inherit;
+}
+
+.search_icon {
+  margin-right: 5px;
+}
+
+.search_container {
+  position: absolute;
+  right: 3vw;
+}
+
+@media screen and (max-width: 1000px) {
+  .search_container {
+    position: static;
+  }
+}

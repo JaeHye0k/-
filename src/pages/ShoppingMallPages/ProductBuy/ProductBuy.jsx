@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { postcodeScriptUrl } from "react-daum-postcode/lib/loadPostcode";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import { Button } from "react-bootstrap";
-import style from "../../styles/ShoppingMall.module.css";
+import "./ProductBuy.style.css";
 
 const deliveryRequest = [
   "부재 시 경비실에 맡겨주세요",
@@ -42,21 +42,20 @@ const ProductBuy = () => {
 
   const searchAddress = () => {
     open({ onComplete: handleComplete });
-    console.log(open);
   };
   useEffect(() => {
     getProduct();
   }, [width]);
 
   return (
-    <div id={style.product_buy}>
-      <div className={style.delivery_info}>
-        <div className={style.delivery_info_title}>배송 정보</div>
+    <div id="product_buy">
+      <div className="delivery_info">
+        <div className="delivery_info_title">배송 정보</div>
         <ul>
           <li>
             <span>배송지</span>
             <div>
-              <button className={style.select_adress} onClick={searchAddress}>
+              <button className="select_adress" onClick={searchAddress}>
                 배송지 선택
               </button>
             </div>
@@ -74,7 +73,7 @@ const ProductBuy = () => {
 
             <div>
               {width < 500 ? <span>배송 요청사항</span> : ""}
-              <select className={style.select_request}>
+              <select className="select_request">
                 <option value="" selected="selected">
                   배송 시 요청사항을 선택해주세요
                 </option>
@@ -87,8 +86,8 @@ const ProductBuy = () => {
           </li>
         </ul>
       </div>
-      <div className={style.product_info}>
-        <div className={style.product_info_title}>상품 정보</div>
+      <div className="product_info">
+        <div className="product_info_title">상품 정보</div>
         <table border={1}>
           <colgroup>
             <col />
@@ -108,12 +107,8 @@ const ProductBuy = () => {
           </thead>
           <tbody>
             <tr>
-              <td className={style.product_table_info}>
-                <img
-                  src={product?.img}
-                  alt="product"
-                  className={style.product_img}
-                />
+              <td className="product_table_info">
+                <img src={product?.img} alt="product" className="product_img" />
                 <span>{product?.title}</span>
               </td>
               <td>{product?.new ? "Y" : "N"}</td>
@@ -130,7 +125,7 @@ const ProductBuy = () => {
           </tbody>
         </table>
       </div>
-      <Button className={style.pay_button}>결제</Button>
+      <Button className="pay_button">결제</Button>
     </div>
   );
 };
