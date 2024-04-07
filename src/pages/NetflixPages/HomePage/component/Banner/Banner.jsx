@@ -1,9 +1,15 @@
 import React, { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { intervalActions } from "../../../../../redux/Netflix/reducers/intervalSlice";
 import { usePopularMoviesQuery } from "../../../../../hooks/netflix/usePopularMovies";
 import "./Banner.style.css";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
+  const dispatch = useDispatch();
+  const isOnBannerInterval = useSelector(
+    (state) => state.interval.isOnBannerInterval
+  );
   const elementRef = useRef([]);
   const currentBannerImageIndex = useRef(0);
   const resultsPerPage = 20;
@@ -26,8 +32,13 @@ const Banner = () => {
     }
     elementRef.current[idx].className += "current";
   };
+
   // 4초마다 한 번씩 배너 이미지를 바꿈
-  setInterval(changeBannerImage, 4000);
+  if (!isOnBannerInterval) {
+    const intervalId = setInterval(changeBannerImage, 4000);
+    dispatch(intervalActions.setIsOnBannerInterval(true));
+    dispatch(intervalActions.setBannerIntervalId(intervalId));
+  }
 
   return (
     <div className="banner-container">

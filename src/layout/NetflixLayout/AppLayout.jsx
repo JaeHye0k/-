@@ -19,7 +19,7 @@ const AppLayout = () => {
           <Container fluid>
             <Navbar.Brand as={Link} to="">
               <img
-                src="/assets/images/netflix/Netflix_Logo.png"
+                src="/assets/images/netflix/netflix_logo.svg"
                 alt="netflix logo"
                 width={100}
               />
