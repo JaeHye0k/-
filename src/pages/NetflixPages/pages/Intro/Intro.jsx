@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Intro.style.css";
 
 const Intro = () => {
   const arr = "NETFLIX".split("");
   const randomIdx = Math.floor(Math.random() * arr.length);
-  console.log(randomIdx);
   const letter = arr[randomIdx];
   // 브러쉬 털 하나하나를 나타내는 span 태그 생성
   const fur = (arr = []) => {

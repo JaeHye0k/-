@@ -2,6 +2,7 @@ import React from "react";
 import "./MovieSlider.style.css";
 import Carousel from "react-multi-carousel";
 import MovieCard from "../MovieCard/MovieCard";
+import "react-multi-carousel/lib/styles.css";
 
 const MovieSlider = ({ title, movies, responsive }) => {
   return (
