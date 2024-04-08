@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import "./AppLayout.style.css";
-import Intro from "../../pages/NetflixPages/Intro/Intro";
+import Intro from "../../pages/Intro/Intro";
 
 const AppLayout = () => {
   const [isIntro, setIsIntro] = useState(true);

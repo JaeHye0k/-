@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import AppLayout from "../../../layout/NetflixLayout/AppLayout";
-import Homepage from "../HomePage/Homepage";
-import MoviePage from "../MoviePage/MoviePage";
-import MovieDetailPage from "../MovieDetailPage/MovieDetailPage";
-import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import AppLayout from "../layout/AppLayout/AppLayout";
+import Homepage from "../pages/HomePage/Homepage";
+import MoviePage from "../pages/MoviePage/MoviePage";
+import MovieDetailPage from "../pages/MovieDetailPage/MovieDetailPage";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Netflix.style.css";
+import "./App.style.css";
 
 // 홈페이지 path="/"
 // 전체 영화 페이지 path="/movies"

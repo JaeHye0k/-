@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { usePopularMoviesQuery } from "../../../../../hooks/netflix/usePopularMovies";
+import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
 import "./Banner.style.css";
 
 const Banner = () => {

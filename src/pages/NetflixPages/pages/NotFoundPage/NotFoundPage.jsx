@@ -1,5 +1,5 @@
 import React from "react";
-import { usePopularMoviesQueries } from "../../../hooks/netflix/usePopularMovies";
+import { usePopularMoviesQueries } from "../../hooks/usePopularMovies";
 import "./NotFoundPage.style.css";
 
 const NotFoundPage = () => {
