@@ -1,7 +1,12 @@
 .movie-slide {
   padding: 2rem;
 }
-.carousel-container {
+.react-multi-carousel-list.carousel-container {
   overflow: visible;
   padding-top: 1vh;
+  padding-bottom: 4vh;
+}
+
+.dot-list-style .react-multi-carousel-dot--active button {
+  background-color: white;
 }

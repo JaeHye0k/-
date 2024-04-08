@@ -9,15 +9,16 @@ const MovieSlider = ({ title, movies, responsive }) => {
     <div className="movie-slide">
       <h3>{title}</h3>
       <Carousel
+        showDots={true}
         responsive={responsive}
         infinite={true}
         itemClass="movie-slider p-1"
         containerClass="carousel-container"
+        dotListClass="dot-list-style"
       >
-        {movies.map((movie, key) => {
-          console.log(movie);
-          return <MovieCard movie={movie} key={key} />;
-        })}
+        {movies.map((movie, key) => (
+          <MovieCard movie={movie} key={key} />
+        ))}
       </Carousel>
     </div>
   );
