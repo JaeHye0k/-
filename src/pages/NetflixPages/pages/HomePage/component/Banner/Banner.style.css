@@ -54,6 +54,7 @@
 }
 .banner-text-area .banner-title {
   white-space: nowrap;
+  text-shadow: 2px 1px 1px grey;
 }
 
 .banner-text-area .banner-overview {
@@ -62,4 +63,10 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.lading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }

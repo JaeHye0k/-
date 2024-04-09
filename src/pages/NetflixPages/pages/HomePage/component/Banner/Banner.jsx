@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
 import "./Banner.style.css";
+import { Spinner } from "react-bootstrap";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
@@ -29,7 +30,11 @@ const Banner = () => {
   }, []);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <Spinner className="loading-spinner" animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
   if (isError) {
     return <h1>{error.message}</h1>;
