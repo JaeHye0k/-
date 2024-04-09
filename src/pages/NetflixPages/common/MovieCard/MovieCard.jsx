@@ -1,5 +1,4 @@
 import React from "react";
-import { Badge } from "react-bootstrap";
 import "./MovieCard.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,8 +11,23 @@ import {
   faPlus,
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
+import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 
 const MovieCard = ({ movie }) => {
+  const {
+    data: genreData,
+    isLoading,
+    isError,
+    error,
+  } = useMovieGenreQuery("ko");
+  const showGenre = (genreIdList) => {
+    if (!genreData) return [];
+    const genreNameList = genreIdList.map(
+      (id) => genreData.find((genre) => genre.id === id).name
+    );
+    return genreNameList;
+  };
+
   const movieVoteAverage = Math.round(movie.vote_average);
   const halfStar = movieVoteAverage % 2;
   const fillStar = movieVoteAverage >> 1;
@@ -21,13 +35,13 @@ const MovieCard = ({ movie }) => {
 
   const paintStars = (stars = []) => {
     for (let i = 0; i < fillStar; i++) {
-      stars.push(<FontAwesomeIcon icon={faStarFill} />);
+      stars.push(<FontAwesomeIcon icon={faStarFill} width={15} />);
     }
     for (let i = 0; i < halfStar; i++) {
-      stars.push(<FontAwesomeIcon icon={faStarHalfStroke} />);
+      stars.push(<FontAwesomeIcon icon={faStarHalfStroke} width={15} />);
     }
     for (let i = 0; i < emptyStar; i++) {
-      stars.push(<FontAwesomeIcon icon={faStarEmpty} />);
+      stars.push(<FontAwesomeIcon icon={faStarEmpty} width={15} />);
     }
     return stars;
   };
@@ -40,16 +54,23 @@ const MovieCard = ({ movie }) => {
     >
       <div className="overlay">
         <h1 className="title">{movie.title}</h1>
-        {movie.genre_ids.map((id, key) => (
-          <Badge bg="danger" key={key}>
-            {id}
-          </Badge>
-        ))}
+        <hr />
+        <ul className="genres">
+          {showGenre(movie.genre_ids).map((id, key) => (
+            <li className="genre-item" key={key}>
+              {id}
+            </li>
+          ))}
+        </ul>
+
         <div>{paintStars()}</div>
         {movie.adult ? (
-          <img src="assets/images/netflix/over18.png" width={50}></img>
+          <img
+            className="adult-img"
+            src="/assets/images/netflix/over18.png"
+          ></img>
         ) : (
-          <img src="assets/images/netflix/ALL.png" width={50}></img>
+          <img className="adult-img" src="/assets/images/netflix/ALL.png"></img>
         )}
         <div className="movie-card-buttons">
           <div>
