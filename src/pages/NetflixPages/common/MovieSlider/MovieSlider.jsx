@@ -9,6 +9,9 @@ const MovieSlider = ({ title, movies, responsive }) => {
     <div className="movie-slide">
       <h3>{title}</h3>
       <Carousel
+        autoPlay={true}
+        autoPlaySpeed={4000}
+        pauseOnHover={true}
         showDots={true}
         responsive={responsive}
         infinite={true}
