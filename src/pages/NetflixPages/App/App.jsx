@@ -21,7 +21,7 @@ const Netflix = () => {
   };
   // title, favicon 변경
   useEffect(() => {
-    faviconEl.href = `assets/images/netflix/favicon.svg`;
+    faviconEl.href = `/assets/images/netflix/favicon.svg`;
     titleEl.innerText = "Netflix";
     return resetTitle;
   }, []);
