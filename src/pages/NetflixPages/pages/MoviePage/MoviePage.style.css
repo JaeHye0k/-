@@ -53,11 +53,12 @@
 .remote-controller-button {
   position: fixed;
   bottom: 8rem;
-  right: 2rem;
+  right: 20rem;
   padding: 10px;
   border-radius: 50%;
   background-color: #fefefe;
   font-size: 2rem;
+  z-index: 2;
 }
 .remote-controller-button:hover {
   background-color: #cbcbcb;
@@ -67,8 +68,17 @@
   background-color: #aaaaaa;
 }
 
+@media screen and (max-width: 1400px) {
+  .remote-controller-button {
+    right: 10rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .pagenation-button-group > button {
     font-size: 0.7rem;
+  }
+  .remote-controller-button {
+    right: 2rem;
   }
 }

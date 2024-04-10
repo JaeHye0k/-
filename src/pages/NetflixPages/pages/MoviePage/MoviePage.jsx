@@ -81,7 +81,7 @@ const MoviePage = () => {
     <div>
       <Container>
         <Row>
-          <Col lg={8} xs={12}>
+          <Col lg={10} xs={12}>
             <Row>
               {filterByGenre()?.map((movie, index) => (
                 <Col lg={3} xs={6}>
