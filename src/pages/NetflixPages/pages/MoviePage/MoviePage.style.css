@@ -1,5 +1,74 @@
-.loading-spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.pagenation {
+  padding: 7vh 4vw;
+}
+.pagenation-button-group {
+  display: flex;
+  justify-content: center;
+}
+.pagenation-button-group > button {
+  --btn-color: #ececec;
+  border: 1px solid var(--btn-color);
+  color: var(--btn-color);
+  width: 17%;
+  height: 4vh;
+}
+
+.pagenation-button-group > button:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.pagenation-button-group > button:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.pagenation-button-group > button.current {
+  background-color: #ececec;
+  color: rgba(var(--bs-dark-rgb));
+}
+.pagenation-button-group > button:hover {
+  background-color: #ececec;
+  color: rgba(var(--bs-dark-rgb));
+}
+
+.pagenation-left {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.pagenation-right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+:is(.pagenation-left, .pagenation-right) svg {
+  color: #ececec;
+}
+
+.row {
+  justify-content: center;
+}
+
+.remote-controller-button {
+  position: fixed;
+  bottom: 8rem;
+  right: 2rem;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #fefefe;
+  font-size: 2rem;
+}
+.remote-controller-button:hover {
+  background-color: #cbcbcb;
+  cursor: pointer;
+}
+.remote-controller-button:active {
+  background-color: #aaaaaa;
+}
+
+@media screen and (max-width: 600px) {
+  .pagenation-button-group > button {
+    font-size: 0.7rem;
+  }
 }
