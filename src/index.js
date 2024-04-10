@@ -18,6 +18,7 @@ import weatherStore from "./redux/Weather/store";
 import NetflixApp from "./pages/NetflixPages/App/App";
 import "./styles/index.style.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { store as NetflixStore } from "./pages/NetflixPages/redux/store";
 
 const queryClient = new QueryClient();
 
@@ -66,7 +67,14 @@ root.render(
             </Provider>
           }
         />
-        <Route path="/netflix/*" element={<NetflixApp />}></Route>
+        <Route
+          path="/netflix/*"
+          element={
+            <Provider store={NetflixStore}>
+              <NetflixApp />
+            </Provider>
+          }
+        ></Route>
       </Routes>
     </BrowserRouter>
   </QueryClientProvider>
