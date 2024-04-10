@@ -1,0 +1,59 @@
+.genre-tag-container {
+  min-height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fcfcfc;
+  margin: 1rem 1rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 6px #999999, -1px -1px 6px #999999;
+}
+.genre-tag {
+  position: relative;
+  font-size: 0.7rem;
+  margin: 0.1rem 0.3rem;
+  padding: 5px 5px;
+  background-color: #b40404;
+  border-radius: 0.3rem;
+  color: #fcfcfc;
+  height: fit-content;
+  transition: all 0.2s ease-in-out;
+}
+.genre-tag:hover {
+  background-color: #555555;
+  cursor: pointer;
+}
+.genre-tag:hover span {
+  visibility: hidden;
+}
+.genre-tag:hover::after {
+  content: "X";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.genre-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; */
+  padding: 0 1rem 1rem;
+}
+.genre-button {
+  font-size: 0.7rem;
+  margin: 0.3rem 0.3rem;
+  padding: 2px 5px;
+  background-color: #262626;
+  border-radius: 0.3rem;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0 1px 2px 0 gray;
+  color: #fcfcfc;
+}
+
+.genre-button:hover {
+  cursor: pointer;
+}
+.genre-button:active {
+  box-shadow: none;
+  transform: translateY(1px);
+}
