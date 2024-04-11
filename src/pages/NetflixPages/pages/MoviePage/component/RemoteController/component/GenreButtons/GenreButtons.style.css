@@ -1,0 +1,10 @@
+.genre-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 1rem 1rem;
+}
+.genre-button {
+  font-size: 0.7rem;
+  margin: 0.3rem 0.3rem;
+}

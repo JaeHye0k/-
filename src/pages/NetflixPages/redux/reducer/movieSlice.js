@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   selectedGenres: {},
+  selectedSortButton: null,
 };
 
 export const movieSlice = createSlice({
@@ -14,8 +15,12 @@ export const movieSlice = createSlice({
     deleteGenre: (state, action) => {
       delete state.selectedGenres[action.payload.id];
     },
+    selectSortButton: (state, action) => {
+      state.selectedSortButton = action.payload;
+    },
   },
 });
 
-export const { selectGenre, deleteGenre } = movieSlice.actions;
+export const { selectGenre, deleteGenre, selectSortButton } =
+  movieSlice.actions;
 export default movieSlice.reducer;

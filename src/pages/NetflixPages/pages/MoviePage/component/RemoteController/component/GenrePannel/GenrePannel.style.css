@@ -1,4 +1,4 @@
-.genre-tag-container {
+.genre-pannel {
   min-height: 200px;
   display: flex;
   flex-wrap: wrap;
@@ -30,30 +30,4 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-}
-.genre-button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; */
-  padding: 0 1rem 1rem;
-}
-.genre-button {
-  font-size: 0.7rem;
-  margin: 0.3rem 0.3rem;
-  padding: 2px 5px;
-  background-color: #262626;
-  border-radius: 0.3rem;
-  transition: all 0.1s ease-in-out;
-  box-shadow: 0 1px 2px 0 gray;
-  color: #fcfcfc;
-}
-
-.genre-button:hover {
-  cursor: pointer;
-}
-.genre-button:active {
-  box-shadow: none;
-  transform: translateY(1px);
 }

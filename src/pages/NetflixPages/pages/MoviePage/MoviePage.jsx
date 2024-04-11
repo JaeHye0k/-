@@ -12,7 +12,7 @@ import {
   faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../../common/LoadingSpinner/LoadingSpinner";
-import RemoteController from "../../common/RemoteController/RemoteController";
+import RemoteController from "./component/RemoteController/RemoteController";
 import { useSelector } from "react-redux";
 
 // nav바에서 클릭해서 넘어오는 경우 => popularMovie 보여주기
@@ -27,6 +27,29 @@ const MoviePage = () => {
     keyword,
     page
   );
+  const selectedSortButton = useSelector(
+    (state) => state.movie.selectedSortButton
+  );
+  const sortMovies = (movies) => {
+    console.log(movies, selectedSortButton);
+    switch (selectedSortButton) {
+      case "별점 높은 순":
+        movies.sort((a, b) => b.vote_average - a.vote_average);
+        break;
+      case "별점 낮은 순":
+        movies.sort((a, b) => a.vote_average - b.vote_average);
+        break;
+      case "최신 순":
+        movies.sort((a, b) => b.release_date.localeCompare(a.release_date));
+        break;
+      case "오래된 순":
+        movies.sort((a, b) => a.release_date.localeCompare(b.release_date));
+        break;
+      default:
+        break;
+    }
+    return movies;
+  };
 
   const genres = useSelector((state) => state.movie.selectedGenres);
 
@@ -50,14 +73,14 @@ const MoviePage = () => {
   // page가 바뀔 때마다 refetch
   useEffect(() => {
     refetch();
-  }, [page]);
+  }, [page, selectedSortButton]);
 
   const handlePagenation = (value) => {
     let newPage = Number(page) + value;
     // 페이지 범위 초과할 경우
     if (newPage < 1) newPage = 1;
     else if (newPage > data.total_pages) newPage = data.total_pages;
-    // keyword가 없으면 popular list에서 pagenation 수행
+    // keyword가 없으면 popular movies에서 pagenation 수행
     keyword
       ? setQuery(`?q=${keyword}&page=${newPage}`)
       : setQuery(`?page=${newPage}`);
@@ -83,7 +106,7 @@ const MoviePage = () => {
         <Row>
           <Col lg={10} xs={12}>
             <Row>
-              {filterByGenre()?.map((movie, index) => (
+              {sortMovies(filterByGenre())?.map((movie, index) => (
                 <Col lg={3} xs={6}>
                   <MovieCard movie={movie} key={index} />
                 </Col>

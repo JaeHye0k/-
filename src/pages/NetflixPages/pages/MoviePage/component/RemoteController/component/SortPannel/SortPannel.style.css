@@ -1,0 +1,18 @@
+.sort-pannel {
+  min-height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fcfcfc;
+  margin: 1rem 1rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 6px #999999, -1px -1px 6px #999999;
+}
+.sorted-by {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin: 5rem 2rem;
+  background-color: #b40404;
+  border-radius: 0.3rem;
+}

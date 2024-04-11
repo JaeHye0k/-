@@ -1,0 +1,36 @@
+.sort-button-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 0 1rem;
+}
+.sort-button-container button {
+  margin: 10px;
+  height: 50px;
+  font-size: 0.8rem;
+}
+button.clear-button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: calc(50% - 2px);
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 3;
+  margin: 0;
+}
+
+.sort-button-container::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: calc(50% - 2px);
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: black;
+  width: 65px;
+  height: 65px;
+}
