@@ -16,7 +16,6 @@ const NotFoundPage = () => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  console.log(data);
   return (
     <div className="not-found-page">
       <section className="message-404 text-white">

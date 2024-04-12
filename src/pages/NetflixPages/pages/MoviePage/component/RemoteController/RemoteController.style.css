@@ -23,7 +23,7 @@
   margin: 0 5px;
 }
 
-button {
+.remote-controller button {
   padding: 2px 5px;
   background-color: #262626;
   border-radius: 0.3rem;
@@ -31,10 +31,10 @@ button {
   box-shadow: 0 1px 2px 0 gray;
   color: #fcfcfc;
 }
-button:hover {
+.remote-controller button:hover {
   cursor: pointer;
 }
-button:active {
+.remote-controller button:active {
   box-shadow: none;
   transform: translateY(1px);
 }

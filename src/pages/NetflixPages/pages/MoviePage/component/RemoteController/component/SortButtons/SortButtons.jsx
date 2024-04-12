@@ -7,11 +7,11 @@ const SortButtons = () => {
   const dispatch = useDispatch();
   return (
     <div className="sort-button-container">
-      <button onClick={() => dispatch(selectSortButton("별점 높은 순"))}>
-        별점순↑
+      <button onClick={() => dispatch(selectSortButton("인기 높은 순"))}>
+        인기순↑
       </button>
-      <button onClick={() => dispatch(selectSortButton("별점 낮은 순"))}>
-        별점순↓
+      <button onClick={() => dispatch(selectSortButton("인기 낮은 순"))}>
+        인기순↓
       </button>
       <button onClick={() => dispatch(selectSortButton("최신 순"))}>
         날짜순↑

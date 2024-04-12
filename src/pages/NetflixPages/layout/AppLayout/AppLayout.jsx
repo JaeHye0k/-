@@ -28,8 +28,8 @@ const AppLayout = () => {
   }, 4500);
   return (
     <div id="netflix">
-      {isIntro && <Intro />}
-      <div className={isIntro ? "unshow" : ""}>
+      {/* {isIntro && <Intro />} */}
+      <div /*className={isIntro ? "unshow" : ""}*/>
         <header>
           <Navbar variant="dark" expand="lg" className="bg-dark">
             <Container fluid>

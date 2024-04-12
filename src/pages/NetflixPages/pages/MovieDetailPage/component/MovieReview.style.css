@@ -1,0 +1,41 @@
+.review-box {
+  margin-bottom: 1.2rem;
+  border: 1px solid #de4444;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+.review-box .content {
+  line-height: 2rem;
+}
+
+.review-box .content.folded {
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.review-title {
+  margin-bottom: 0.5rem;
+}
+.review-box .author {
+  font-size: 1.2rem;
+  padding-right: 1rem;
+}
+.review-box .date {
+  padding-right: 0.5rem;
+}
+.review-box .fa-user {
+  padding-right: 1rem;
+}
+.review-box .updated {
+  font-size: 0.8rem;
+}
+.review-box :is(.fa-caret-down, .fa-caret-up) {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+.review-box :is(.fa-caret-down, .fa-caret-up):hover {
+  cursor: pointer;
+}

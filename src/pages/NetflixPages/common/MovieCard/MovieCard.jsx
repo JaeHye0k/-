@@ -12,6 +12,7 @@ import {
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const {
@@ -27,6 +28,7 @@ const MovieCard = ({ movie }) => {
     );
     return genreNameList;
   };
+  const navigate = useNavigate();
 
   const movieVoteAverage = Math.round(movie.vote_average);
   const halfStar = movieVoteAverage % 2;
@@ -48,11 +50,14 @@ const MovieCard = ({ movie }) => {
   return (
     <div
       style={{
-        backgroundImage: `url(https://media.themoviedb.org/t/p/w300_and_h450_bestv2${movie.poster_path})`,
+        backgroundImage: `url(https://media.themoviedb.org/t/p/w300_and_h450_bestv2${movie?.poster_path})`,
       }}
       className="movie-card"
     >
-      <div className="overlay">
+      <div
+        className="overlay"
+        onClick={() => navigate(`/netflix/movies/${movie.id}`)}
+      >
         <h1 className="title">{movie.title}</h1>
         <hr />
         <ul className="genres">

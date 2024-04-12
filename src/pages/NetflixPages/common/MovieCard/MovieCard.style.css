@@ -82,3 +82,7 @@
   position: absolute;
   right: 5px;
 }
+.fa-star,
+.fa-star-half-stroke {
+  color: #de4444;
+}

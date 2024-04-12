@@ -33,11 +33,11 @@ const MoviePage = () => {
   const sortMovies = (movies) => {
     console.log(movies, selectedSortButton);
     switch (selectedSortButton) {
-      case "별점 높은 순":
-        movies.sort((a, b) => b.vote_average - a.vote_average);
+      case "인기 높은 순":
+        movies.sort((a, b) => b.popularity - a.popularity);
         break;
-      case "별점 낮은 순":
-        movies.sort((a, b) => a.vote_average - b.vote_average);
+      case "인기 낮은 순":
+        movies.sort((a, b) => a.popularity - b.popularity);
         break;
       case "최신 순":
         movies.sort((a, b) => b.release_date.localeCompare(a.release_date));

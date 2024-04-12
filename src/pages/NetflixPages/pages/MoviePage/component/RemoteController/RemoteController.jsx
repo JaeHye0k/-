@@ -5,9 +5,13 @@ import GenrePannel from "./component/GenrePannel/GenrePannel";
 import dragElement from "../../../../utills/dragElement";
 import SortButtons from "./component/SortButtons/SortButtons";
 import SortPannel from "./component/SortPannel/SortPannel";
+import { useSelector, useDispatch } from "react-redux";
+import { selectButton } from "../../../../redux/reducer/movieSlice";
 
 const RemoteController = () => {
-  const [selectedButton, setSelectedButton] = useState("filter");
+  const selectedButton = useSelector((state) => state.movie.selectedButton);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dragElement(document.querySelector(".remote-controller"));
   }, []);
@@ -20,10 +24,13 @@ const RemoteController = () => {
 
       {selectedButton === "filter" ? <GenrePannel /> : <SortPannel />}
       <div className="sort-filter">
-        <button id="sort" onClick={(e) => setSelectedButton(e.target.id)}>
+        <button id="sort" onClick={(e) => dispatch(selectButton(e.target.id))}>
           정렬
         </button>
-        <button id="filter" onClick={(e) => setSelectedButton(e.target.id)}>
+        <button
+          id="filter"
+          onClick={(e) => dispatch(selectButton(e.target.id))}
+        >
           필터
         </button>
       </div>

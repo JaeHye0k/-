@@ -1,0 +1,107 @@
+.movie-detail {
+  width: 90%;
+  height: 100%;
+}
+.movie-detail-image {
+  overflow: hidden;
+  height: 50vw;
+  max-height: 600px;
+  position: relative;
+  padding: 0;
+}
+.movie-detail-poster {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+}
+.movie-detail-backdrop {
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(10px) grayscale(50%);
+}
+.movie-title {
+  font-size: 2rem;
+}
+.movie-tagline {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.movie-info .top {
+  margin-top: 2rem;
+}
+
+.movie-info .top ul {
+  display: flex;
+}
+
+.movie-info .top ul li {
+  align-items: center;
+  border: 1px solid #fcfcfc;
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+.movie-info :is(.top, .mid, .bottom) li {
+  margin: 0.5rem 1rem;
+  display: flex;
+}
+.movie-info :is(.top, .mid, .bottom) li span:nth-of-type(2) {
+  width: fit-content;
+  padding-left: 2rem;
+}
+.fa-star {
+  color: #de4444;
+  padding-right: 5px;
+}
+.movie-info .genre span:not(:first-child, :last-child)::after {
+  content: "";
+  margin: 0 0.5rem;
+  display: inline-block;
+  width: 1px;
+  height: 1rem;
+  vertical-align: middle;
+  line-height: normal;
+  background-color: #fcfcfc;
+}
+.movie-info .mid span:first-of-type {
+  white-space: nowrap;
+}
+.movie-info .mid :is(.staff, .actor) {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
+.movie-info .mid .staff {
+  width: 50%;
+}
+
+.movie-info .mid .staff span:not(:first-child, :last-child)::after {
+  content: ",";
+}
+
+.movie-info .mid .staff span:not(:first-child, :last-child) {
+  padding-right: 1rem;
+}
+
+.movie-info .mid .actor span:not(:first-child, :last-child)::after {
+  content: ",";
+}
+
+.movie-info .mid .actor span:not(:first-child, :last-child) {
+  padding-right: 1rem;
+}
+.movie-info .mid .overview span:last-child {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.movie-review {
+  margin-top: 2rem;
+}

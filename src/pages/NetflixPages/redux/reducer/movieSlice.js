@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   selectedGenres: {},
   selectedSortButton: null,
+  selectedButton: "filter",
 };
 
 export const movieSlice = createSlice({
@@ -18,9 +19,12 @@ export const movieSlice = createSlice({
     selectSortButton: (state, action) => {
       state.selectedSortButton = action.payload;
     },
+    selectButton: (state, action) => {
+      state.selectedButton = action.payload;
+    },
   },
 });
 
-export const { selectGenre, deleteGenre, selectSortButton } =
+export const { selectGenre, deleteGenre, selectSortButton, selectButton } =
   movieSlice.actions;
 export default movieSlice.reducer;

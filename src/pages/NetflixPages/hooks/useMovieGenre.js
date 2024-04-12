@@ -5,7 +5,7 @@ const fetchMovieGenre = (language) => {
   return api.get(`genre/movie/list?language=${language}`);
 };
 
-export const useMovieGenreQuery = (language = "en") => {
+export const useMovieGenreQuery = (language = "en-US") => {
   return useQuery({
     queryKey: ["movie-genre"],
     queryFn: () => fetchMovieGenre(language),
