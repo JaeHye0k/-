@@ -3,8 +3,12 @@
   border: 1px solid #de4444;
   border-radius: 5px;
   padding: 0.5rem 1rem;
+  color: black;
 }
-
+.movie-review > h2 {
+  color: black;
+  font-weight: bold;
+}
 .review-box .content {
   line-height: 2rem;
 }
@@ -24,12 +28,14 @@
 }
 .review-box .date {
   padding-right: 0.5rem;
+  color: #262626;
 }
 .review-box .fa-user {
   padding-right: 1rem;
 }
 .review-box .updated {
   font-size: 0.8rem;
+  color: #262626;
 }
 .review-box :is(.fa-caret-down, .fa-caret-up) {
   width: 1.5rem;

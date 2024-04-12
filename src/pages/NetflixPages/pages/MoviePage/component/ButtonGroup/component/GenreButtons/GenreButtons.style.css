@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding: 0 1rem 1rem;
+  padding: 0 0 1rem;
 }
 .genre-button {
   font-size: 0.7rem;

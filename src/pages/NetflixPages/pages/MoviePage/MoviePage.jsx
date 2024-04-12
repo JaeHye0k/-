@@ -34,7 +34,6 @@ const MoviePage = () => {
   );
   const isOnController = useSelector((state) => state.movie.isOnController);
 
-  console.log(isOnController);
   const sortMovies = (movies) => {
     switch (selectedSortButton) {
       case "인기 높은 순":

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMovieDetailQuery } from "../../hooks/useMovieDetail";
 import { useMovieReviewQuery } from "../../hooks/useMovieReview";
@@ -7,7 +7,6 @@ import LoadingSpinner from "../../common/LoadingSpinner/LoadingSpinner";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./MovieDetailPage.style.css";
-import MovieReview from "./component/MovieReview/MovieReview";
 import ControllerButton from "../../common/RemoteController/ControllerButton/ControllerButton";
 import { useSelector } from "react-redux";
 import RemoteController from "../../common/RemoteController/RemoteController";
@@ -16,15 +15,15 @@ import PannelGroup from "./component/PannelGroup/PannelGroup";
 const MovieDetailPage = () => {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useMovieDetailQuery(id, "ko");
-  const { data: reviews } = useMovieReviewQuery(id);
   const isOnController = useSelector((state) => state.movie.isOnController);
-  console.log(isOnController);
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+
   return (
     <Container className="movie-detail">
       <Row>
@@ -108,12 +107,6 @@ const MovieDetailPage = () => {
         </div>
       </Row>
       <Row>
-        <div className="movie-review">
-          <h2>Reviews</h2>
-          {reviews?.slice(0, 5).map((review) => (
-            <MovieReview review={review} />
-          ))}
-        </div>
         {isOnController && <RemoteController PannelGroup={<PannelGroup />} />}
       </Row>
 

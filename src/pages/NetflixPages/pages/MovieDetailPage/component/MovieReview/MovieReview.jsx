@@ -9,7 +9,7 @@ const MovieReview = ({ review }) => {
   const [isFolded, setIsFolded] = useState(true);
   const { author, created_at: created, content, updated_at: updated } = review;
   if (updated !== created) isUpdated = true;
-  // console.log(review);
+
   return (
     <div className="review-box">
       <div className="review-title">
@@ -29,9 +29,14 @@ const MovieReview = ({ review }) => {
           <FontAwesomeIcon
             icon={faCaretDown}
             onClick={() => setIsFolded(false)}
+            onTouchStart={() => setIsFolded(false)}
           />
         ) : (
-          <FontAwesomeIcon icon={faCaretUp} onClick={() => setIsFolded(true)} />
+          <FontAwesomeIcon
+            icon={faCaretUp}
+            onClick={() => setIsFolded(true)}
+            onTouchStart={() => setIsFolded(true)}
+          />
         )}
         {content}
       </div>

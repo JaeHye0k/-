@@ -1,7 +1,8 @@
 import React from "react";
+import ReviewPannel from "./ReviewPannel/ReviewPannel";
 
 const PannelGroup = () => {
-  return <div>PannelGroup</div>;
+  return <ReviewPannel />;
 };
 
 export default PannelGroup;

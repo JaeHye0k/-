@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   background-color: #fcfcfc;
-  margin: 1rem 1rem;
+  margin: 1rem 0;
   border-radius: 5px;
   box-shadow: 1px 1px 6px #999999, -1px -1px 6px #999999;
 }
