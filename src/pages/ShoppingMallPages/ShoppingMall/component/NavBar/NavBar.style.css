@@ -21,7 +21,7 @@
   margin-top: 2rem;
 }
 
-.top {
+.navbar .top {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@
   margin-bottom: 1vh;
 }
 
-.top .menu_list {
+.navbar .top .menu_list {
   display: flex;
   flex-direction: row;
   list-style-type: none;
@@ -37,16 +37,16 @@
   padding: 0;
 }
 
-.top .menu_list li {
+.navbar .top .menu_list li {
   padding: 10px;
 }
 
-.top .menu_list li:hover {
+.navbar .top .menu_list li:hover {
   cursor: pointer;
   color: #c1121f;
 }
 
-.top .menu_list li::after {
+.navbar .top .menu_list li::after {
   transform: scale(0);
   content: "";
   display: block;
@@ -57,12 +57,12 @@
   transition: all 200ms ease-in-out;
 }
 
-.top .menu_list li:hover::after {
+.navbar .top .menu_list li:hover::after {
   transform: scale(1);
 }
 
 @media screen and (max-width: 1000px) {
-  .top .menu_list {
+  .navbar .top .menu_list {
     display: none;
   }
 }
