@@ -12,14 +12,16 @@ import {
   faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../../common/LoadingSpinner/LoadingSpinner";
-import RemoteController from "./component/RemoteController/RemoteController";
+import RemoteController from "../../common/RemoteController/RemoteController";
 import { useSelector } from "react-redux";
+import ControllerButton from "../../common/RemoteController/ControllerButton/ControllerButton";
+import ButtonGroup from "./component/ButtonGroup/ButtonGroup";
+import PannelGroup from "./component/PannelGroup/PannelGroup";
 
 // nav바에서 클릭해서 넘어오는 경우 => popularMovie 보여주기
 // 검색을 통해 넘어오는 경우 => keyword와 관련된 영화들 보여주기
 
 const MoviePage = () => {
-  const [onRemoteController, setOnRemoteController] = useState(false);
   const [query, setQuery] = useSearchParams();
   const keyword = query.get("q");
   const page = +query.get("page") || 1;
@@ -30,8 +32,10 @@ const MoviePage = () => {
   const selectedSortButton = useSelector(
     (state) => state.movie.selectedSortButton
   );
+  const isOnController = useSelector((state) => state.movie.isOnController);
+
+  console.log(isOnController);
   const sortMovies = (movies) => {
-    console.log(movies, selectedSortButton);
     switch (selectedSortButton) {
       case "인기 높은 순":
         movies.sort((a, b) => b.popularity - a.popularity);
@@ -146,15 +150,15 @@ const MoviePage = () => {
               </Col>
             </Row>
           </Col>
-          {onRemoteController && <RemoteController />}
+          {isOnController && (
+            <RemoteController
+              PannelGroup={<PannelGroup />}
+              ButtonGroup={<ButtonGroup />}
+            />
+          )}
         </Row>
       </Container>
-      <div
-        className="remote-controller-button"
-        onClick={() => setOnRemoteController(!onRemoteController)}
-      >
-        📱
-      </div>
+      <ControllerButton />
     </div>
   );
 };

@@ -7,12 +7,18 @@ import LoadingSpinner from "../../common/LoadingSpinner/LoadingSpinner";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./MovieDetailPage.style.css";
-import MovieReview from "./component/MovieReview";
+import MovieReview from "./component/MovieReview/MovieReview";
+import ControllerButton from "../../common/RemoteController/ControllerButton/ControllerButton";
+import { useSelector } from "react-redux";
+import RemoteController from "../../common/RemoteController/RemoteController";
+import PannelGroup from "./component/PannelGroup/PannelGroup";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useMovieDetailQuery(id, "ko");
   const { data: reviews } = useMovieReviewQuery(id);
+  const isOnController = useSelector((state) => state.movie.isOnController);
+  console.log(isOnController);
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -52,7 +58,7 @@ const MovieDetailPage = () => {
                 {data?.vote_average.toFixed(2)}
               </li>
               <li>{data?.release_date}</li>
-              <li>{data?.runtime}</li>
+              <li>{data?.runtime}분</li>
               <li>{data?.adult ? "성인" : "전체 관람가"}</li>
             </ul>
           </ul>
@@ -108,7 +114,10 @@ const MovieDetailPage = () => {
             <MovieReview review={review} />
           ))}
         </div>
+        {isOnController && <RemoteController PannelGroup={<PannelGroup />} />}
       </Row>
+
+      <ControllerButton />
     </Container>
   );
 };

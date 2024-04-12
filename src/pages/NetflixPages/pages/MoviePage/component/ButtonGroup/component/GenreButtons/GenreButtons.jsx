@@ -2,7 +2,7 @@ import React from "react";
 import { useMovieGenreQuery } from "../../../../../../hooks/useMovieGenre";
 import LoadingSpinner from "../../../../../../common/LoadingSpinner/LoadingSpinner";
 import { useDispatch } from "react-redux";
-import { selectGenre } from "../../../../../../redux/reducer/movieSlice";
+import { selectGenre } from "../../../../../../redux/reducer/rcSlice";
 import "./GenreButtons.style.css";
 
 const GenreButtons = () => {

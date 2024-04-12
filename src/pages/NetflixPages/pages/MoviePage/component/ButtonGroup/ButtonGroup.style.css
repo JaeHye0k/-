@@ -1,0 +1,9 @@
+.sort-filter {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 1rem;
+}
+.sort-filter button {
+  flex: 1;
+  margin: 0 5px;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import "./SortButtons.style.css";
 import { useDispatch } from "react-redux";
-import { selectSortButton } from "../../../../../../redux/reducer/movieSlice";
+import { selectSortButton } from "../../../../../../redux/reducer/rcSlice";
 
 const SortButtons = () => {
   const dispatch = useDispatch();

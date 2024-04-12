@@ -1,0 +1,29 @@
+.controller-button {
+  position: fixed;
+  bottom: 8rem;
+  right: 20rem;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #fefefe;
+  font-size: 2rem;
+  z-index: 2;
+}
+.controller-button:hover {
+  background-color: #cbcbcb;
+  cursor: pointer;
+}
+.controller-button:active {
+  background-color: #aaaaaa;
+}
+
+@media screen and (max-width: 1400px) {
+  .controller-button {
+    right: 10rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .controller-button {
+    right: 2rem;
+  }
+}

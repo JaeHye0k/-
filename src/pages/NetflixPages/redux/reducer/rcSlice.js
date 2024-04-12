@@ -4,9 +4,10 @@ const initialState = {
   selectedGenres: {},
   selectedSortButton: null,
   selectedButton: "filter",
+  isOnController: false,
 };
 
-export const movieSlice = createSlice({
+export const rcSlice = createSlice({
   name: "movie",
   initialState,
   reducers: {
@@ -22,9 +23,17 @@ export const movieSlice = createSlice({
     selectButton: (state, action) => {
       state.selectedButton = action.payload;
     },
+    turnOnRemoteController: (state) => {
+      state.isOnController = !state.isOnController;
+    },
   },
 });
 
-export const { selectGenre, deleteGenre, selectSortButton, selectButton } =
-  movieSlice.actions;
-export default movieSlice.reducer;
+export const {
+  selectGenre,
+  deleteGenre,
+  selectSortButton,
+  selectButton,
+  turnOnRemoteController,
+} = rcSlice.actions;
+export default rcSlice.reducer;
