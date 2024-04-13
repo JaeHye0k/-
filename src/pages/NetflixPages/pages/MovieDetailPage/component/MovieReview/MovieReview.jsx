@@ -8,7 +8,7 @@ const MovieReview = ({ review }) => {
   let isUpdated = false;
   const [isFolded, setIsFolded] = useState(true);
   const { author, created_at: created, content, updated_at: updated } = review;
-  if (updated !== created) isUpdated = true;
+  if (updated && created && updated !== created) isUpdated = true;
 
   return (
     <div className="review-box">
