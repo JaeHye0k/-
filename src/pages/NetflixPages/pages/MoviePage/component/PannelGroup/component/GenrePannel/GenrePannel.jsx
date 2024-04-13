@@ -5,7 +5,7 @@ import "./GenrePannel.style.css";
 
 const GenrePannel = () => {
   const dispatch = useDispatch();
-  const genres = useSelector((state) => state.movie.selectedGenres);
+  const genres = useSelector((state) => state.remoteController.selectedGenres);
   return (
     <div className="genre-pannel">
       {Object.entries(genres).map(([id, name]) => (

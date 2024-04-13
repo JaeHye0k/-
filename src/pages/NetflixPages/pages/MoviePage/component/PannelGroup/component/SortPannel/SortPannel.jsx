@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const SortPannel = () => {
   const selectedSortButton = useSelector(
-    (state) => state.movie.selectedSortButton
+    (state) => state.remoteController.selectedSortButton
   );
   return (
     <div className="sort-pannel">

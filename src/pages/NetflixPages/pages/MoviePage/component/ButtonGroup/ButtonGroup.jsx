@@ -7,7 +7,9 @@ import "./ButtonGroup.style.css";
 
 const ButtonGroup = () => {
   const dispatch = useDispatch();
-  const selectedButton = useSelector((state) => state.movie.selectedButton);
+  const selectedButton = useSelector(
+    (state) => state.remoteController.selectedButton
+  );
   return (
     <div>
       <div className="sort-filter">
