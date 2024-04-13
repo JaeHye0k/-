@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMovieDetailQuery } from "../../hooks/useMovieDetail";
-import { useMovieReviewQuery } from "../../hooks/useMovieReview";
 import { Container, Row, Col } from "react-bootstrap";
 import LoadingSpinner from "../../common/LoadingSpinner/LoadingSpinner";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
@@ -9,20 +8,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./MovieDetailPage.style.css";
 import ControllerButton from "../../common/RemoteController/ControllerButton/ControllerButton";
 import { useSelector } from "react-redux";
-import RemoteController from "../../common/RemoteController/RemoteController";
-import PannelGroup from "./component/PannelGroup/PannelGroup";
+import IsOnController from "./component/IsOnController/IsOnController";
 import MovieRecommend from "./component/MovieRecommend/MovieRecommend";
 import MoviePreview from "./component/MoviePreview/MoviePreview";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const MovieDetailPage = () => {
+  const language = useSelector((state) => state.global.language);
   const { id } = useParams();
-  const { data, isLoading, isError, error } = useMovieDetailQuery(id, "ko");
-  const isOnController = useSelector((state) => state.movie.isOnController);
+  const { data, isLoading, isError, error, refetch } = useMovieDetailQuery(
+    id,
+    language
+  );
+
+  useEffect(() => {
+    refetch();
+  }, [language]);
 
   if (isLoading) {
     return <LoadingSpinner />;
   }
   if (isError) {
+    if (error.request.status === 404) {
+      return <NotFoundPage />;
+    }
     return <h1>{error.message}</h1>;
   }
 
@@ -102,9 +111,9 @@ const MovieDetailPage = () => {
         </div>
       </Row>
       <Row>
-        {isOnController && <RemoteController PannelGroup={<PannelGroup />} />}
+        <IsOnController />
       </Row>
-      <Row>
+      <Row className="movie-recommend">
         <MovieRecommend id={id} />
       </Row>
       <ControllerButton />
