@@ -11,6 +11,7 @@ import ControllerButton from "../../common/RemoteController/ControllerButton/Con
 import { useSelector } from "react-redux";
 import RemoteController from "../../common/RemoteController/RemoteController";
 import PannelGroup from "./component/PannelGroup/PannelGroup";
+import MovieRecommend from "./component/MovieRecommend/MovieRecommend";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -51,14 +52,18 @@ const MovieDetailPage = () => {
             <li>
               <div className="movie-tagline">"{data?.tagline}"</div>
             </li>
-            <ul>
+            <ul className="movie-info-list">
               <li>
-                <FontAwesomeIcon icon={faStar} />
-                {data?.vote_average.toFixed(2)}
+                <li>
+                  <FontAwesomeIcon icon={faStar} />
+                  {data?.vote_average.toFixed(2)}
+                </li>
+                <li>{data?.release_date}</li>
               </li>
-              <li>{data?.release_date}</li>
-              <li>{data?.runtime}분</li>
-              <li>{data?.adult ? "성인" : "전체 관람가"}</li>
+              <li>
+                <li>{data?.runtime}분</li>
+                <li>{data?.adult ? "성인" : "전체 관람가"}</li>
+              </li>
             </ul>
           </ul>
           <hr />
@@ -109,7 +114,9 @@ const MovieDetailPage = () => {
       <Row>
         {isOnController && <RemoteController PannelGroup={<PannelGroup />} />}
       </Row>
-
+      <Row>
+        <MovieRecommend id={id} />
+      </Row>
       <ControllerButton />
     </Container>
   );

@@ -2,6 +2,9 @@
   width: 90%;
   height: 100%;
 }
+.movie-detail.container {
+  overflow: hidden;
+}
 .movie-detail-image {
   overflow: hidden;
   height: 50vw;
@@ -36,18 +39,20 @@
   margin-top: 2rem;
 }
 
-.movie-info .top ul {
+.movie-info .top .movie-info-list {
   display: flex;
+  flex-wrap: wrap;
 }
 
-.movie-info .top ul li {
+.movie-info .top .movie-info-list li li {
   align-items: center;
   border: 1px solid #fcfcfc;
   border-radius: 5px;
   padding: 3px 5px;
+  margin: 0 1rem;
 }
 .movie-info :is(.top, .mid, .bottom) li {
-  margin: 0.5rem 1rem;
+  /* margin: 0.5rem 1rem; */
   display: flex;
 }
 .movie-info :is(.top, .mid, .bottom) li span:nth-of-type(2) {
