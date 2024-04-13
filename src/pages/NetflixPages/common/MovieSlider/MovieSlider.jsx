@@ -9,6 +9,9 @@ const MovieSlider = ({ title, movies, responsive }) => {
     <div className="movie-slide">
       <h3>{title}</h3>
       <Carousel
+        swipeable={true}
+        draggable={true}
+        removeArrowOnDeviceType={["tablet", "mobile"]}
         autoPlay={true}
         autoPlaySpeed={4000}
         pauseOnHover={true}
@@ -19,7 +22,7 @@ const MovieSlider = ({ title, movies, responsive }) => {
         containerClass="carousel-container"
         dotListClass="dot-list-style"
       >
-        {movies.map((movie, key) => (
+        {movies?.map((movie, key) => (
           <MovieCard movie={movie} key={key} />
         ))}
       </Carousel>
