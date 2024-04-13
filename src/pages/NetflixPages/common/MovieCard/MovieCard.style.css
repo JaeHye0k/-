@@ -86,3 +86,23 @@
 .fa-star-half-stroke {
   color: #de4444;
 }
+
+@media screen and (max-width: 600px) {
+  .movie-card {
+    height: 200px;
+  }
+  .movie-card .title {
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+@media screen and (min-width: 2000px) {
+  .movie-card {
+    height: 400px;
+  }
+  .movie-recommend .movie-card {
+    height: 300px;
+  }
+}

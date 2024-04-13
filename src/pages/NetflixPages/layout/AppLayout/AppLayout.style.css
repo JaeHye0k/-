@@ -8,3 +8,10 @@
   overflow: hidden;
   height: 0;
 }
+#netflix main {
+  margin-top: 4rem;
+}
+#netflix .navbar-search {
+  position: absolute;
+  right: 5rem;
+}
