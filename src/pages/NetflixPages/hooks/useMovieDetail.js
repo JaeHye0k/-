@@ -12,6 +12,7 @@ export const useMovieDetailQuery = (id, language = "en-US") => {
     queryKey: ["movie-detail", id],
     queryFn: () => fetchMovieDetail(id, language),
     select: (result) => result.data,
+    retry: 0,
   });
 };
 
