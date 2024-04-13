@@ -23,7 +23,7 @@ const MovieRecommend = ({ id }) => {
   return (
     <MovieSlider
       movies={data?.results}
-      title={"Movie Recommend"}
+      title={language === "ko" ? "추천 영화" : "Movie Recommend"}
       responsive={responsive}
     />
   );

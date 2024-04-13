@@ -15,3 +15,9 @@
   position: absolute;
   right: 5rem;
 }
+
+@media screen and (max-width: 1000px) {
+  #netflix .navbar-search {
+    position: static;
+  }
+}
