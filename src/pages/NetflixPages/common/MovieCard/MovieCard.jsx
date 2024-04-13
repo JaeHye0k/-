@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MovieCard.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,14 +13,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MovieCard = ({ movie }) => {
-  const {
-    data: genreData,
-    isLoading,
-    isError,
-    error,
-  } = useMovieGenreQuery("ko");
+  const language = useSelector((state) => state.global.language);
+  const { data: genreData, refetch } = useMovieGenreQuery(language);
   const showGenre = (genreIdList) => {
     if (!genreData) return [];
     const genreNameList = genreIdList.map(
@@ -34,7 +31,9 @@ const MovieCard = ({ movie }) => {
   const halfStar = movieVoteAverage % 2;
   const fillStar = movieVoteAverage >> 1;
   const emptyStar = 5 - (fillStar + halfStar);
-
+  useEffect(() => {
+    refetch();
+  }, [language]);
   const paintStars = (stars = []) => {
     for (let i = 0; i < fillStar; i++) {
       stars.push(<FontAwesomeIcon icon={faStarFill} width={15} />);
