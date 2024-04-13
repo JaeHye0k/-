@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSearchMoviesQuery } from "../../hooks/useSearchMovies";
 import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
@@ -22,18 +22,21 @@ import PannelGroup from "./component/PannelGroup/PannelGroup";
 // 검색을 통해 넘어오는 경우 => keyword와 관련된 영화들 보여주기
 
 const MoviePage = () => {
+  const language = useSelector((state) => state.global.language);
   const [query, setQuery] = useSearchParams();
   const keyword = query.get("q");
   const page = +query.get("page") || 1;
   const { data, isLoading, isError, error, refetch } = useSearchMoviesQuery(
     keyword,
-    page
+    page,
+    language
   );
   const selectedSortButton = useSelector(
-    (state) => state.movie.selectedSortButton
+    (state) => state.remoteController.selectedSortButton
   );
-  const isOnController = useSelector((state) => state.movie.isOnController);
-
+  const isOnController = useSelector(
+    (state) => state.remoteController.isOnController
+  );
   const sortMovies = (movies) => {
     switch (selectedSortButton) {
       case "인기 높은 순":
@@ -54,7 +57,7 @@ const MoviePage = () => {
     return movies;
   };
 
-  const genres = useSelector((state) => state.movie.selectedGenres);
+  const genres = useSelector((state) => state.remoteController.selectedGenres);
 
   const filterByGenre = () => {
     const filterdMovies = data?.results.filter((movie) => {
@@ -73,10 +76,10 @@ const MoviePage = () => {
   const start = page < 10 ? 0 : Math.floor(page / 10) * 10 - 1;
   const end = Math.floor(page / 10) * 10 + 9;
 
-  // page가 바뀔 때마다 refetch
+  // page가 바뀔 때, 정렬 기준이 바뀔때, 언어가 바뀔 때 refetch
   useEffect(() => {
     refetch();
-  }, [page, selectedSortButton]);
+  }, [page, selectedSortButton, language]);
 
   const handlePagenation = (value) => {
     let newPage = Number(page) + value;
@@ -104,7 +107,7 @@ const MoviePage = () => {
     return <h1>{error.message}</h1>;
   }
   return (
-    <div>
+    <div className="movie-page">
       <Container>
         <Row>
           <Col lg={10} xs={12}>
