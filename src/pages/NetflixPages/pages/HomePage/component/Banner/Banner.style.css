@@ -2,22 +2,7 @@
   position: relative;
   height: 56vw;
 }
-@media screen and (min-width: 1024px) {
-  .banner-container {
-    height: 56vh;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .banner-text-area {
-    width: 30%;
-  }
-  .banner-title {
-    font-size: 1.5rem;
-  }
-  .banner-overview {
-    font-size: 0.7rem;
-  }
-}
+
 .banner {
   display: flex;
   align-items: center;
@@ -29,7 +14,6 @@
   transition: all 500ms ease-in-out;
   opacity: 0;
 }
-
 .banner.current {
   opacity: 1;
 }
@@ -57,16 +41,39 @@
   text-shadow: 2px 1px 1px grey;
 }
 
-.banner-text-area .banner-overview {
+.banner-overview {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1.2rem;
 }
 
 .lading-spinner {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+@media screen and (min-width: 1024px) {
+  .banner-container {
+    height: 56vh;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .banner-text-area {
+    width: 70%;
+  }
+  .banner-title {
+    font-size: 1.5rem;
+  }
+  .banner-overview {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .banner-overview {
+    font-size: 0.8rem;
+  }
 }

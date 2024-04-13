@@ -6,7 +6,7 @@ import { responsive } from "../../../../constants/responsive";
 import LoadingSpinner from "../../../../common/LoadingSpinner/LoadingSpinner";
 
 const PopularMovieSlide = () => {
-  const { data, isLoading, isError, error } = usePopularMoviesQuery();
+  const { data, isLoading, isError, error } = usePopularMoviesQuery("ko");
   if (isLoading) {
     return <LoadingSpinner />;
   }

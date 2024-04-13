@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import RemoteController from "../../common/RemoteController/RemoteController";
 import PannelGroup from "./component/PannelGroup/PannelGroup";
 import MovieRecommend from "./component/MovieRecommend/MovieRecommend";
+import MoviePreview from "./component/MoviePreview/MoviePreview";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -28,19 +29,8 @@ const MovieDetailPage = () => {
   return (
     <Container className="movie-detail">
       <Row>
-        <Col className="movie-detail-image">
-          <div
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
-            }}
-            className="movie-detail-backdrop"
-          ></div>
-          <div
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.poster_path})`,
-            }}
-            className="movie-detail-poster"
-          ></div>
+        <Col>
+          <MoviePreview data={data} />
         </Col>
       </Row>
       <Row>

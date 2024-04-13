@@ -5,7 +5,7 @@ import { useTopRatedMoviesQuery } from "../../../../hooks/useTopRatedMovies";
 import LoadingSpinner from "../../../../common/LoadingSpinner/LoadingSpinner";
 
 const TopRatedMovieSlide = () => {
-  const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
+  const { data, isLoading, isError, error } = useTopRatedMoviesQuery("ko");
   if (isLoading) {
     return <LoadingSpinner />;
   }
