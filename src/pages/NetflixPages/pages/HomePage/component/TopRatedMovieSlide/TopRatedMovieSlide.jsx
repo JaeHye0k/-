@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MovieSlider from "../../../../common/MovieSlider/MovieSlider";
 import { responsive } from "../../../../constants/responsive";
 import { useTopRatedMoviesQuery } from "../../../../hooks/useTopRatedMovies";
 import LoadingSpinner from "../../../../common/LoadingSpinner/LoadingSpinner";
+import { useSelector } from "react-redux";
 
 const TopRatedMovieSlide = () => {
-  const { data, isLoading, isError, error } = useTopRatedMoviesQuery("ko");
+  const language = useSelector((state) => state.global.language);
+  const { data, isLoading, isError, error, refetch } =
+    useTopRatedMoviesQuery(language);
+  useEffect(() => {
+    refetch();
+  }, [language]);
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -15,7 +22,7 @@ const TopRatedMovieSlide = () => {
   return (
     <div>
       <MovieSlider
-        title="Top Rated Movies"
+        title={language === "ko" ? "극찬받는 영화" : "Top Rated Movies"}
         movies={data?.results}
         responsive={responsive}
       />

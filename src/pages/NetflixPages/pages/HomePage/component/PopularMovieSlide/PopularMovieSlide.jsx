@@ -4,9 +4,11 @@ import MovieSlider from "../../../../common/MovieSlider/MovieSlider";
 import "./PopularMovieSlide.style.css";
 import { responsive } from "../../../../constants/responsive";
 import LoadingSpinner from "../../../../common/LoadingSpinner/LoadingSpinner";
+import { useSelector } from "react-redux";
 
 const PopularMovieSlide = () => {
-  const { data, isLoading, isError, error } = usePopularMoviesQuery("ko");
+  const language = useSelector((state) => state.global.language);
+  const { data, isLoading, isError, error } = usePopularMoviesQuery(language);
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -15,7 +17,7 @@ const PopularMovieSlide = () => {
   }
   return (
     <MovieSlider
-      title="Popular Movies"
+      title={language === "ko" ? "인기 영화" : "Popular Movies"}
       movies={data?.results}
       responsive={responsive}
     />

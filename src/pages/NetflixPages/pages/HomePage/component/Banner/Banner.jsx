@@ -2,9 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
 import "./Banner.style.css";
 import LoadingSpinner from "../../../../common/LoadingSpinner/LoadingSpinner";
+import { useSelector } from "react-redux";
 
 const Banner = () => {
-  const { data, isLoading, isError, error } = usePopularMoviesQuery();
+  const language = useSelector((state) => state.global.language);
+  const { data, isLoading, isError, error, refetch } =
+    usePopularMoviesQuery(language);
   const elementRef = useRef([]);
   const currentBannerImageIndex = useRef(0);
   const resultsPerPage = 20;
@@ -24,10 +27,11 @@ const Banner = () => {
   // 4초마다 한 번씩 배너 이미지를 바꿈
   useEffect(() => {
     const intervalId = setInterval(changeBannerImage, 4000);
+    refetch();
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [language]);
 
   if (isLoading) {
     return <LoadingSpinner />;

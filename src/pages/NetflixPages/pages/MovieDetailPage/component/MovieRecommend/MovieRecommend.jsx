@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMovieRecommendQuery } from "../../../../hooks/useMovieRecommend";
 import LoadingSpinner from "../../../../common/LoadingSpinner/LoadingSpinner";
 import MovieSlider from "../../../../common/MovieSlider/MovieSlider";
 import { responsive } from "../../../../constants/responsive";
+import { useSelector } from "react-redux";
 
 const MovieRecommend = ({ id }) => {
-  const { data, isLoading, isError, error } = useMovieRecommendQuery(id, "ko");
-
+  const language = useSelector((state) => state.global.language);
+  const { data, isLoading, isError, error, refetch } = useMovieRecommendQuery(
+    id,
+    language
+  );
+  useEffect(() => {
+    refetch();
+  }, [language]);
   if (isLoading) {
     return <LoadingSpinner />;
   }
